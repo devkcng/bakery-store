@@ -23,7 +23,7 @@ const Header = () => {
     };
   }, []);
   return (
-    <header>
+    <header className="">
       <NavBar
         className={`${showHeader === true ? " bg-black opacity-90" : ""}`}
       ></NavBar>
@@ -32,11 +32,11 @@ const Header = () => {
         <img
           src="/imgs/final_background_header.jpg"
           alt=""
-          className="background z-[-1] inset-0 absolute w-full h-full object-cover object-[70%_100%] bg-no-repeat"
+          className="background z-[-1] inset-0 relative w-full max-h-[800px] object-cover object-[70%_100%] bg-no-repeat"
         />
       </div>
       <section>
-        <div className="wrapper mb-8 absolute bottom-[10%] left-[2%]">
+        <div className="wrapper mb-8 absolute bottom-[35%] left-[2%]">
           <span className="quote text-[#f5f5f5] text-[42px] ">
             Life is short <br />
             Eat dessert first

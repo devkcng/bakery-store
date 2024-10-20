@@ -5,7 +5,7 @@ import ItemCard from "@/components/item-card/item-card";
 export default function Home() {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header></Header>
 
       <div className="flex justify-center ">
         {/* <NavBar></NavBar> */}

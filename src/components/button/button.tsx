@@ -2,7 +2,6 @@ import React, { FC } from "react";
 type ButtonProps = {
   onClick?: () => void;
   className?: string;
-  full?: boolean;
   type?: "button" | "reset" | "submit";
   bgColor?: string;
   children: React.ReactNode;
@@ -10,7 +9,6 @@ type ButtonProps = {
 const Button: FC<ButtonProps> = ({
   onClick,
   className = "",
-  full = false,
   type = "button",
   bgColor = "primary",
   children,
@@ -31,9 +29,7 @@ const Button: FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`py-3 px-6 rounded-lg capitalize  ${
-        full ? "w-full" : "w-auto"
-      } mt-auto ${bgClassName} ${className}`}
+      className={`py-3 px-6 capitalize mt-auto ${bgClassName} ${className}`}
       {...restProps}
     >
       {children}
