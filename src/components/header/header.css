@@ -1,0 +1,14 @@
+.menu {
+  font-family: Poppins, sans-serif;
+  margin-right: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 20px;
+  font-weight: 500;
+}
+.menu:hover {
+  color: #e9bd8c;
+}
+.quote {
+  font-family: "Sansita Swashed", system-ui;
+}
