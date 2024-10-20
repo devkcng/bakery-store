@@ -4,7 +4,7 @@ type ButtonProps = {
   className?: string;
   full?: boolean;
   type?: "button" | "reset" | "submit";
-  bgColor?: "primary" | "secondary";
+  bgColor?: string;
   children: React.ReactNode;
 };
 const Button: FC<ButtonProps> = ({
