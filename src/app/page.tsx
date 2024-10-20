@@ -9,13 +9,21 @@ export default function Home() {
 
       <div className="flex justify-center ">
         {/* <NavBar></NavBar> */}
-        <ItemCard itemName="" itemPrice="28,000" imagePath=""></ItemCard>
         <ItemCard
-          itemName=""
+          itemName="Bánh Cookie"
+          itemPrice="28,000"
+          imagePath="/imgs/bakery-images/cookiesb.png"
+        ></ItemCard>
+        <ItemCard
+          itemName="Bánh Donut"
           itemPrice="28,000"
           imagePath="/imgs/bakery-images/donutb.png"
         ></ItemCard>
-        <ItemCard itemName="" itemPrice="28,000" imagePath=""></ItemCard>
+        <ItemCard
+          itemName="Bánh Tart"
+          itemPrice="28,000"
+          imagePath="/imgs/bakery-images/eggtartb.png"
+        ></ItemCard>
       </div>
     </>
   );

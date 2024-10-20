@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { FC } from "react";
 import Button from "../button/button";
+import "./item-card.css";
 type ItemProps = {
   imagePath: string;
   itemName: string;
@@ -24,14 +25,14 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
             imagePath === "" ? "/imgs/bakery-images/croissantb.png" : imagePath
           }`}
           alt=""
-          className=" block w-full h-[200px] object-contain"
+          className=" item-image block w-full h-[190px] object-contain mt-2"
         />
         {/* Item name */}
         <span className="block text-white text-center font-display text-[22px] font-semibold">
           {itemName === "" ? "Bánh Sừng Trâu" : itemName}
         </span>{" "}
         {/* Item price */}
-        <span className="block  text-center font-display text-[25px] font-semibold text-[#EB953C] mt-4">
+        <span className="block text-center font-display text-[25px] font-semibold text-[#EB953C] mt-4">
           {itemPrice === "" ? "28,000 VNĐ" : `${itemPrice} VNĐ`}
         </span>
         {/* Action button : Add to cart and View detail */}
