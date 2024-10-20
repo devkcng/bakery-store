@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./header.css";
 import Button from "../button/button";
 import NavBar from "./nav-bar";
-// import img from "next/image";
+
+// combine nav-bar and banner => header for homepage
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
 
