@@ -5,6 +5,11 @@
 /* Ví dụ sử dụng font */
 body {
   height: 2000px;
+  overflow: -moz-scrollbars-none; /* Cho trình duyệt Firefox */
+  -ms-overflow-style: none; /* Cho IE và Edge */
+}
+body::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn cho trình duyệt WebKit */
 }
 :root {
   --background: #ffffff;

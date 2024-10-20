@@ -2,14 +2,15 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
 import Button from "../button/button";
+import NavBar from "./nav-bar";
 // import img from "next/image";
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      //   console.log(window.scrollY);
-      if (window.scrollY > 500) {
+      console.log(window.scrollY);
+      if (window.scrollY > 600) {
         setShowHeader(true);
       } else {
         setShowHeader(false);
@@ -22,56 +23,9 @@ const Header = () => {
   }, []);
   return (
     <header>
-      <nav
-        className={`navigation flex items-center justify-between content-between w-full h-auto fixed left-0 top-0 transition-all duration-600 ease-linear mt-[-2%] ${
-          showHeader === true ? "show bg-black opacity-80" : ""
-        }`}
-      >
-        <div className="flex justify-start items-center content-start">
-          <img
-            src="/imgs/logo_project.png"
-            className="logo w-[107px] h-[107px] mt-4 object-cover"
-            alt="Logo"
-          />
-          <a
-            href="#"
-            className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
-          >
-            Trang chủ
-          </a>
-          <a
-            href="#"
-            className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
-          >
-            Thực đơn
-          </a>
-          <a
-            href="#"
-            className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
-          >
-            Liên hệ
-          </a>
-          <a
-            href="#"
-            className="menu text-[#f5f5f5] font- text-[18px] ml-[30px]"
-          >
-            Tra cứu đơn hàng
-          </a>
-        </div>
-        <div className="flex justify-start items-center mr-[3%] p-3">
-          <img
-            src="/imgs/cart-heart-svgrepo-com-white.svg"
-            className="logo w-[50px] h-[35px] object-cover cursor-pointer"
-            alt="Logo"
-          />
-          <a
-            href="#"
-            className="menu text-[#f5f5f5] font- text-[18px] ml-[30px] pl-0"
-          >
-            Login
-          </a>
-        </div>
-      </nav>
+      <NavBar
+        className={`${showHeader === true ? " bg-black opacity-90" : ""}`}
+      ></NavBar>
 
       <div>
         <img
@@ -86,11 +40,18 @@ const Header = () => {
             Life is short <br />
             Eat dessert first
           </span>
-          <div className="mt-32 flex items-center justify-center  gap-x-3 text-sm w-full">
-            <Button className=" bg-[#933C24] w-[120px] font-semibold text-white border-black-10 rounded-[5px] h-12 p-4 text-center">
+          <div className="mt-32 flex items-content-between justify-center -z-[1]  gap-x-3 text-sm w-full">
+            <a
+              className="text-[#fff] text-xl inline-flex bg-[#933C24] justify-center items-center border border-transparent rounded-[30px] w-auto h-12 px-5 font-display"
+              href="#"
+            >
               Đặt hàng ngay
-            </Button>
-            <a className=" text-[#E9BD8C] text-xl w- inline-block " href="#">
+            </a>
+
+            <a
+              className="text-[#fff] text-xl inline-flex justify-center items-center border border-white rounded-[30px] w-auto h-12 px-5 font-display"
+              href="#"
+            >
               Về chúng tôi
             </a>
           </div>

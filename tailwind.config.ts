@@ -14,6 +14,9 @@ const config: Config = {
         primary: "#933C24",
         secondary: "#6F5CF1",
       },
+      fontFamily: {
+        display: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],
