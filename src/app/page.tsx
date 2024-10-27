@@ -3,6 +3,8 @@ import Header from "@/components/header/header";
 import ItemCard from "@/components/item-card/item-card";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import SearchBar from "@/components/search-bar/search-bar";
+import MenuSection from "@/components/section/menu-section";
+
 import { useState } from "react";
 export default function Home() {
   const [selectedOption, setSelectedOption] = useState<string>("HTML");
@@ -14,7 +16,8 @@ export default function Home() {
   console.log(selectedOption);
   return (
     <div>
-      <SearchBar className="mt-[50px]" isShow={false}></SearchBar>
+      {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
+      <MenuSection></MenuSection>
     </div>
   );
 }

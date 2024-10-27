@@ -17,6 +17,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["Poppins", "sans-serif"],
+        sansita: ["Sansita Swashed", "system-ui"],
       },
     },
   },
