@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         primary: "#933C24",
         secondary: "#6F5CF1",
+        tertiary: "#E9BD8C",
       },
       fontFamily: {
         display: ["Poppins", "sans-serif"],
