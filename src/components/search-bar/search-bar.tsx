@@ -17,8 +17,8 @@ const SearchBar: FC<SearchBarProps> = ({ className = "", isShow }) => {
         name="text"
         required
         onChange={handleInputChange}
-        placeholder="Type to search..."
-        className={`transition-all duration-300 ease-in-out h-10 pl-10 pr-3 text-sm rounded-full bg-white text-black outline-none border-2
+        placeholder="Tìm kiếm tại đây ..."
+        className={`transition-all duration-300 ease-in-out h-10 pl-10 pr-3 text-lg rounded-full bg-white text-black outline-none border-2
             ${isFocused ? "w-52 shadow-inner" : "w-10 cursor-pointer"}
           `}
         onFocus={() => {
