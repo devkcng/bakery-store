@@ -4,23 +4,26 @@ import { posix } from 'path';
 
 const RecipeMainpage = () => {
     return (
-        <div>
+        <div id='main'>
             <table id='container'>
-                <thead></thead>
                 <tbody>
                 <tr>
-                    <td style={{ position: 'relative'}}>
-                        <img src="/imgs/bakery-images/item-background.png" 
-                        alt="Bakground"
-                        style={{ }} />
-                        <img src="/imgs/bakery-images/muffinb.png"
-                         alt="Overlay"
-                         style={{
-                            position: 'absolute',
-                            top: '5%', 
-                            left: '25%',
-                            width: '50%', 
-                         }} />
+                    <td>
+                        <div style={{
+                            backgroundImage: "url('/imgs/bakery-images/item-background.png')",
+                            backgroundSize: 'cover',  // Giữ tỷ lệ khung hình cho hình nền
+                            backgroundPosition: 'center', // Căn giữa hình nền
+                            }}
+                            className='pictureBg'>
+                            <img src="/imgs/bakery-images/muffinb.png"
+                            alt="Overlay"
+                            style={{
+                                paddingTop: '20%',
+                                width: '80%', 
+                            }} />
+                            <span className="block text-white text-center font-display text-[22px] font-semibold">
+                            Bánh Muffin </span>
+                         </div>
                     </td>
                     <td >
                         <label htmlFor="" className='fontRecipe'>Nguyên liệu</label>
@@ -120,8 +123,22 @@ const RecipeMainpage = () => {
                             </tbody>
                         </table>
                     </td>
-                    <td >
-                        <img src="/imgs/bakery-images/item-background.png" alt="" />
+                    <td>
+                    <div style={{
+                            backgroundImage: "url('/imgs/bakery-images/item-background.png')",
+                            backgroundSize: 'cover',  // Giữ tỷ lệ khung hình cho hình nền
+                            backgroundPosition: 'center', // Căn giữa hình nền
+                            }}
+                            className='pictureBg'>
+                            <img src="/imgs/bakery-images/muffinb.png"
+                            alt="Overlay"
+                            style={{
+                                paddingTop: '20%',
+                                width: '80%', 
+                            }} />
+                            <span className="block text-white text-center font-display text-[22px] font-semibold">
+                            Bánh Muffin </span>
+                         </div>
                     </td>
                 </tr>
                 </tbody>

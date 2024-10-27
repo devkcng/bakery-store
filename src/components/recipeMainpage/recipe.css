@@ -10,13 +10,16 @@
 }
 #container
 {
-    width:80%;
+    min-width: 70%;
     margin-left: 10%;
     margin-right: 10%;
+    position: relative;
 }
 td {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
     text-align: center;
-    border: 1px solid black;
 }
 tr
 {
@@ -30,8 +33,12 @@ img
 }
 .recipeTable
 {
-    min-width: 80%;
-    margin-left: 10%;
+    min-width: 100%;
+}
+.recipeTable td
+{
+    padding: 0 0;
+    padding-top: 5%;
 }
 .nameOfRecipe
 {
@@ -40,4 +47,19 @@ img
 .noOfRecipe
 {
     text-align: right; 
+}
+#main
+{
+    display: flex;               /* Sử dụng flexbox */
+    justify-content: center;     /* Căn giữa theo chiều ngang */
+    align-items: center;
+}
+.pictureBg
+{
+    width: 200px;                /* Kích thước chiều rộng */
+    height: 250px;
+    border: transparent;        /*  Viền trong suốt */
+    border-radius: 30px;        /*Bo tròn các góc  */
+    margin: 0 auto; 
+    display: block;
 }
