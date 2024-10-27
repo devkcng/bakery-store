@@ -1,0 +1,43 @@
+.fontRecipe
+{
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(224,182,135);
+    padding-bottom: 50px;
+    font-weight: bold;
+    -webkit-text-stroke: 0.8px black;
+}
+#container
+{
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+td {
+    text-align: center;
+    border: 1px solid black;
+}
+tr
+{
+    padding-bottom: 20%;
+}
+img
+{
+    width: 60%;
+    display: block;
+    margin: 0 auto; 
+}
+.recipeTable
+{
+    min-width: 80%;
+    margin-left: 10%;
+}
+.nameOfRecipe
+{
+    text-align: left; 
+}
+.noOfRecipe
+{
+    text-align: right; 
+}
