@@ -24,7 +24,7 @@ const MenuSection = () => {
           <SearchBar isShow={false}></SearchBar>
         </div>
         <div className="flex justify-center mt-10">
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-3 gap-1">
             <ItemCard itemName="" itemPrice="28,000" imagePath="" />
             <ItemCard itemName="" itemPrice="28,000" imagePath="" />
             <ItemCard itemName="" itemPrice="28,000" imagePath="" />
