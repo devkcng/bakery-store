@@ -1,35 +1,39 @@
-"use client";
 import React from "react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import "./custom.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-const MenuTabs = () => {
+
+interface RadioProps {
+  options?: string[];
+  selectedOption: string;
+  onOptionChange: (option: string) => void;
+}
+
+const MenuTabs: React.FC<RadioProps> = ({
+  options = ["Tất cả", "Bán chạy", "Bánh ngọt", "Bánh mặn"],
+  selectedOption,
+  onOptionChange,
+}) => {
   return (
-    <div>
-      <div
-        className="modal show"
-        style={{ display: "block", position: "initial" }}
-      >
-        <Tabs
-          defaultActiveKey="home"
-          transition={false}
-          id="noanim-tab-example"
-          className="mb-3 custom-tabs"
-        >
-          <Tab eventKey="home" title="Home">
-            Tab content for Home
-          </Tab>
-          <Tab eventKey="profile" title="Profile">
-            Tab content for Profile
-          </Tab>
-          <Tab eventKey="contact" title="Contact">
-            Tab content for Contact
-          </Tab>
-        </Tabs>
-      </div>
+    <div className="relative flex flex-wrap rounded-md bg-transparent shadow-sm p-1 w-auto text-sm border-b-[1.5px]">
+      {options.map((option) => (
+        <label key={option} className="flex-1 text-center mx-1 bg-transparent ">
+          <input
+            type="radio"
+            name="radio"
+            value={option}
+            checked={selectedOption === option}
+            onChange={() => onOptionChange(option)}
+            className="hidden"
+          />
+          <span
+            className={` flex cursor-pointer items-center justify-center rounded-md px-2 py-1 transition-all ease-in-out duration-150 ${
+              selectedOption === option
+                ? "bg-tertiary font-semibold text-gray-800 "
+                : "text-gray-800 hover:bg-tertiary hover:font-semibold"
+            }`}
+          >
+            {option}
+          </span>
+        </label>
+      ))}
     </div>
   );
 };
