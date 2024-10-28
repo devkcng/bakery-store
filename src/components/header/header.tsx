@@ -31,7 +31,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   return (
-    <header className="">
+    <header id="home">
       <NavBar
         className={`${showHeader ? " bg-black fixed" : " absolute"}`}
       ></NavBar>

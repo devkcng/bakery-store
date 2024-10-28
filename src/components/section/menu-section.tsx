@@ -11,7 +11,7 @@ const MenuSection = () => {
   };
   return (
     <>
-      <div>
+      <div id="menu">
         <div className="font-sansita text-[80px] text-center mb-3 ">Menu</div>
         <div className="flex justify-center items-center">
           <div className="max-w-[850px] w-[600px] ">

@@ -18,19 +18,19 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
         </div>
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
           <a
-            href="#"
+            href="#home"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Trang chủ
           </a>
           <a
-            href="#"
+            href="#menu"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Thực đơn
           </a>
           <a
-            href="#"
+            href="#footer"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Liên hệ
