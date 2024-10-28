@@ -4,28 +4,36 @@ import "./header.css";
 import Button from "../button/button";
 import NavBar from "./nav-bar";
 
-// combine nav-bar and banner => header for homepage
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
-      if (window.scrollY > 600) {
+      const currentScrollY = window.scrollY;
+      console.log(currentScrollY);
+      if (lastScrollY - currentScrollY > 8 && currentScrollY > 100) {
+        // Show header when scrolling up
         setShowHeader(true);
-      } else {
+      } else if (currentScrollY > lastScrollY) {
+        // Hide header when scrolling down
         setShowHeader(false);
       }
+      if (currentScrollY === 0) setShowHeader(false);
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
+
   return (
     <header className="">
       <NavBar
-        className={`${showHeader === true ? " bg-black opacity-90" : ""}`}
+        className={`${showHeader ? " bg-black fixed" : " absolute"}`}
       ></NavBar>
 
       <div>
@@ -41,7 +49,7 @@ const Header = () => {
             Life is short <br />
             Eat dessert first
           </span>
-          <div className="mt-32 flex items-content-between justify-center -z-[1]  gap-x-3 text-sm w-full">
+          <div className="mt-32 flex items-content-between justify-center -z-[1] gap-x-3 text-sm w-full">
             <a
               className="text-[#fff] text-xl inline-flex bg-[#933C24] justify-center items-center border border-transparent rounded-[30px] w-auto h-12 px-5 font-display"
               href="#"

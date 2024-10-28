@@ -36,15 +36,18 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
           {itemPrice === "" ? "28,000 VNĐ" : `${itemPrice} VNĐ`}
         </span>
         {/* Action button : Add to cart and View detail */}
-        <div className="flex justify-center mt-10 ">
-          <Button bgColor="primary" className="rounded-[50px] w-[110px] mr-3 ">
+        <div className="flex justify-center items-center mt-10 ">
+          <Button
+            bgColor="primary"
+            className="rounded-[50px] w-[110px] h-[60px] mr-3 "
+          >
             <img
               src="/imgs/cart.png"
               alt=""
               className="inline-flex justify-between items-center"
             />
           </Button>
-          <Button className="rounded-[50px] w-[165px] bg-transparent border-2 border-white text-white font-display text-center font-semibold">
+          <Button className="rounded-[50px] w-[165px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold">
             Xem chi tiết
           </Button>
         </div>
