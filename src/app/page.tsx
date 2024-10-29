@@ -10,6 +10,7 @@ import { useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import CartItem from "@/components/CartItem/cartItem";
+import DeliveryInfo from "@/components/DeliveryInfo/deliveryInfo";
 import HomePage from "./home/page";
 
 export default function Home() {
@@ -26,14 +27,15 @@ export default function Home() {
       {/* <SearchBar className="mt-[50px]" isShow={false}></SearchBar> */}
       {/* <NavBar></NavBar> */}
       {/* <HomePage></HomePage> */}
-      <CartItem
+      {/* <CartItem
         imagePath ="/imgs/bakery-images/muffinb.png"
         itemName="Bánh muffin"
         itemPrice="28.000"
         toppingName="Hạnh nhân"
         toppingPrice="10.000"
         itemDescription="Bánh cookie là món bánh ngọt giòn tan với hương vị thơm lừng từ bơ sữa và các nguyên liệu tự nhiên hảo hạng. Với lớp vỏ bánh vàng ươm, bên trong mềm mịn, hòa quyện cùng hương vị vani tinh tế và những mẩu chocolate chip tan chảy ngọt ngào, bánh cookie sẽ là lựa chọn hoàn hảo cho bữa ăn nhẹ, tiệc trà hoặc làm quà tặng."
-      />
+      /> */}
+      <DeliveryInfo></DeliveryInfo>
     
       
 
