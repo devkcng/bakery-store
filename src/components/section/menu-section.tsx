@@ -1,3 +1,4 @@
+"use client";
 import React, { FC, useState } from "react";
 import MenuTabs from "../menu-tabs/menu-tabs";
 import SearchBar from "../search-bar/search-bar";
