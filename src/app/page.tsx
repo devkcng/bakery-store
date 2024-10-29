@@ -10,6 +10,7 @@ import { useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
+import DatePicker from "@/components/date-picker/DatePicker";
 
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
@@ -24,7 +25,10 @@ export default function Home() {
       {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
       {/* <SearchBar className="mt-[50px]" isShow={false}></SearchBar> */}
       {/* <NavBar></NavBar> */}
-      <HomePage></HomePage>
+      {/* <HomePage></HomePage> */}
+      <div className="flex justify-center items-center mt-10">
+        <DatePicker></DatePicker>
+      </div>
     </div>
   );
 }
