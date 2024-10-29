@@ -1,0 +1,95 @@
+.container{
+    display: flex;
+    margin-top: 80px;
+}
+.productInfor{
+    display: inline-block;
+    width: 35%;
+    margin-left: 150px;
+
+}
+.imageContainer{
+    margin-bottom: 10px;
+}
+#backgoundImg{
+    border-radius: 10px;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+#muffinImg{
+    position: absolute;
+    left: 170px;
+    top: 100px;
+    width: 250px; /* Đặt kích thước tùy ý */
+    height: 250px;
+
+
+}
+.description{
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+
+}
+#txtareaDescription{
+width: 280px;
+height: 155px;
+}
+.actionOnProduct
+{
+    display: inline-block; 
+    width: 50%;
+
+}
+#txtName{
+    font-weight: bold;
+    font-size: 20px;
+}
+#txtPrice{
+    font-weight: bolder;
+    color:  rgb(235,149,60);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.prtAttributeContainer{
+    display: flex;
+}
+.productAttribute{
+    display: inline-block;
+    padding-right: 120px;
+    margin-bottom: 10px;
+}
+.topptingAttributeContainer{
+    display: flex;
+}
+.topptingAttribute{
+    display: inline-block;
+    padding-right: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.all{
+    margin-left: 30px;
+}
+.separateLine{
+    width: 65%;
+    height: 2px;
+    background-color: rgb(23, 24, 23);
+    
+}
+#btnAddToCart{
+    background-color: rgb(147, 60, 36);
+    border-radius: 30px;
+    height: 45px;
+    width: 300px;
+    color: white;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.quote {
+    font-family: "Sansita Swashed", system-ui;
+}
