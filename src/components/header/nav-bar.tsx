@@ -6,7 +6,7 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
   return (
     <div>
       <nav
-        className={`navigation flex items-center justify-between w-full h-auto fixed left-0 top-0 transition-all duration-600 ease-linear mt-[0] z-[1]   ${className}`}
+        className={`navigation flex items-center justify-between w-full h-auto left-0 top-0 transition-all duration-600 ease-linear mt-[0] z-[1]   ${className}`}
         {...restProps}
       >
         <div className="flex justify-start items-center content-start">
@@ -18,19 +18,19 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
         </div>
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
           <a
-            href="#"
+            href="/home#home"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Trang chủ
           </a>
           <a
-            href="#"
+            href="/home#menu"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Thực đơn
           </a>
           <a
-            href="#"
+            href="#footer"
             className="menu text-[#f5f5f5] font-poppins text-[18px] ml-[30px]"
           >
             Liên hệ

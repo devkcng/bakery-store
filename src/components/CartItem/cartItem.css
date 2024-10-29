@@ -30,13 +30,17 @@
     border: 1px solid rgb(122, 122, 122);
     border-radius: 10px;
     width: 300px;
-    height: 200px;
+    height: 250px;
     padding: 10px;
 
 }
-#txtareaDescription{
+#txtDescription{
 width: 280px;
-height: 155px;
+height: 195px;
+overflow-y: scroll;
+}
+#txtDescription::-webkit-scrollbar {
+    display: none;
 }
 .actionOnProduct
 {
@@ -64,12 +68,13 @@ height: 155px;
 }
 .topptingAttributeContainer{
     display: flex;
+    width: 100%;
 }
 .topptingAttribute{
     display: inline-block;
-    padding-right: 100px;
     margin-bottom: 10px;
     margin-top: 10px;
+    width: 25%;
 }
 .all{
     margin-left: 30px;

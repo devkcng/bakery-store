@@ -1,48 +1,37 @@
+.Footer {
+  height: auto;
+  background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
+}
 
-.Footer{
-    height: 300px;
-    background-image: url('https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg');
-
+.Logo {
+  margin-top: -35px;
+  width: 180px;
+  /* margin-left: 30px; */
 }
-.separateLine{
-    width: 87%; 
-    height: 1px; 
-    background-color:rgb(233,189,140); 
-    border: none; 
-    margin: auto;
-    margin-top: -210px;
+.Container {
+  /* margin-top: 60px; */
+  padding-top: 100px;
+  padding-left: 30px;
+  display: flex;
+  padding-bottom: 20px;
 }
-.Logo
-{
-margin-top: -35px;
-width: 60%;
-/* margin-left: 30px; */
+.titleInfo {
+  color: rgb(233, 189, 140);
+  font-size: larger;
+  font-weight: bold;
 }
-.Container{
-    /* margin-top: 60px; */
-    padding-top: 100px;
-    padding-left: 30px;
-    display: flex;
-
-}
-.titleInfo{
-    color: rgb(233,189,140);
-    font-size: larger;
-    font-weight: bold;
-}
-.exploreShop{
-    display: inline-block;
-    width: 33%;
-    color: white;
-    font-weight:500 ;
+.exploreShop {
+  display: inline-block;
+  width: 33%;
+  color: white;
+  font-weight: 500;
 }
 ul {
-    list-style: none;
+  list-style: none;
 }
-li{
-    margin-top: 10px;
+li {
+  margin-top: 10px;
 }
 .quote {
-    font-family: "Sansita Swashed", system-ui;
+  font-family: "Sansita Swashed", system-ui;
 }
-  

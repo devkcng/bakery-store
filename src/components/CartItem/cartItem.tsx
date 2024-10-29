@@ -1,26 +1,38 @@
-import React from 'react';
-import "./CartItem.css";
+import Image from "next/image";
+import React, { FC } from "react";
 
-const CartItem = () => {
+import "./cartItem.css";
+
+type ProductAttribute = {
+    imagePath: string;
+    itemName: string;
+    itemPrice: string;
+    toppingName: string;
+    toppingPrice: string;
+    itemDescription: string;
+    
+};
+
+const CartItem: FC<ProductAttribute> = ({ imagePath, itemName, itemPrice, toppingName, toppingPrice, itemDescription }) => {
     return (
         <div className='container'>
             <div className='productInfor'>
                 <div className='imageContainer'>
-                    {/* <img src="C:/Users/huong/Downloads/backblack.jpg" alt="background" id="backgoundImg" />
-                    <img src="C:/Users/huong/Downloads/setbakery/muffinb.png" alt="muffin" id="muffinImg" /> */}
-                    <img id="backgoundImg" src="https://th.bing.com/th/id/R.cd03da1ece7382ba9714054bd9530882?rik=2Wcm%2f0qQ0FNzfw&riu=http%3a%2f%2fiheartbackgrounds.weebly.com%2fuploads%2f1%2f7%2f4%2f2%2f17420453%2f1432492.png&ehk=qXxDwVP89YP3DAdZVWzZ1ztNuUPwMX80q0pxDUEsCcU%3d&risl=&pid=ImgRaw&r=0" alt="" />
-                    <img id="muffinImg" src="https://th.bing.com/th/id/R.23807ef143bf74b1f145b67515c863f8?rik=IuIuPSrbBrOyJg&riu=http%3a%2f%2fpngimg.com%2fuploads%2fmuffin%2fmuffin_PNG117.png&ehk=MZyIXaYtldA0%2b4Hhbwufc2GQepAHWoW6SCkV9EoR3dc%3d&risl=&pid=ImgRaw&r=0" alt="" />
+                    <img id="backgoundImg" src="/imgs/bakery-images/item-background.png" alt="" />
+                    <img id="muffinImg" src={`${imagePath === "" ? "/imgs/bakery-images/muffinb.png" : imagePath}`} alt="" />
                 </div>
                 <div className='description'>
-                    <b id="txtdescription">Mô tả</b><br/>
-                    <textarea id="txtareaDescription" defaultValue=""> 
+                    <b>Mô tả</b><br/>
+                    <p id="txtDescription" > 
+                        {`${itemDescription ==="" ? "" : itemDescription }`}
+                    </p>
                     
-                    </textarea>
                 </div>
             </div>
             <div className='actionOnProduct'>   
-                <p id="txtName">Bánh Cookies</p>
-                <p id="txtPrice">28.000 VND</p>
+                <p id="txtName">{`${itemName ==="" ? "Bánh muffin" : itemName }`}</p>
+                <p id="txtPrice">{itemPrice === "" ? "28.000" : `${itemPrice} VNĐ`}</p>
+
                 <div className='all'>
                     <div className='prtAttributeContainer'>
                         <ul>
@@ -30,18 +42,22 @@ const CartItem = () => {
                         </ul>
                     </div>
                     <div className='topptingAttributeContainer'>
-                        <p className='topptingAttribute'>Nho khô</p>
-                        <p className='topptingAttribute'>10.000 VNĐ</p>
+                        <div className='topptingAttribute'>{`${ toppingName ==="" ? "Nho khô" : toppingName }`}</div>
+                        <div className='topptingAttribute'>{toppingPrice === "" ? "10.000" : `${toppingPrice} VNĐ`}</div>
+                        <div className='topptingAttribute'></div>
                     </div>
                     <hr className='separateLine'/>
                     <div className='topptingAttributeContainer'>
-                        <p className='topptingAttribute'>Nho khô</p>
-                        <p className='topptingAttribute'>10.000 VNĐ</p>
+                        <div className='topptingAttribute'>{`${ toppingName ==="" ? "Nho khô" : toppingName }`}</div>
+                        <div className='topptingAttribute'>{toppingPrice === "" ? "10.000" : `${toppingPrice} VNĐ`}</div>
+                        <div className='topptingAttribute'></div>
+
                     </div>
                     <hr className='separateLine'/>
                     <div className='topptingAttributeContainer'>
-                        <p className='topptingAttribute'>Nho khô</p>
-                        <p className='topptingAttribute'>10.000 VNĐ</p>
+                        <div className='topptingAttribute'>{`${ toppingName ==="" ? "Nho khô" : toppingName }`}</div>
+                        <div className='topptingAttribute'>{toppingPrice === "" ? "10.000" : `${toppingPrice} VNĐ`}</div>
+                        <div className='topptingAttribute'></div>
                     </div>
                     <hr className='separateLine'/>
                 </div>
