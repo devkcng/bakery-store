@@ -5,7 +5,6 @@ type QuantityButtonProps = {
   minQuantity?: number;
   maxQuantity?: number;
   className?: string;
-
   onQuantityChange?: (quantity: number) => void;
 };
 const QuantityButton: FC<QuantityButtonProps> = ({
@@ -36,15 +35,15 @@ const QuantityButton: FC<QuantityButtonProps> = ({
     const value = e.target.value;
     setInputValue(value);
 
-    // Kiểm tra xem giá trị có phải là số hay không
+    // Check the value is numeric or not
     const numericValue = parseInt(value, 10);
     if (!isNaN(numericValue)) {
       updateQuantity(numericValue);
     } else if (value === "") {
-      // Nếu ô nhập liệu trống, không làm gì
-      updateQuantity(minQuantity); // Hoặc giữ nguyên quantity hiện tại
+      // // If the input field is empty, keep initial value
+      updateQuantity(minQuantity);
     } else {
-      // Nếu có ký tự không phải số, khôi phục lại giá trị trước đó
+      // // If there are non-numeric characters, restore the previous
       setInputValue(quantity.toString());
     }
   };
@@ -56,11 +55,11 @@ const QuantityButton: FC<QuantityButtonProps> = ({
   };
   return (
     <div
-      className={`flex items-center justify-between w-32 h-12 rounded-full p-1 shadow-lg  ${className}`}
+      className={`flex items-center justify-between w-32 h-10 rounded-full p-1 shadow-lg  ${className}`}
     >
       <button
         onClick={handleDecrement}
-        className="flex items-center justify-center w-10 h-10 bg-red-500 rounded-full text-white "
+        className="flex items-center justify-center w-8 h-8 bg-red-500 rounded-full text-white "
         aria-label="Decrease quantity"
       >
         <Minus size={20} />
@@ -75,7 +74,7 @@ const QuantityButton: FC<QuantityButtonProps> = ({
       />
       <button
         onClick={handleIncrement}
-        className="flex items-center justify-center w-10 h-10 bg-tertiary rounded-full text-black "
+        className="flex items-center justify-center w-8 h-8 bg-tertiary rounded-full text-black "
         aria-label="Increase quantity"
       >
         <Plus size={20} />
