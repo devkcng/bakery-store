@@ -19,7 +19,7 @@ const CartItem: FC<ProductAttribute> = ({ imagePath, itemName, itemPrice, toppin
             <div className='productInfor'>
                 <div className='imageContainer'>
                     <img id="backgoundImg" src="/imgs/bakery-images/item-background.png" alt="" />
-                    <img id="muffinImg" src={`${imagePath === "" ? "/imgs/bakery-images/muffinb.png" : imagePath}`} alt="" />
+                    <img id="productImg" src={`${imagePath === "" ? "/imgs/bakery-images/muffinb.png" : imagePath}`} alt="" />
                 </div>
                 <div className='description'>
                     <b>Mô tả</b><br/>
@@ -32,7 +32,6 @@ const CartItem: FC<ProductAttribute> = ({ imagePath, itemName, itemPrice, toppin
             <div className='actionOnProduct'>   
                 <p id="txtName">{`${itemName ==="" ? "Bánh muffin" : itemName }`}</p>
                 <p id="txtPrice">{itemPrice === "" ? "28.000" : `${itemPrice} VNĐ`}</p>
-
                 <div className='all'>
                     <div className='prtAttributeContainer'>
                         <ul>

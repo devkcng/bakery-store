@@ -12,30 +12,28 @@
     margin-bottom: 10px;
 }
 #backgoundImg{
-    border-radius: 10px;
+    border-radius: 20px;
     height: 300px;
-    width: 300px;
+    width: 350px;
     object-fit: cover;
 }
-#muffinImg{
+#productImg{
     position: absolute;
-    left: 170px;
+    left: 200px;
     top: 100px;
     width: 250px; /* Đặt kích thước tùy ý */
     height: 250px;
-
-
 }
 .description{
-    border: 1px solid rgb(122, 122, 122);
+    border: 1px solid rgb(187, 186, 186);
     border-radius: 10px;
-    width: 300px;
+    width: 350px;
     height: 250px;
     padding: 10px;
 
 }
 #txtDescription{
-width: 280px;
+width: 330px;
 height: 195px;
 overflow-y: scroll;
 }
@@ -46,7 +44,6 @@ overflow-y: scroll;
 {
     display: inline-block; 
     width: 50%;
-
 }
 #txtName{
     font-weight: bold;
@@ -55,11 +52,12 @@ overflow-y: scroll;
 #txtPrice{
     font-weight: bolder;
     color:  rgb(235,149,60);
-    font-size: 30px;
+    font-size: 32px;
     margin-bottom: 20px;
 }
 .prtAttributeContainer{
     display: flex;
+    font-weight: 500;
 }
 .productAttribute{
     display: inline-block;
@@ -91,7 +89,8 @@ overflow-y: scroll;
     height: 45px;
     width: 300px;
     color: white;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 18px;
     margin-left: 100px;
     margin-top: 30px;
 }
