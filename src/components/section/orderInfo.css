@@ -1,12 +1,19 @@
-.container
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.searchBarLarger input
-{
-    width: 500px;
-    height: 50px;
-    border-radius: 15px;
+.searchBarLarger input {
+  width: 500px;
+  height: 50px;
+  border-radius: 15px;
+}
+.list-order {
+  /* Chiều cao cố định */
+  overflow-y: auto; /* Cho phép cuộn dọc */
+  scrollbar-width: none; /* Ẩn thanh cuộn cho Firefox */
+}
+
+.list-order::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn cho trình duyệt Webkit (Chrome, Safari) */
 }
