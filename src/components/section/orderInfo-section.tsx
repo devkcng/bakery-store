@@ -23,6 +23,7 @@ export interface orderInfo {
   phonenumber: string;
   note: string;
 }
+
 const OrderInfoSection: FC<orderInfo> = ({
   idOrder,
   idStatus,
@@ -32,6 +33,9 @@ const OrderInfoSection: FC<orderInfo> = ({
   phonenumber,
   note,
 }) => {
+    const total = items.reduce(
+        (acc, item) => acc + item.itemCount * item.itemInfo.itemPrice, //acc là biển ảo để lưu giá trị sau khi tính xong truyền vào trong total
+        0)
   return (
     <div id="container">
       <div className="flex flex-col items-center mt-10 mb-10 ">
@@ -66,7 +70,7 @@ const OrderInfoSection: FC<orderInfo> = ({
             </div>
           </div>
           <div className="font-semibold text-red-600 text-[20px] h-[10px] text-center mt-2">
-            Tổng tiền: 200000 VNĐ
+            {total ? `Đơn hàng: ${total} VND` : "Đơn hàng: 200000 VND"}
           </div>
         </div>
 
