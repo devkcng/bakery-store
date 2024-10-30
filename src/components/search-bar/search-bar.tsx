@@ -1,6 +1,6 @@
 "use client";
 import React, { FC, useState } from "react";
-type SearchBarProps = {
+export interface SearchBarProps {
   className?: string;
   isShow: boolean; // "isShow" property is used to determine the search bar has ability to automatically minimize or not
 };

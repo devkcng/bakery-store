@@ -2,10 +2,10 @@ import Image from "next/image";
 import React, { FC } from "react";
 import Button from "../button/button";
 import "./item-card.css";
-type ItemProps = {
+export interface ItemProps {
   imagePath: string;
   itemName: string;
-  itemPrice: string;
+  itemPrice: number;
 };
 const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
   return (
@@ -33,7 +33,7 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
         </span>{" "}
         {/* Item price */}
         <span className="block text-center font-display text-[25px] font-semibold text-[#EB953C] mt-4">
-          {itemPrice === "" ? "28,000 VNĐ" : `${itemPrice} VNĐ`}
+          {itemPrice < 0 ? "28,000 VNĐ" : `${itemPrice} VNĐ`}
         </span>
         {/* Action button : Add to cart and View detail */}
         <div className="flex justify-center items-center mt-10 ">
