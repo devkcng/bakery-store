@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import DatePicker from "react-datepicker";
 import { CalendarDays } from "lucide-react";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface DateBoxProps {
   date: Date;
+  onClick: (dayInfo: {
+    day: string;
+    date: number;
+    month: string;
+    year: number;
+  }) => void;
+}
+
+interface DateSelectorProps {
+  onDateSelect: (dayInfo: {
+    day: string;
+    date: number;
+    month: string;
+    year: number;
+  }) => void;
 }
 
 const vietnameseDays = [
@@ -16,6 +31,7 @@ const vietnameseDays = [
   "Thứ 6",
   "Thứ 7",
 ];
+
 const vietnameseMonths = [
   "Tháng 1",
   "Tháng 2",
@@ -31,15 +47,31 @@ const vietnameseMonths = [
   "Tháng 12",
 ];
 
-const DateBox: React.FC<DateBoxProps> = ({ date }) => (
-  <div className="border border-gray-300 p-4 text-center w-32">
-    <div className="text-lg font-semibold">{vietnameseDays[date.getDay()]}</div>
-    <div className="text-3xl font-bold my-2">{date.getDate()}</div>
-    <div>{vietnameseMonths[date.getMonth()]}</div>
-  </div>
-);
+const DateBox: FC<DateBoxProps> = ({ date, onClick }) => {
+  const handleClick = () => {
+    onClick({
+      day: vietnameseDays[date.getDay()],
+      date: date.getDate(),
+      month: vietnameseMonths[date.getMonth()],
+      year: date.getFullYear(),
+    });
+  };
 
-export default function DateSelector() {
+  return (
+    <div
+      className="border border-gray-300 p-4 text-center w-32 cursor-pointer"
+      onClick={handleClick}
+    >
+      <div className="text-lg font-semibold">
+        {vietnameseDays[date.getDay()]}
+      </div>
+      <div className="text-3xl font-bold my-2">{date.getDate()}</div>
+      <div>{vietnameseMonths[date.getMonth()]}</div>
+    </div>
+  );
+};
+
+const DateSelector: FC<DateSelectorProps> = ({ onDateSelect }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleDateChange = (date: Date | null) => {
@@ -68,12 +100,14 @@ export default function DateSelector() {
           }
         />
       </div>
-      <div className="flex space-x-4 mb-4 mt-4 ">
+      <div className="flex space-x-4 mb-4 mt-4">
         {selectedDate &&
           getNextDays(selectedDate).map((date, index) => (
-            <DateBox key={index} date={date} />
+            <DateBox key={index} date={date} onClick={onDateSelect} />
           ))}
       </div>
     </div>
   );
-}
+};
+
+export default DateSelector;
