@@ -3,7 +3,7 @@ import Header from "@/components/header/header";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import SearchBar from "@/components/search-bar/search-bar";
-import MenuSection from "@/components/section/menu-section/menu-section";
+import MenuSection from "@/components/section/menu-section";
 
 import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
 import { useCallback, useState } from "react";

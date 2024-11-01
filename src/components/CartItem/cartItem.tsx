@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import "./cartItem.css";
 import QuantityButton from "../button/quantity-btn";
+import DateSelector from "../date-picker/DatePicker";
 
 type Topping = {
   toppingId: string; // Mã topping
@@ -72,23 +73,27 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
           </div>
           {toppings &&
             toppings.map((item) => (
-              <div
-                key={item.toppingId}
-                className="topptingAttributeContainer flex items-baseline"
-              >
-                <div className="topptingAttribute">{`${
-                  item.toppingName === "" ? "Nho khô" : item.toppingName
-                }`}</div>
-                <div className="topptingAttribute">
-                  {item.toppingPrice === ""
-                    ? "10.000"
-                    : `${item.toppingPrice} VNĐ`}
+              <div key={item.toppingId}>
+                <div className="topptingAttributeContainer flex items-baseline">
+                  <div className="topptingAttribute">{`${
+                    item.toppingName === "" ? "Nho khô" : item.toppingName
+                  }`}</div>
+                  <div className="topptingAttribute">
+                    {item.toppingPrice === ""
+                      ? "10.000"
+                      : `${item.toppingPrice} VNĐ`}
+                  </div>
+                  <div className="topptingAttribute">
+                    <QuantityButton className="border border-black "></QuantityButton>
+                  </div>
                 </div>
-                <div className="topptingAttribute">
-                  <QuantityButton className="border border-black "></QuantityButton>
-                </div>
+
+                <hr className="separateLine" />
               </div>
             ))}
+        </div>
+        <div className="mt-3  ml-7">
+          <DateSelector></DateSelector>
         </div>
         <button id="btnAddToCart" type="button">
           Thêm vào giỏ hàng

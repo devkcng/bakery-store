@@ -11,7 +11,7 @@ type QuantityButtonProps = {
 };
 
 const QuantityButton: FC<QuantityButtonProps> = ({
-  initialQuantity = 1,
+  initialQuantity = 0,
   minQuantity = 0,
   maxQuantity = 99,
   className = "",
