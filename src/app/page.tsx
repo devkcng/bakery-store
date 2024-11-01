@@ -12,6 +12,8 @@ import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
 import ItemOrder from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
+import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -26,10 +28,10 @@ export default function Home() {
   //   itemPrice: 28000 // Giá món
   // };
   // const count = 2;
-  const time: string = new Date().toLocaleString("vi-VN", {
-    timeZone: "Asia/Ho_Chi_Minh",
-  });
-  console.log(time);
+  // const time: string = new Date().toLocaleString("vi-VN", {
+  //   timeZone: "Asia/Ho_Chi_Minh",
+  // });
+  // console.log(time);
   return (
     <div>
       {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
@@ -42,7 +44,7 @@ export default function Home() {
           itemTopping="" 
           itemTotal={itemInfo.itemPrice*count}
       /> */}
-      <OrderInfoSection
+      {/* <OrderInfoSection
         idOrder="112233"
         addressBuyer="So 1 Vo Van Ngan"
         idStatus="Đã giao"
@@ -50,7 +52,8 @@ export default function Home() {
         note="Giao cho bảo vệ"
         phonenumber="0327521953"
         time={time.toString()}
-      ></OrderInfoSection>
+      ></OrderInfoSection> */}
+      <SidebarAdmin></SidebarAdmin>
     </div>
   );
 }

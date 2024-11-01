@@ -1,0 +1,41 @@
+.deliveryInfoContainer{
+    padding: 30px;
+}
+.formInfo{
+    justify-content: center;
+    text-align: center;
+}
+.inputInfo{
+    border-bottom: 1px solid rgb(139, 136, 136);
+    width: 400px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+
+}
+#txtDistrict{
+    margin-right: 20px;
+    width: 190px;
+}
+#txtWard{
+    width: 190px;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.btnNext{
+    background-color: rgb(147,60,36);
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    margin-top: 60px;
+    
+}
+.quote{
+    font-family: "Sansita Swashed", system-ui;
+}
