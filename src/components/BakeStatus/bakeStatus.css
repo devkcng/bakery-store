@@ -1,0 +1,10 @@
+.container{
+    padding-top: 30px;
+    display: flex;
+}
+.table{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}

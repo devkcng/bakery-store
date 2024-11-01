@@ -9,10 +9,15 @@ import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
 import { useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
+
 import HomePage from "./home/page";
 import ItemOrder from "@/components/item-order/item-order";
+
 import OrderInfoSection from "@/components/section/orderInfo-section";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+
+import BakeStatus from "@/components/BakeStatus/bakeStatus";
+
 
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
@@ -53,7 +58,15 @@ export default function Home() {
         phonenumber="0327521953"
         time={time.toString()}
       ></OrderInfoSection> */}
-      <SidebarAdmin></SidebarAdmin>
+      {/* <SidebarAdmin></SidebarAdmin> */}
+      <BakeStatus
+      ID ="1"
+      orderCode="1234"
+      completeTime="1 tiếng"
+      leftTime ="25 phút"
+      bakeStatus="Đang nướng"
+      detailView="Xem chi tiết">
+      </BakeStatus>
     </div>
   );
 }
