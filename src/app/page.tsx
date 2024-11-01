@@ -16,7 +16,7 @@ import ItemOrder from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
 
-import BakeStatus from "@/components/BakeStatus/bakeStatus";
+import Admin from "@/components/Admin/manage-bake-status";
 
 
 export default function Home() {
@@ -59,14 +59,14 @@ export default function Home() {
         time={time.toString()}
       ></OrderInfoSection> */}
       {/* <SidebarAdmin></SidebarAdmin> */}
-      <BakeStatus
+      <Admin
       ID ="1"
       orderCode="1234"
       completeTime="1 tiếng"
       leftTime ="25 phút"
       bakeStatus="Đang nướng"
       detailView="Xem chi tiết">
-      </BakeStatus>
+      </Admin>
     </div>
   );
 }
