@@ -2,11 +2,12 @@ import Image from "next/image";
 import React, { FC } from "react";
 import Button from "../button/button";
 import "./item-card.css";
+import Link from "next/link";
 export interface ItemProps {
   imagePath: string;
   itemName: string;
   itemPrice: number;
-};
+}
 const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
   return (
     <>
@@ -48,7 +49,7 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
             />
           </Button>
           <Button className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold">
-            Xem chi tiết
+            <Link href="/product">Xem chi tiết</Link>
           </Button>
         </div>
       </div>

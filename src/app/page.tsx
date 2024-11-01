@@ -11,32 +11,18 @@ import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
 import QuantityButton from "@/components/button/quantity-btn";
-import CartItem, { ProductAttribute } from "@/components/CartItem/cartItem";
+import CartItem, {
+  ProductAttribute,
+} from "@/components/section/detail-product-section/detail-product-section";
 type Topping = {
   id: string;
   name: string;
   initialQuantity: number;
 };
 export default function Home() {
-  const Item: ProductAttribute = {
-    imagePath: "",
-    itemName: "Bánh Pizza Margherita",
-    itemPrice: "150000",
-    toppings: [
-      { toppingId: "topping1", toppingName: "Nấm", toppingPrice: "20000" },
-      { toppingId: "topping3", toppingName: "Nấm", toppingPrice: "20000" },
-      {
-        toppingId: "topping2",
-        toppingName: "Ớt chuông",
-        toppingPrice: "15000",
-      },
-    ],
-    itemDescription:
-      "Pizza truyền thống với sốt cà chua, phô mai và húng quế tươi.",
-  };
   return (
-    <div className="m-[50px]">
-      <CartItem product={Item}></CartItem>
+    <div>
+      <HomePage></HomePage>
     </div>
   );
 }

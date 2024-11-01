@@ -1,3 +1,4 @@
+"use client";
 import Footer from "@/components/Footer/footer";
 import Header from "@/components/header/header";
 import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
