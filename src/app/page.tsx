@@ -12,6 +12,8 @@ import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
 import ItemOrder from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
+import AddProduct from "@/components/add-product/add-product";
+
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -42,7 +44,7 @@ export default function Home() {
           itemTopping="" 
           itemTotal={itemInfo.itemPrice*count}
       /> */}
-      <OrderInfoSection
+      {/* <OrderInfoSection
         idOrder="112233"
         addressBuyer="So 1 Vo Van Ngan"
         idStatus="Đã giao"
@@ -50,7 +52,8 @@ export default function Home() {
         note="Giao cho bảo vệ"
         phonenumber="0327521953"
         time={time.toString()}
-      ></OrderInfoSection>
+      ></OrderInfoSection> */}
+      <AddProduct></AddProduct>
     </div>
   );
 }
