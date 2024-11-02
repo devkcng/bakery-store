@@ -2,12 +2,15 @@ import Image from "next/image";
 import React, { FC } from "react";
 import Button from "../button/button";
 import "./item-card.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 export interface ItemProps {
   imagePath: string;
   itemName: string;
   itemPrice: number;
-};
+}
 const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
+  const router = useRouter();
   return (
     <>
       <div
@@ -47,7 +50,10 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
               className="inline-flex justify-between items-center"
             />
           </Button>
-          <Button className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold">
+          <Button
+            className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold"
+            onClick={() => router.push("/product")}
+          >
             Xem chi tiết
           </Button>
         </div>

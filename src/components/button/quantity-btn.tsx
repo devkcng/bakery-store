@@ -6,14 +6,16 @@ type QuantityButtonProps = {
   minQuantity?: number;
   maxQuantity?: number;
   className?: string;
+  textColor?: string;
   onQuantityChange?: (quantity: number) => void;
 };
 
 const QuantityButton: FC<QuantityButtonProps> = ({
-  initialQuantity = 1,
+  initialQuantity = 0,
   minQuantity = 0,
   maxQuantity = 99,
   className = "",
+  textColor = "",
   onQuantityChange,
 }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
@@ -72,7 +74,7 @@ const QuantityButton: FC<QuantityButtonProps> = ({
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleBlur}
-        className="quantity-number w-8 bg-transparent text-black text-center text-xl font-bold focus:outline-none"
+        className={`quantity-number w-8 bg-transparent text-${textColor} text-center text-xl font-bold focus:outline-none`}
         aria-label="Quantity"
       />
       <button
