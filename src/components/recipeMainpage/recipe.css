@@ -1,0 +1,55 @@
+.fontRecipe {
+  font-family: Poppins, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(224, 182, 135);
+  padding-bottom: 50px;
+  font-weight: bold;
+  -webkit-text-stroke: 0.8px black;
+}
+#container {
+  min-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+}
+td {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  text-align: center;
+}
+tr {
+  padding-bottom: 20%;
+}
+img {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+}
+.recipeTable {
+  min-width: 100%;
+}
+.recipeTable td {
+  padding: 0 0;
+  padding-top: 5%;
+}
+.nameOfRecipe {
+  text-align: left;
+}
+.noOfRecipe {
+  text-align: right;
+}
+#recipe {
+  display: flex; /* Sử dụng flexbox */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center;
+}
+.pictureBg {
+  width: 200px; /* Kích thước chiều rộng */
+  height: 250px;
+  border: transparent; /*  Viền trong suốt */
+  border-radius: 30px; /*Bo tròn các góc  */
+  margin: 0 auto;
+  display: block;
+}
