@@ -1,6 +1,4 @@
-import React from "react";
 import "./recipe.css";
-import { posix } from "path";
 
 const RecipeMainpage = () => {
   return (

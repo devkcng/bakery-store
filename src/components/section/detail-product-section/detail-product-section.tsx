@@ -1,8 +1,7 @@
-import React, { FC } from "react";
-import Image from "next/image";
-import "./detail-product-section.css";
+import { FC } from "react";
 import QuantityButton from "../../button/quantity-btn";
-import DateSelector from "../../date-picker/DatePicker";
+import "./detail-product-section.css";
+// import DateSelector from "../../date-picker/DatePicker";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
 
 type Topping = {
@@ -103,9 +102,7 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
               ))}
           </div>
           <div className="mt-3  ml-7 flex justify-between">
-            <div>
-              <DateSelector></DateSelector>
-            </div>
+            <div>{/* <DateSelector></DateSelector> */}</div>
             <span className="mr-[6rem] font-semibold">
               Số lượng còn lại:
               <span className="text-red-500 font-bold"> 1000</span>

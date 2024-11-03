@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import "./orderInfo.css";
+import { ItemProps } from "@/components/item-card/item-card";
+import { FC } from "react";
 import ItemOrder, { DetailOrder } from "../../item-order/item-order";
-import ItemCard, { ItemProps } from "@/components/item-card/item-card";
 import SearchBar from "../../search-bar/search-bar";
+import "./orderInfo.css";
 const itemInfo: ItemProps = {
   imagePath: "", // Đường dẫn đến ảnh
   itemName: "", // Tên món

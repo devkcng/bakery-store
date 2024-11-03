@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { ItemProps } from "../item-card/item-card";
 import "./item-order.css";
-import ItemCard, { ItemProps } from "../item-card/item-card";
-import internal from "stream";
 export interface DetailOrder {
   itemInfo: ItemProps;
   itemCount: number;

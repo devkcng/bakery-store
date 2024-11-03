@@ -1,8 +1,8 @@
 "use client";
-import React, { FC, useState } from "react";
+import { useState } from "react";
+import ItemCard from "../../item-card/item-card";
 import MenuTabs from "../../menu-tabs/menu-tabs";
 import SearchBar from "../../search-bar/search-bar";
-import ItemCard from "../../item-card/item-card";
 
 const MenuSection = () => {
   const options = ["Tất cả", "Bán chạy", "Bánh ngọt", "Bánh mặn"];

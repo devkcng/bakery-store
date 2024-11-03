@@ -1,9 +1,7 @@
-import Image from "next/image";
-import React, { FC } from "react";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
 import Button from "../button/button";
 import "./item-card.css";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 export interface ItemProps {
   imagePath: string;
   itemName: string;

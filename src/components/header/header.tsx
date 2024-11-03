@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./header.css";
-import Button from "../button/button";
 import NavBar from "./nav-bar";
 
 const Header = () => {

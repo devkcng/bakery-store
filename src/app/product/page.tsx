@@ -1,11 +1,9 @@
 "use client";
 import Footer from "@/components/Footer/footer";
-import Header from "@/components/header/header";
 import NavBar from "@/components/header/nav-bar";
 import CartItem, {
   ProductAttribute,
 } from "@/components/section/detail-product-section/detail-product-section";
-import React from "react";
 
 const ProductDetail = () => {
   const Item: ProductAttribute = {
