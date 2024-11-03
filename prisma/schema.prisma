@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,50 +6,192 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+// Định nghĩa enum cho trạng thái đơn hàng
+enum OrderStatus {
+  PENDING   // Đang chờ xử lý
+  PROCESSING // Đang xử lý
+  COMPLETED // Hoàn thành
+  CANCELED  // Đã hủy
+  DELIVERED //  Đã giao hàng
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  orders    Order[]
+}
+
+// Định nghĩa enum cho trạng thái thanh toán
+enum PaymentStatus {
+  SUCCESS    // Thành công
+  PENDING    // Đang chờ xử lý
+  FAILED     // Thất bại
+}
+
+// Định nghĩa enum cho phương thức thanh toán
+enum PaymentMethod {
+  BANK_TRANSFER 
+  E_WALLET 
+}
+
+// Định nghĩa enum cho trạng thái vận chuyển
+enum ShippingStatus {
+
+  IN_TRANSIT // Đang giao
+  DELIVERED  // Đã giao
+
+}
+
+// Định nghĩa enum cho trạng thái xử lý chi tiết đơn hàng
+enum ProcessingStatus {
+  WAITING    // Đang chờ
+  IN_PROGRESS // Đang xử lý
+  COMPLETED   // Hoàn thành
+}
+
+// Định nghĩa enum cho trạng thái của lò nướng
+enum OvenStatus {
+  AVAILABLE  // Đang trống
+  IN_USE     // Đang sử dụng
+}
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String
+  Product  Product[]
+}
+
+model WareHouse {
+  id       Int             @id @default(autoincrement())
+  name     String
+  quantity Float
+  unit     String
+  RecipeDetail RecipeDetail[]
 }
 
 model Product {
-  id          Int         @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  quantity    Int         @default(0)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  OrderItem   OrderItem[]
+  id                       Int               @id @default(autoincrement())
+  name                     String
+  category_id              Int?
+  price                    Float
+  description              String?
+  img_path                 String?
+  max_daily_quantity_limit Int?
+  product_capacity_per_batch Int?
+  
+  category  Category?      @relation(fields: [category_id], references: [id])
+  Recipe    Recipe[]
+  OrderDetail OrderDetail[]
+  ProductTopping ProductTopping[]
+}
+
+model Recipe {
+  id           Int           @id @default(autoincrement())
+  name         String
+  product_id   Int
+  complete_time Int
+  
+  product      Product       @relation(fields: [product_id], references: [id])
+  RecipeDetail RecipeDetail[]
+}
+
+model RecipeDetail {
+  id          Int        @id @default(autoincrement())
+  warehouse_id Int
+  quantity    Float
+  recipe_id   Int
+
+  warehouse   WareHouse  @relation(fields: [warehouse_id], references: [id])
+  recipe      Recipe     @relation(fields: [recipe_id], references: [id])
 }
 
 model Order {
-  id         Int         @id @default(autoincrement())
-  createdAt  DateTime    @default(now())
-  user       User        @relation(fields: [userId], references: [id])
-  userId     Int
-  status     OrderStatus @default(PENDING)
-  total      Float
-  orderItems OrderItem[]
+  id           Int           @id @default(autoincrement())
+  total_amount Float
+  order_status OrderStatus    // Sử dụng enum OrderStatus
+  order_date   DateTime       @default(now())
+
+  Transaction  Transaction?
+  OrderDetail  OrderDetail[]
+  ShippingInfo ShippingInfo[]
 }
 
-model OrderItem {
-  id        Int     @id @default(autoincrement())
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-  order     Order   @relation(fields: [orderId], references: [id])
-  orderId   Int
-  quantity  Int
-  price     Float
+model OrderDetail {
+  id              Int           @id @default(autoincrement())
+  order_id        Int
+  product_id      Int?
+  product_quantity Int
+
+  order           Order         @relation(fields: [order_id], references: [id])
+  product         Product?      @relation(fields: [product_id], references: [id])
+  OrderDetailProcess OrderDetailProcess[]
+  OrderProductTopping OrderProductTopping[]
 }
 
-enum OrderStatus {
-  PENDING
-  SHIPPED
-  DELIVERED
-  CANCELED
+model Transaction {
+  id             Int           @id @default(autoincrement())
+  payment_method PaymentMethod // Sử dụng enum PaymentMethod
+  status         PaymentStatus // Sử dụng enum PaymentStatus
+  amount         Float
+  order_id       Int @unique
+
+  order          Order         @relation(fields: [order_id], references: [id])
+}
+
+model Topping {
+  id              Int              @id @default(autoincrement())
+  name            String
+  price           Float
+  ProductTopping  ProductTopping[]
+  OrderProductTopping OrderProductTopping[]
+}
+
+model ProductTopping {
+  id             Int       @id @default(autoincrement())
+  product_id     Int
+  topping_id     Int
+
+  product        Product   @relation(fields: [product_id], references: [id])
+  topping        Topping   @relation(fields: [topping_id], references: [id])
+}
+
+model ShippingInfo {
+  id             Int           @id @default(autoincrement())
+  recipient_name String
+  street_address String
+  district       String
+  ward           String
+  phone_number   String
+  notes          String?
+  order_id       Int
+  shipping_status ShippingStatus // Sử dụng enum ShippingStatus
+
+  order          Order          @relation(fields: [order_id], references: [id])
+}
+
+model OrderDetailProcess {
+  id                 Int             @id @default(autoincrement())
+  oven_id            Int?
+  order_detail_id    Int
+  processing_status  ProcessingStatus // Sử dụng enum ProcessingStatus
+  order_quantity     Int
+  processing_quantity Int
+  processed_quantity Int
+
+  orderDetail        OrderDetail      @relation(fields: [order_detail_id], references: [id])
+}
+
+model Oven {
+  oven_id              Int          @id @default(autoincrement())
+  oven_product_capacity_id Int?
+  status               OvenStatus   // Sử dụng enum OvenStatus
+  current_capacity_used Int
+  current_baking_type  String?
+  start_time           DateTime?
+  time_remaining       Int?
+}
+
+model OrderProductTopping {
+  id            Int       @id @default(autoincrement())
+  order_detail_id Int
+  topping_id    Int
+  quantity      Int
+
+  orderDetail   OrderDetail @relation(fields: [order_detail_id], references: [id])
+  topping       Topping     @relation(fields: [topping_id], references: [id])
 }
