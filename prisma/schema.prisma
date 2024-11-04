@@ -158,7 +158,7 @@ model ShippingInfo {
   ward           String
   phone_number   String
   notes          String?
-  order_id       Int
+  order_id       Int @unique
   shipping_status ShippingStatus // Sử dụng enum ShippingStatus
 
   order          Order          @relation(fields: [order_id], references: [id])
