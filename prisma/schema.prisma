@@ -96,7 +96,7 @@ model RecipeDetail {
   quantity    Float
   recipe_id   Int
 
-  warehouse   WareHouse  @relation(fields: [warehouse_id], references: [id])
+  warehouse   WareHouse[]
   recipe      Recipe     @relation(fields: [recipe_id], references: [id])
 }
 
