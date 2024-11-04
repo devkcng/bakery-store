@@ -14,6 +14,7 @@ import ItemOrder, {DetailOrder} from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
 import AddProduct from "@/components/add-product/add-product";
 import OrderCard from "@/components/order-card/order-card";
+import ProductCard from "@/components/product-card/product-card";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -62,7 +63,8 @@ export default function Home() {
       ></OrderInfoSection> */}
       {/* <AddProduct></AddProduct> */}
       
-      <OrderCard OrderID="" timeOrder="" DetailOrders={listOfOrders} status="Đã hủy"></OrderCard>
+      {/* <OrderCard OrderID="" timeOrder="" DetailOrders={listOfOrders} status="Đã hủy"></OrderCard> */}
+      <ProductCard productInfo={itemInfo} productTopping=""></ProductCard>
     </div>
   );
 }
