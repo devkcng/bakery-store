@@ -1,39 +1,39 @@
-import React, { FC } from "react";
-import Image from "next/image";
-import "./detail-product-section.css";
+/* eslint-disable @next/next/no-img-element */
+import ItemCard, { ItemProps } from "@/components/item-card/item-card";
+import { FC } from "react";
 import QuantityButton from "../../button/quantity-btn";
 import DateSelector from "../../date-picker/DatePicker";
-import ItemCard, { ItemProps } from "@/components/item-card/item-card";
+import "./detail-product-section.css";
 
-type Topping = {
-  toppingId: string; // Mã topping
-  toppingName: string; // Tên topping
-  toppingPrice: string; // Giá topping
+export type Topping = {
+  toppingId?: string;
+  toppingName?: string;
+  toppingPrice?: string;
 };
 
-export type ProductAttribute = {
-  imagePath: string;
-  itemName: string;
-  itemPrice: string;
-  toppings: Topping[]; // Mảng các topping
-  itemDescription: string;
-  relatedProduct: ItemProps[];
-};
+export interface ProductAttribute<T = any> {
+  imagePath?: string;
+  itemName?: string;
+  itemPrice?: number;
+  toppings?: T[];
+  itemDescription?: string;
+  relatedProduct?: ItemProps[];
+}
 
-type CartItemProps = {
-  product: ProductAttribute; // Thay đổi đây
-};
+interface DetailItemProps<T = any> {
+  product: ProductAttribute<T>;
+}
 
-const CartItem: FC<CartItemProps> = ({ product }) => {
-  const {
+const DetailItem: FC<DetailItemProps> = ({
+  product: {
     imagePath,
     itemName,
     itemPrice,
     toppings,
     itemDescription,
     relatedProduct,
-  } = product;
-
+  },
+}) => {
   return (
     <div>
       <div className="container">
@@ -44,71 +44,57 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-            className="item_card w-[350px] h-[380x] border-transparent rounded-[30px] flex justify-center items-center flex-col "
+            className="item_card w-[350px] h-[380px] border-transparent rounded-[30px] flex justify-center items-center flex-col"
           >
             <img
               id="productImg"
-              src={`${
-                imagePath === "" ? "/imgs/bakery-images/muffinb.png" : imagePath
-              }`}
-              alt=""
+              src={imagePath || "/imgs/bakery-images/muffinb.png"}
+              alt={itemName || ""}
             />
           </div>
           <div className="description mt-3">
             <b>Mô tả</b>
             <br />
-            <p id="txtDescription">
-              {`${itemDescription === "" ? "" : itemDescription}`}
-            </p>
+            <p id="txtDescription">{itemDescription || ""}</p>
           </div>
         </div>
         <div className="actionOnProduct">
-          <p id="txtName">{`${itemName === "" ? "Bánh muffin" : itemName}`}</p>
+          <p id="txtName">{itemName || "Bánh muffin"}</p>
           <div className="flex justify-start items-baseline">
-            <p id="txtPrice">
-              {itemPrice === "" ? "28.000" : `${itemPrice} VNĐ`}
-            </p>
-            <QuantityButton
-              className="ml-[25%] bg-primary"
-              textColor="white"
-            ></QuantityButton>
+            <p id="txtPrice">{itemPrice ? `${itemPrice} VNĐ` : "28.000"}</p>
+            <QuantityButton className="ml-[25%] bg-primary" textColor="white" />
           </div>
           <div className="all">
             <div className="prtAttributeContainer">
-              <ul className="flex ">
+              <ul className="flex">
                 <li className="productAttribute">Topping</li>
                 <li className="productAttribute">Giá</li>
                 <li className="productAttribute ml-5">Số lượng</li>
               </ul>
             </div>
             {toppings &&
-              toppings.map((item) => (
-                <div key={item.toppingId}>
+              toppings.map((item, index) => (
+                <div key={index}>
                   <div className="topptingAttributeContainer flex items-baseline">
-                    <div className="topptingAttribute">{`${
-                      item.toppingName === "" ? "Nho khô" : item.toppingName
-                    }`}</div>
                     <div className="topptingAttribute">
-                      {item.toppingPrice === ""
-                        ? "10.000"
-                        : `${item.toppingPrice} VNĐ`}
+                      {item.toppingName || "Nho khô"}
                     </div>
                     <div className="topptingAttribute">
-                      <QuantityButton className="border border-black "></QuantityButton>
+                      {item.toppingPrice || "10.000"} VNĐ
+                    </div>
+                    <div className="topptingAttribute">
+                      <QuantityButton className="border border-black" />
                     </div>
                   </div>
-
                   <hr className="separateLine" />
                 </div>
               ))}
           </div>
-          <div className="mt-3  ml-7 flex justify-between">
-            <div>
-              <DateSelector></DateSelector>
-            </div>
+          <div className="mt-3 ml-7 flex justify-between">
+            <DateSelector />
             <span className="mr-[6rem] font-semibold">
-              Số lượng còn lại:
-              <span className="text-red-500 font-bold"> 1000</span>
+              Số lượng còn lại:{" "}
+              <span className="text-red-500 font-bold">1000</span>
             </span>
           </div>
           <button id="btnAddToCart" type="button">
@@ -120,16 +106,16 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
         <span className="flex items-center justify-center text-[40px] font-bold">
           Sản phẩm liên quan
         </span>
-        <div className=" grid grid-cols-3 gap-1 ">
+        <div className="grid grid-cols-3 gap-1">
           {relatedProduct &&
             relatedProduct.map((item, index) => (
-              <div key={index}>
-                <ItemCard
-                  imagePath={item.imagePath}
-                  itemName={item.itemName}
-                  itemPrice={item.itemPrice}
-                ></ItemCard>
-              </div>
+              <ItemCard
+                key={index}
+                itemID={item.itemID}
+                imagePath={item.imagePath}
+                itemName={item.itemName}
+                itemPrice={item.itemPrice}
+              />
             ))}
         </div>
       </div>
@@ -137,4 +123,4 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
   );
 };
 
-export default CartItem;
+export default DetailItem;

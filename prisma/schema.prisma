@@ -146,7 +146,7 @@ model ProductTopping {
   product_id     Int
   topping_id     Int
 
-  product        Product   @relation(fields: [product_id], references: [id])
+  product        Product[]
   topping        Topping   @relation(fields: [topping_id], references: [id])
 }
 

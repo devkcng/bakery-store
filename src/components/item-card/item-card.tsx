@@ -1,9 +1,8 @@
-import Image from "next/image";
-import React, { FC } from "react";
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { FC } from "react";
 import Button from "../button/button";
 import "./item-card.css";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 export interface ItemProps {
   itemID?: number;
   imagePath: string;
@@ -16,7 +15,6 @@ const ItemCard: FC<ItemProps> = ({
   itemPrice,
   itemID,
 }) => {
-  const router = useRouter();
   return (
     <>
       <div

@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -34,9 +34,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap"
           rel="stylesheet"
         ></link>
-        <link rel="icon" href="./icon.png" type="image/png" sizes="100x100" />
+        {/* <link rel="icon" href="./icon.png" type="image/png" sizes="100x100" /> */}
       </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }
