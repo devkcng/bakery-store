@@ -10,10 +10,10 @@ export async function GET(req: NextApiRequest) {
           category: true,
           ProductTopping: true,
           Recipe: true,
-          OrderDetail: false,
+          OrderDetail: true,
         },
       });
-      return NextResponse.json({ message: "OK", products });
+      return Response.json({ message: "OK", products });
     } catch (error) {
       return NextResponse.json({ message: "error", error }, { status: 500 });
     }

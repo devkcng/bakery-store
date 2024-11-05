@@ -25,7 +25,11 @@ export async function GET(req: NextApiRequest) {
             },
           },
         },
-        ProductTopping: true,
+        ProductTopping: {
+          include: {
+            topping: true,
+          },
+        },
         Recipe: true,
       },
     });
