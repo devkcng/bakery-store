@@ -11,7 +11,6 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      console.log(currentScrollY);
       if (lastScrollY - currentScrollY > 8 && currentScrollY > 100) {
         // Show header when scrolling up
         setShowHeader(true);

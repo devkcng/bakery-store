@@ -5,11 +5,17 @@ import "./item-card.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 export interface ItemProps {
+  itemID?: number;
   imagePath: string;
   itemName: string;
   itemPrice: number;
 }
-const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
+const ItemCard: FC<ItemProps> = ({
+  imagePath,
+  itemName,
+  itemPrice,
+  itemID,
+}) => {
   const router = useRouter();
   return (
     <>
@@ -50,12 +56,11 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
               className="inline-flex justify-between items-center"
             />
           </Button>
-          <Button
-            className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold"
-            onClick={() => router.push("/product")}
-          >
-            Xem chi tiết
-          </Button>
+          <Link href={`/product/${itemID}`}>
+            <Button className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold">
+              Xem chi tiết
+            </Button>
+          </Link>
         </div>
       </div>
     </>
