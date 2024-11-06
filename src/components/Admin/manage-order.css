@@ -6,11 +6,23 @@
     width: 65%;
 }
 .table{
-    width: 100%;
-    margin: auto;
+    /* margin: auto; */
     text-align: center;
     vertical-align: middle;
+    
+}
+th,td{
+    width: 120px;
+}
+.actionContainer{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.actionButton{
+    cursor: pointer;
 }
 .quote{
     font-family: "Sansita Swashed", system-ui;
+    padding-top: 10px;
 }

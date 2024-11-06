@@ -17,6 +17,10 @@ import OrderInfoSection from "@/components/section/orderInfo-section";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
 
 import Admin from "@/components/Admin/manage-bake-status";
+// import Admin from "@/components/Admin/manage-topping-detail";
+// import Admin from "@/components/Admin/manage-ingredient-detail";
+// import Admin from "@/components/Admin/manage-order";
+// import Admin from "@/components/Admin/manage-oven-detail";
 
 
 export default function Home() {
@@ -67,6 +71,29 @@ export default function Home() {
       bakeStatus="Đang nướng"
       detailView="Xem chi tiết">
       </Admin>
+      {/* <Admin
+      iD="1"
+      toppingName= "hạnh nhân"
+      toppingPrice="12.000"> 
+      </Admin> */}
+      {/* <Admin
+    ovenID ="L123"
+    productName = "Pizza"
+    status = "Đang nướng"
+    orderedQuantity = "100"
+    processingQuantity = "100"
+    processedQuantity = "200"
+    startTime = "10h:20p"
+    leftTime = "1h">
+      </Admin> */}
+      {/* { <Admin
+    iD="124"
+    Quantity="200"
+    completeTime="1h"   
+    leftTime="1p">
+      </Admin> } */}
+
+
     </div>
   );
 }
