@@ -10,6 +10,10 @@ import { useCallback, useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
+import ItemOrder from "@/components/item-order/item-order";
+import OrderInfoSection from "@/components/section/orderInfo-section";
+import AddProduct from "@/components/add-product/add-product";
+
 import QuantityButton from "@/components/button/quantity-btn";
 import CartItem, {
   ProductAttribute,
@@ -22,7 +26,26 @@ type Topping = {
 export default function Home() {
   return (
     <div>
-      <HomePage></HomePage>
+      {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
+      {/* <SearchBar className="mt-[50px]" isShow={false}></SearchBar> */}
+      {/* <NavBar></NavBar> */}
+      {/* <HomePage></HomePage> */}
+      {/* <ItemOrder 
+          itemInfo={itemInfo}    
+          itemCount={count}         
+          itemTopping="" 
+          itemTotal={itemInfo.itemPrice*count}
+      /> */}
+      {/* <OrderInfoSection
+        idOrder="112233"
+        addressBuyer="So 1 Vo Van Ngan"
+        idStatus="Đã giao"
+        nameBuyer="Nguyễn Văn Vũ"
+        note="Giao cho bảo vệ"
+        phonenumber="0327521953"
+        time={time.toString()}
+      ></OrderInfoSection> */}
+      <AddProduct></AddProduct>
     </div>
   );
 }

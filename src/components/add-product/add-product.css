@@ -1,0 +1,77 @@
+button
+{
+    background-color: rgb(147,60, 30);
+    width: 55%;
+    margin: auto;
+    display: block;
+    border-radius: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    font-display: auto;
+}
+.container
+{
+    max-width: 90%;    
+    display: flex;
+    justify-content: center;
+}
+.uploadPic
+{
+    background-color: rgb(245, 245, 245);
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 100%;
+    height: 200px;
+}
+.uploadPic img {
+    margin:auto;
+    margin-top: 20%;
+    display: block;
+}
+.uploadbutton
+{
+    margin:auto;
+    margin-top: 3%;
+    padding: 2% 2%;
+    background-color: rgb(147,60, 30);
+    border-radius: 10px;
+    color: white;
+    cursor: pointer; 
+    width: 80%;
+}
+
+input
+{
+    border: 1.5px solid black;
+    border-radius: 20px;
+    padding: 6px 6px;
+    font-size: 13px;
+    font-weight: 100;
+}
+
+.generalinput
+{
+    width: 250px;
+}
+.Ingredient
+{
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 2px 2px;
+    width: 50px;
+    color: black;
+
+}
+.scrollbar{
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    overflow: 'hidden'
+}
+
+.scrollbar::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
+}

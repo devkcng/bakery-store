@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.21.0",
+    "@syncfusion/ej2-react-dropdowns": "^27.1.57",
     "@types/react-datepicker": "^7.0.0",
     "bootstrap": "^5.3.3",
     "lucide-react": "^0.454.0",
