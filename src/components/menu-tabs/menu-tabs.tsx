@@ -7,12 +7,12 @@ interface RadioProps {
 }
 
 const MenuTabs: React.FC<RadioProps> = ({
-  options = ["Tất cả", "Bán chạy", "Bánh ngọt", "Bánh mặn"],
+  options = [],
   selectedOption,
   onOptionChange,
 }) => {
   return (
-    <div className="relative flex flex-wrap rounded-md bg-transparent shadow-sm p-1 w-auto text-sm border-b-[1.5px]">
+    <div className="relative flex flex-wrap bg-transparent shadow-sm p-1 w-auto text-sm  border-[2px] rounded-xl">
       {options.map((option) => (
         <label key={option} className="flex-1 text-center mx-1 bg-transparent ">
           <input

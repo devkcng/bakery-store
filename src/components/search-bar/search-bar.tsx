@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 export interface SearchBarProps {
   className?: string;
   isShow: boolean; // "isShow" property is used to determine the search bar has ability to automatically minimize or not
-};
+}
 const SearchBar: FC<SearchBarProps> = ({ className = "", isShow }) => {
   const [isFocused, setIsFocused] = useState<boolean>(isShow);
   //   const [inputValue, setInputValue] = useState<string>("");

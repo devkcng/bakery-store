@@ -15,6 +15,7 @@ import OrderInfoSection from "@/components/section/orderInfo-section";
 import AddProduct from "@/components/add-product/add-product";
 import OrderCard from "@/components/order-card/order-card";
 import ProductCard from "@/components/product-card/product-card";
+import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -73,7 +74,8 @@ export default function Home() {
       {/* <AddProduct></AddProduct> */}
 
       {/* <OrderCard OrderID="" timeOrder="" DetailOrders={listOfOrders} status="Đã hủy"></OrderCard> */}
-      <ProductCard productInfo={itemInfo} productTopping=""></ProductCard>
+      {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
+      {/* <ManageProduct></ManageProduct> */}
     </div>
   );
 }
