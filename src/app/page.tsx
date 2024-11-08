@@ -10,7 +10,7 @@ import { useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
-import ItemOrder, {DetailOrder} from "@/components/item-order/item-order";
+import ItemOrder, { DetailOrder } from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
 import AddProduct from "@/components/add-product/add-product";
 import OrderCard from "@/components/order-card/order-card";
@@ -23,21 +23,30 @@ export default function Home() {
   // };
   // console.log(selectedOption);
   const itemInfo: ItemProps = {
-    imagePath: '', // Đường dẫn đến ảnh
-    itemName: '', // Tên món
-    itemPrice: 28000 // Giá món
+    imagePath: "", // Đường dẫn đến ảnh
+    itemName: "", // Tên món
+    itemPrice: 28000, // Giá món
   };
   const count = 2;
   const time: string = new Date().toLocaleString("vi-VN", {
     timeZone: "Asia/Ho_Chi_Minh",
   });
   const listOfOrders: DetailOrder[] = [
-    { itemInfo:{imagePath: "",  itemName: "", itemPrice: 28000}, 
-    itemCount: 2, itemTopping: "chân trâu, dậu đỏ" },
-    { itemInfo:{imagePath: "",  itemName: "", itemPrice: 28000}, 
-    itemCount: 4, itemTopping: "mè đen" },
-    { itemInfo:{imagePath: "",  itemName: "", itemPrice: 28000},
-     itemCount: 5, itemTopping: "hạnh nhân" },
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 2,
+      itemTopping: "chân trâu, dậu đỏ",
+    },
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 4,
+      itemTopping: "mè đen",
+    },
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 5,
+      itemTopping: "hạnh nhân",
+    },
   ];
   console.log(time);
   return (
@@ -61,8 +70,13 @@ export default function Home() {
         time={time.toString()}
       ></OrderInfoSection> */}
       {/* <AddProduct></AddProduct> */}
-      
-      <OrderCard OrderID="" timeOrder="" DetailOrders={listOfOrders} status="Đã hủy"></OrderCard>
+
+      <OrderCard
+        OrderID=""
+        timeOrder=""
+        DetailOrders={listOfOrders}
+        status="Đang tiến hành"
+      ></OrderCard>
     </div>
   );
 }
