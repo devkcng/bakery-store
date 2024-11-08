@@ -10,20 +10,45 @@ import { useCallback, useState } from "react";
 import NavBar from "@/components/header/nav-bar";
 import Footer from "@/components/Footer/footer";
 import HomePage from "./home/page";
-import ItemOrder from "@/components/item-order/item-order";
+import ItemOrder, { DetailOrder } from "@/components/item-order/item-order";
 import OrderInfoSection from "@/components/section/orderInfo-section";
 import AddProduct from "@/components/add-product/add-product";
-
-import QuantityButton from "@/components/button/quantity-btn";
-import CartItem, {
-  ProductAttribute,
-} from "@/components/section/detail-product-section/detail-product-section";
-type Topping = {
-  id: string;
-  name: string;
-  initialQuantity: number;
-};
+import OrderCard from "@/components/order-card/order-card";
 export default function Home() {
+  // const [selectedOption, setSelectedOption] = useState<string>("HTML");
+  // const options: string[] = ["HTML", "React", "Vue", "Angular"];
+
+  // const handleOptionChange = (option: string) => {
+  //   setSelectedOption(option);
+  // };
+  // console.log(selectedOption);
+  const itemInfo: ItemProps = {
+    imagePath: "", // Đường dẫn đến ảnh
+    itemName: "", // Tên món
+    itemPrice: 28000, // Giá món
+  };
+  const count = 2;
+  const time: string = new Date().toLocaleString("vi-VN", {
+    timeZone: "Asia/Ho_Chi_Minh",
+  });
+  const listOfOrders: DetailOrder[] = [
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 2,
+      itemTopping: "chân trâu, dậu đỏ",
+    },
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 4,
+      itemTopping: "mè đen",
+    },
+    {
+      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemCount: 5,
+      itemTopping: "hạnh nhân",
+    },
+  ];
+  console.log(time);
   return (
     <div>
       {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
@@ -34,7 +59,6 @@ export default function Home() {
           itemInfo={itemInfo}    
           itemCount={count}         
           itemTopping="" 
-          itemTotal={itemInfo.itemPrice*count}
       /> */}
       {/* <OrderInfoSection
         idOrder="112233"
@@ -45,7 +69,14 @@ export default function Home() {
         phonenumber="0327521953"
         time={time.toString()}
       ></OrderInfoSection> */}
-      <AddProduct></AddProduct>
+      {/* <AddProduct></AddProduct> */}
+
+      <OrderCard
+        OrderID=""
+        timeOrder=""
+        DetailOrders={listOfOrders}
+        status="Đang tiến hành"
+      ></OrderCard>
     </div>
   );
 }

@@ -6,11 +6,12 @@ export interface DetailOrder {
   itemInfo: ItemProps;
   itemCount: number;
   itemTopping: string;
+  className?:string;
 }
 
-const ItemOrder: FC<DetailOrder> = ({ itemInfo, itemCount, itemTopping }) => {
+const ItemOrder: FC<DetailOrder> = ({ itemInfo, itemCount, itemTopping, className=""}) => {
   return (
-    <div className="container">
+    <div className={`container ${className}`}>
       <div className="pl-2.5">
         <img
           src={`${itemInfo?.imagePath || "/imgs/bakery-images/muffinb.png"}`}
