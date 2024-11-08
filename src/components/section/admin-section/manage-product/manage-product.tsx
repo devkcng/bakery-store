@@ -13,7 +13,7 @@ const ManageProduct = () => {
     setSelectedOption(option);
   };
   return (
-    <div className=" ml-[250px] mt-5 pl-[20px] ">
+    <div className=" ml-[250px] mt-5 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
       <div>
         <SearchBar isShow={true}></SearchBar>
