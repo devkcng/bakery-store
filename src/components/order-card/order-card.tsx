@@ -77,13 +77,16 @@ const OrderCard: FC<DetailOrderAdmin> = ({
                 : `x${DetailOrders.length} items`}
             </span>{" "}
           </div>
-          <div>
-            <label
-              htmlFor=""
-              className={`${getStatusColor(status)} rounded-md p-1`}
-            >
-              {status}
-            </label>
+          <div className="flex ">
+            <div className="mr-2">
+              <label
+                htmlFor=""
+                className={`${getStatusColor(status)} rounded-md p-1`}
+              >
+                {status}
+              </label>
+            </div>
+            <a href="#">Xem chi tiết</a>
           </div>
         </div>
       </div>
