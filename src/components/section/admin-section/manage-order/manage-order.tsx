@@ -46,7 +46,7 @@ const ManageOrder = () => {
   ];
   return (
     <div>
-      <div className=" ml-[250px] mt-5 pl-[10px]  ">
+      <div className=" ml-[250px] mt-5 pl-[10px]   ">
         <SidebarAdmin></SidebarAdmin>
         <div>
           <SearchBar isShow={true}></SearchBar>
