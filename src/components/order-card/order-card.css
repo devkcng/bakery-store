@@ -1,27 +1,25 @@
-.containerDetailcard
-{
-    display: flex;
-    flex-direction: column;
-    margin-left: 2%;
-    margin-right: 10%;
-    padding-top: 20px;
-    margin-bottom: 1%;
-    background: white; 
-    border-radius: 20px;
-    border: 1.5px solid black;
-    height: 440px; 
-    width: 420px; 
-    box-shadow: -1px 5px 9px 1px rgba(150,124,124,0.6);
-    -webkit-box-shadow: -1px 5px 9px 1px rgba(150,124,124,0.6);
-    -moz-box-shadow: -1px 5px 9px 1px rgba(150,124,124,0.6);
+.containerDetailcard {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-right: 10%;
+  padding-top: 20px;
+  margin-bottom: 1%;
+  background: white;
+  border-radius: 20px;
+  border: 1.5px solid black;
+  height: 440px;
+  width: 400px;
+  box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
+  -webkit-box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
+  -moz-box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
 }
 .list-order {
-    /* Chiều cao cố định */
-    overflow-y: auto; /* Cho phép cuộn dọc */
-    scrollbar-width: none; /* Ẩn thanh cuộn cho Firefox */
+  /* Chiều cao cố định */
+  overflow-y: auto; /* Cho phép cuộn dọc */
+  scrollbar-width: none; /* Ẩn thanh cuộn cho Firefox */
 }
-  
+
 .list-order::-webkit-scrollbar {
-    display: none; /* Ẩn thanh cuộn cho trình duyệt Webkit (Chrome, Safari) */
-  }
-  
+  display: none; /* Ẩn thanh cuộn cho trình duyệt Webkit (Chrome, Safari) */
+}
