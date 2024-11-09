@@ -1,0 +1,16 @@
+.container{
+    padding-top: 20px;
+    display: flex;
+    border: 1px solid rgb(117, 117, 117);
+    border-radius: 20px;
+    width: 65%;
+}
+.table{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+.quote{
+    font-family: "Sansita Swashed", system-ui;
+}
