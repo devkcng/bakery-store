@@ -8,8 +8,10 @@ type IngredientDetail = {
     unit: string;
     ingredientPrice: string;   
 };
-
-const Ingredient:FC<IngredientDetail>  = ({ iD,ingredientName,quantity,unit, ingredientPrice }) => {
+type IngredientDetailProp ={
+    detail: IngredientDetail[];
+} 
+const IngredientDetail:FC<IngredientDetailProp>  = ({detail}) => {
     return (
         <div className="container">
             <table className="table">
@@ -24,12 +26,13 @@ const Ingredient:FC<IngredientDetail>  = ({ iD,ingredientName,quantity,unit, ing
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                    <td scope="row">{`${iD ==="" ? " " : iD }`}</td>
-                    <td scope="row">{`${ingredientName ==="" ? " " : ingredientName }`}</td>
-                    <td scope="row">{`${quantity ==="" ? " " : quantity }`}</td>
-                    <td scope="row">{`${unit ==="" ? " " : unit }`}</td>
-                    <td scope="row">{`${ingredientPrice ==="" ? " " : ingredientPrice }`}</td>
+                    {detail.map((details,index) =>(
+                    <tr key ={index} >
+                    <td scope="row">{details.iD || " "}</td>
+                    <td scope="row">{details.ingredientName || " "}</td>
+                    <td scope="row">{details.quantity || " "}</td>
+                    <td scope="row">{details.unit || " "}</td>
+                    <td scope="row">{details.ingredientPrice || " "}</td>
                     <td scope="row">
                         <div className="actionContainer" >
                             <div className="actionButton ">
@@ -42,42 +45,7 @@ const Ingredient:FC<IngredientDetail>  = ({ iD,ingredientName,quantity,unit, ing
                     </td>
                     </tr>
 
-                    <tr >
-                    <td scope="row">{`${iD ==="" ? " " : iD }`}</td>
-                    <td scope="row">{`${ingredientName ==="" ? " " : ingredientName }`}</td>
-                    <td scope="row">{`${quantity ==="" ? " " : quantity }`}</td>
-                    <td scope="row">{`${unit ==="" ? " " : unit }`}</td>
-                    <td scope="row">{`${ingredientPrice ==="" ? " " : ingredientPrice }`}</td>
-                    <td scope="row">
-                        <div className="actionContainer" >
-                            <div className="actionButton ">
-                                <img src="/imgs/iconset/icons8-trash-64.png" alt="Trash" className="h-[30px] w-[30px] mr-7"/>
-                            </div>
-                            <div className="actionButton">
-                                <img src="/imgs/iconset/icons8-edit-64.png" alt="Edit" className="h-[25px] w-[25px]" />
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr >
-                    <td scope="row">{`${iD ==="" ? " " : iD }`}</td>
-                    <td scope="row">{`${ingredientName ==="" ? " " : ingredientName }`}</td>
-                    <td scope="row">{`${quantity ==="" ? " " : quantity }`}</td>
-                    <td scope="row">{`${unit ==="" ? " " : unit }`}</td>
-                    <td scope="row">{`${ingredientPrice ==="" ? " " : ingredientPrice }`}</td>
-                    <td scope="row">
-                        <div className="actionContainer" >
-                            <div className="actionButton ">
-                                <img src="/imgs/iconset/icons8-trash-64.png" alt="Trash" className="h-[30px] w-[30px] mr-7"/>
-                            </div>
-                            <div className="actionButton">
-                                <img src="/imgs/iconset/icons8-edit-64.png" alt="Edit" className="h-[25px] w-[25px]" />
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    
+                    ))}
                 
                 </tbody>
             </table>
@@ -85,4 +53,4 @@ const Ingredient:FC<IngredientDetail>  = ({ iD,ingredientName,quantity,unit, ing
     );
 };
 
-export default Ingredient;
+export default IngredientDetail;

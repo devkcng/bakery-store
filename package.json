@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@prisma/client": "^5.21.0",
-    "@types/bootstrap": "^5.2.10",
+    "@syncfusion/ej2-react-dropdowns": "^27.1.57",
+    "@types/react-datepicker": "^7.0.0",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "lucide-react": "^0.454.0",
     "next": "^14.2.15",
     "react": "^18",
     "react-bootstrap": "^2.10.5",
-    "react-dom": "^18",
-    "sass": "^1.80.5"
+    "react-datepicker": "^7.5.0",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",

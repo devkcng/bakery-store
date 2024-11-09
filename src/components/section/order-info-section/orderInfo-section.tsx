@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import "./orderInfo.css";
-import ItemOrder, { DetailOrder } from "../item-order/item-order";
+import ItemOrder, { DetailOrder } from "../../item-order/item-order";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
-import SearchBar from "../search-bar/search-bar";
+import SearchBar from "../../search-bar/search-bar";
 const itemInfo: ItemProps = {
   imagePath: "", // Đường dẫn đến ảnh
   itemName: "", // Tên món
@@ -33,9 +33,10 @@ const OrderInfoSection: FC<orderInfo> = ({
   phonenumber,
   note,
 }) => {
-    const total = items.reduce(
-        (acc, item) => acc + item.itemCount * item.itemInfo.itemPrice, //acc là biển ảo để lưu giá trị sau khi tính xong truyền vào trong total
-        0)
+  const total = items.reduce(
+    (acc, item) => acc + item.itemCount * item.itemInfo.itemPrice, //acc là biển ảo để lưu giá trị sau khi tính xong truyền vào trong total
+    0
+  );
   return (
     <div id="container">
       <div className="flex flex-col items-center mt-10 mb-10 ">

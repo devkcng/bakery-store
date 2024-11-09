@@ -10,8 +10,10 @@ type BakeStatusOrder = {
     detailView: string;
     
 };
-
-const BakeStatus:FC<BakeStatusOrder>  = ({ ID, orderCode, completeTime, leftTime, bakeStatus, detailView }) => {
+type BakeStatusProps = {
+    manageBake: BakeStatusOrder[]; // Array of BakeStatusOrder objects
+};
+const BakeStatusOrder:FC<BakeStatusProps>  = ({ manageBake }) => {
     return (
         <div className="container">
             <table className="table">
@@ -26,36 +28,18 @@ const BakeStatus:FC<BakeStatusOrder>  = ({ ID, orderCode, completeTime, leftTime
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                    <td scope="row">{`${ID ==="" ? " " : ID }`}</td>
-                    <td scope="row">{`${orderCode ==="" ? " " : orderCode }`}</td>
-                    <td scope="row">{`${completeTime ==="" ? " " : completeTime }`}</td>
-                    <td scope="row">{`${leftTime ==="" ? " " : leftTime }`}</td>
-                    <td scope="row">{`${bakeStatus ==="" ? " " : bakeStatus }`}</td>
+                    {manageBake.map((manageBaking,index) => (
+                    <tr key={index} >
+                    <td scope="row">{manageBaking.ID || " " }</td>
+                    <td scope="row">{manageBaking.orderCode || " " }</td>
+                    <td scope="row">{manageBaking.completeTime || " " }</td>
+                    <td scope="row">{manageBaking.leftTime || " " }</td>
+                    <td scope="row">{manageBaking.bakeStatus || " "}</td>
                     <td scope="row">
-                    <button type="button" className="btn btn-link">{`${detailView ==="" ? " " : detailView }`}</button>
+                    <button type="button" className="btn btn-link">{manageBaking.detailView || " " }</button>
                     </td>
                     </tr>
-                    <tr >
-                    <td scope="row">{`${ID ==="" ? " " : ID }`}</td>
-                    <td scope="row">{`${orderCode ==="" ? " " : orderCode }`}</td>
-                    <td scope="row">{`${completeTime ==="" ? " " : completeTime }`}</td>
-                    <td scope="row">{`${leftTime ==="" ? " " : leftTime }`}</td>
-                    <td scope="row">{`${bakeStatus ==="" ? " " : bakeStatus }`}</td>
-                    <td scope="row">
-                    <button type="button" className="btn btn-link">{`${detailView ==="" ? " " : detailView }`}</button>
-                    </td>
-                    </tr>
-                    <tr >
-                    <td scope="row">{`${ID ==="" ? " " : ID }`}</td>
-                    <td scope="row">{`${orderCode ==="" ? " " : orderCode }`}</td>
-                    <td scope="row">{`${completeTime ==="" ? " " : completeTime }`}</td>
-                    <td scope="row">{`${leftTime ==="" ? " " : leftTime }`}</td>
-                    <td scope="row">{`${bakeStatus ==="" ? " " : bakeStatus }`}</td>
-                    <td scope="row">
-                    <button type="button" className="btn btn-link">{`${detailView ==="" ? " " : detailView }`}</button>
-                    </td>
-                    </tr>
+                    ))}
                 
                 </tbody>
             </table>
@@ -63,4 +47,4 @@ const BakeStatus:FC<BakeStatusOrder>  = ({ ID, orderCode, completeTime, leftTime
     );
 };
 
-export default BakeStatus;
+export default BakeStatusOrder;

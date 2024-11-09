@@ -1,0 +1,14 @@
+.scrollbar{
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    overflow: 'hidden'
+}
+
+.scrollbar::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
+}
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Để căn chỉnh giữa text và icon */
+}

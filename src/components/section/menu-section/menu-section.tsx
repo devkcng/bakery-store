@@ -1,8 +1,8 @@
 "use client";
 import React, { FC, useState } from "react";
-import MenuTabs from "../menu-tabs/menu-tabs";
-import SearchBar from "../search-bar/search-bar";
-import ItemCard from "../item-card/item-card";
+import MenuTabs from "../../menu-tabs/menu-tabs";
+import SearchBar from "../../search-bar/search-bar";
+import ItemCard from "../../item-card/item-card";
 
 const MenuSection = () => {
   const options = ["Tất cả", "Bán chạy", "Bánh ngọt", "Bánh mặn"];
@@ -26,7 +26,7 @@ const MenuSection = () => {
         </div>
         <div className="flex justify-center mt-10">
           <div className="grid grid-cols-3 gap-1">
-            <ItemCard itemName="" itemPrice= {28000} imagePath="" />
+            <ItemCard itemName="" itemPrice={28000} imagePath="" />
             <ItemCard itemName="" itemPrice={28000} imagePath="" />
             <ItemCard itemName="" itemPrice={28000} imagePath="" />
             <ItemCard itemName="" itemPrice={28000} imagePath="" />
