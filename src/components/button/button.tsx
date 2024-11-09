@@ -10,11 +10,11 @@ const Button: FC<ButtonProps> = ({
   onClick,
   className = "",
   type = "button",
-  bgColor = "primary",
+  bgColor = "",
   children,
   ...restProps
 }) => {
-  let bgClassName = "bg-primary";
+  let bgClassName = "";
   switch (bgColor) {
     case "primary":
       bgClassName = "bg-primary";
