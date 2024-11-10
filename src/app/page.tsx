@@ -1,27 +1,14 @@
 "use client";
-import Header from "@/components/header/header";
-import ItemCard, { ItemProps } from "@/components/item-card/item-card";
-import MenuTabs from "@/components/menu-tabs/menu-tabs";
-import SearchBar from "@/components/search-bar/search-bar";
+import { ItemProps } from "@/components/item-card/item-card";
 // import MenuSection from "@/components/section/menu-section";
 
-import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
-import { useCallback, useState } from "react";
-import NavBar from "@/components/header/nav-bar";
-import Footer from "@/components/Footer/footer";
-import HomePage from "./home/page";
-import ItemOrder, { DetailOrder } from "@/components/item-order/item-order";
+import { DetailOrder } from "@/components/item-order/item-order";
 // import OrderInfoSection from "@/components/section/orderInfo-section";
-import AddProduct from "@/components/add-product/add-product";
-import OrderCard from "@/components/order-card/order-card";
-import ProductCard from "@/components/product-card/product-card";
 // import Admin from "@/components/Admin/manage-ingredient-detail";
 // import Admin from "@/components/Admin/manage-order";
 // import Admin from "@/components/Admin/manage-oven-detail";
-import Admin from "@/components/Admin/manage-topping-detail";
 
-import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
-import BakeStatusOrder from "@/components/Admin/manage-bake-status";
+import BakeStatusOrder from "@/components/Admin/manage-order-detail";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -197,7 +184,7 @@ export default function Home() {
 
       {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
       {/* <ManageProduct></ManageProduct> */}
-      <BakeStatusOrder manageBake={pseudoBakeStatusData}></BakeStatusOrder>
+      {/* <BakeStatusOrder manageBake={pseudoBakeStatusData}></BakeStatusOrder> */}
     </div>
   );
 }

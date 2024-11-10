@@ -1,23 +1,16 @@
-.ovendetail_container {
+.orderdetail_container {
   padding-top: 20px;
-  /* display: flex; */
-  margin: 0;
+  display: flex;
+  border-radius: 20px;
   width: 100%;
 }
 .table {
-  width: 100%;
+  width: 99%;
   margin: auto;
   text-align: center;
   vertical-align: middle;
 }
-.actionContainer {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-.actionButton {
-  cursor: pointer;
-}
+
 .quote {
   font-family: "Sansita Swashed", system-ui;
   padding-top: 10px;

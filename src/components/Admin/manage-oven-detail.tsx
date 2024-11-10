@@ -134,45 +134,47 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
           </div>
         </Button>
       </div>
-      <table className="table">
-        <thead>
-          <tr className="table-dark">
-            <th scope="col">Mã đơn</th>
-            <th scope="col">Số lượng</th>
-            <th scope="col">Thời gian hoàn thành</th>
-            <th scope="col">Thời gian còn lại</th>
-            <th scope="col">&nbsp;</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order, index) => (
-            <tr key={index}>
-              <td scope="row">{order.orderID || " "}</td>
-              <td scope="row">{order.quantity || " "}</td>
-              <td scope="row">{order.completeTime || " "}</td>
-              <td scope="row">{order.remainingTime || " "}</td>
-              <td scope="row">
-                <div className="actionContainer">
-                  <div className="actionButton">
-                    <img
-                      src="/imgs/iconset/icons8-trash-64.png"
-                      alt="Trash"
-                      className="h-[30px] w-[30px] mr-7"
-                    />
-                  </div>
-                  <div className="actionButton">
-                    <img
-                      src="/imgs/iconset/icons8-edit-64.png"
-                      alt="Edit"
-                      className="h-[25px] w-[25px]"
-                    />
-                  </div>
-                </div>
-              </td>
+      <div className="overflow-y-auto scrollbar-hidden max-h-[380px]">
+        <table className="table">
+          <thead>
+            <tr className="table-dark">
+              <th scope="col">Mã đơn</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Thời gian hoàn thành</th>
+              <th scope="col">Thời gian còn lại</th>
+              <th scope="col">&nbsp;</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((order, index) => (
+              <tr key={index}>
+                <td scope="row">{order.orderID || " "}</td>
+                <td scope="row">{order.quantity || " "}</td>
+                <td scope="row">{order.completeTime || " "}</td>
+                <td scope="row">{order.remainingTime || " "}</td>
+                <td scope="row">
+                  <div className="actionContainer flex justify-center items-baseline">
+                    <div className="actionButton">
+                      <img
+                        src="/imgs/iconset/icons8-trash-64.png"
+                        alt="Trash"
+                        className="h-[30px] w-[30px] mr-7"
+                      />
+                    </div>
+                    <div className="actionButton">
+                      <img
+                        src="/imgs/iconset/icons8-edit-64.png"
+                        alt="Edit"
+                        className="h-[25px] w-[25px]"
+                      />
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

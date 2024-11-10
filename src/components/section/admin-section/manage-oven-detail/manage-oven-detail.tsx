@@ -37,6 +37,114 @@ const ManageOvenDetail = () => {
         completeTime: "16:00",
         remainingTime: "01:30",
       },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
+      {
+        orderID: "ORD003",
+        quantity: 1,
+        completeTime: "16:00",
+        remainingTime: "01:30",
+      },
     ],
   };
 
@@ -47,7 +155,7 @@ const ManageOvenDetail = () => {
         <SearchBar isShow={true}></SearchBar>
         <div className=" mt-2 flex items-center justify-end mr-4"></div>
       </div>
-      <div className="overflow-y-auto max-h-[550px] scrollbar-hidden ">
+      <div className="overflow-y-auto  scrollbar-hidden max-h-[550px] ">
         <Oven oven={pseudoOvenData.oven} orders={pseudoOvenData.orders} />
       </div>
     </div>

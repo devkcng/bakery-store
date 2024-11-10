@@ -42,7 +42,7 @@ const Oven: FC<OvenInfo> = ({ info }) => {
               </td>
               <td>{item.status || " "}</td>
               <td scope="row">
-                <a href="#" className="underline">
+                <a href="/admin/manage-oven-detail" className="underline">
                   Xem chi tiết
                 </a>
               </td>
