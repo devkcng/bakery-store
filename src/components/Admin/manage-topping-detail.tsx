@@ -18,7 +18,7 @@ type ToppingProps = {
 
 const Topping: FC<ToppingProps> = ({ toppings }) => {
   return (
-    <div className="container">
+    <div className="topping_container">
       <Table striped bordered hover className="table">
         <thead>
           <tr className="table-dark">

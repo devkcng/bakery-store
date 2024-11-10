@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import ItemCard, { ItemProps } from "../item-card/item-card";
 import "./product-card.css";

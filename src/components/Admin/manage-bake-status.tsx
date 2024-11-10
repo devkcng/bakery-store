@@ -13,7 +13,7 @@ type BakeStatusProps = {
 };
 const BakeStatusOrder: FC<BakeStatusProps> = ({ manageBake }) => {
   return (
-    <div className="container">
+    <div className="bake_status_container">
       <table className="table">
         <thead>
           <tr className="table-dark">

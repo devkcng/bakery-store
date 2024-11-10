@@ -1,28 +1,28 @@
-.container{
-    padding-top: 20px;
-    display: flex;
-    border: 1px solid rgb(117, 117, 117);
-    border-radius: 20px;
-    width: 65%;
+.order_container {
+  padding-top: 20px;
+  display: flex;
+  border: 1px solid rgb(117, 117, 117);
+  border-radius: 20px;
+  width: 65%;
 }
-.table{
-    /* margin: auto; */
-    text-align: center;
-    vertical-align: middle;
-    
+.table {
+  /* margin: auto; */
+  text-align: center;
+  vertical-align: middle;
 }
-th,td{
-    width: 120px;
+th,
+td {
+  width: 120px;
 }
-.actionContainer{
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.actionContainer {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
-.actionButton{
-    cursor: pointer;
+.actionButton {
+  cursor: pointer;
 }
-.quote{
-    font-family: "Sansita Swashed", system-ui;
-    padding-top: 10px;
+.quote {
+  font-family: "Sansita Swashed", system-ui;
+  padding-top: 10px;
 }

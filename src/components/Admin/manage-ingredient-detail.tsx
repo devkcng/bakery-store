@@ -18,7 +18,7 @@ type IngredientDetailProp = {
 
 const IngredientDetail: FC<IngredientDetailProp> = ({ detail }) => {
   return (
-    <div className="container">
+    <div className="ingredient_container">
       <Table striped bordered hover className="table">
         <thead>
           <tr className="table-dark">

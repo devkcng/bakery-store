@@ -16,6 +16,8 @@
   margin-left: 35px;
 }
 .btn {
+  align-items: center;
+  align-content: center;
   color: white;
   width: 180px;
   height: 50px;
@@ -32,4 +34,27 @@
 .btn:hover {
   background-color: rgb(102, 98, 98);
   border-radius: 10px;
+}
+
+.inventory:hover > .list {
+  display: block;
+}
+.inventory {
+  position: relative;
+}
+.list {
+  position: absolute;
+  display: none;
+  color: white;
+  margin-left: 60px;
+}
+li {
+  margin-bottom: 10px;
+}
+li:hover {
+  text-decoration: underline;
+}
+li > button {
+  color: white;
+  width: auto;
 }

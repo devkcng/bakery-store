@@ -1,13 +1,12 @@
-.container {
+.topping_container {
   padding-top: 20px;
   display: flex;
-  max-height: 500px;
-  width: 800px;
+  width: 100%;
   margin: 0;
 }
 .table {
   width: 100%;
-  /* margin: auto; */
+  margin: auto;
   text-align: center;
   vertical-align: middle;
 }

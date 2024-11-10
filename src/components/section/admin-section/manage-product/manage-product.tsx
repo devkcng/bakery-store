@@ -1,274 +1,21 @@
 "use client";
-import BakeStatusOrder from "@/components/Admin/manage-bake-status";
-import IngredientDetail from "@/components/Admin/manage-ingredient-detail";
-import Topping, {
-  ToppingDetail,
-} from "@/components/Admin/manage-topping-detail";
 import Button from "@/components/button/button";
-import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import ProductCard from "@/components/product-card/product-card";
 import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
-import React, { useState } from "react";
 
 const ManageProduct = () => {
-  const options = ["Bánh", "Topping", "Nguyên liệu"];
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
-  const handleOptionChange = (option: string) => {
-    setSelectedOption(option);
-  };
-
-  const pseudoToppings: ToppingDetail[] = [
-    {
-      iD: "T001",
-      toppingName: "Chocolate Chip",
-      toppingPrice: "5000",
-    },
-    {
-      iD: "T002",
-      toppingName: "Strawberry Syrup",
-      toppingPrice: "7000",
-    },
-    {
-      iD: "T003",
-      toppingName: "Whipped Cream",
-      toppingPrice: "6000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-    {
-      iD: "T004",
-      toppingName: "Caramel Drizzle",
-      toppingPrice: "8000",
-    },
-  ];
-  const pseudoIngredientData: IngredientDetail[] = [
-    {
-      iD: "001",
-      ingredientName: "Chocolate Chip",
-      quantity: "200",
-      unit: "g",
-      ingredientPrice: "20000",
-    },
-    {
-      iD: "002",
-      ingredientName: "Vanilla Extract",
-      quantity: "50",
-      unit: "ml",
-      ingredientPrice: "15000",
-    },
-    {
-      iD: "003",
-      ingredientName: "Strawberry Jam",
-      quantity: "100",
-      unit: "g",
-      ingredientPrice: "25000",
-    },
-    {
-      iD: "004",
-      ingredientName: "Whipped Cream",
-      quantity: "150",
-      unit: "g",
-      ingredientPrice: "18000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
-    },
-  ];
   return (
     <div className=" ml-[250px] mt-5 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
       <div>
         <SearchBar isShow={true}></SearchBar>
-        <div className=" mt-5 flex items-center ">
-          <div className="w-[500px]">
-            <MenuTabs
-              options={options}
-              onOptionChange={handleOptionChange}
-              selectedOption={selectedOption}
-            ></MenuTabs>
+        <div className=" mt-3 flex items-center justify-between mr-4 ">
+          <div className=" font-bold text-[30px] w-[65%] ">
+            Quản lý sản phẩm
           </div>
 
-          <Button
-            className="bg-green-400 rounded-[30px] h-13 ml-5"
-            type="button"
-          >
+          <Button className="bg-green-400 rounded-[30px] h-13 " type="button">
             <div className="flex justify-content-center">
               <svg
                 width="25px"
@@ -316,12 +63,12 @@ const ManageProduct = () => {
           </Button>
         </div>
       </div>
-      <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-1 ">
-        {selectedOption === "Bánh" && <ProductCard />}
-        {selectedOption === "Topping" && <Topping toppings={pseudoToppings} />}
-        {selectedOption === "Nguyên liệu" && (
-          <IngredientDetail detail={pseudoIngredientData}></IngredientDetail>
-        )}
+      <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-3 w-full ">
+        <ProductCard></ProductCard>
+        <ProductCard></ProductCard>
+        <ProductCard></ProductCard>
+        <ProductCard></ProductCard>
+        <ProductCard></ProductCard>
       </div>
     </div>
   );
