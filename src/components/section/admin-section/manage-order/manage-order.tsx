@@ -1,5 +1,7 @@
 "use client";
 import Button from "@/components/button/button";
+import { ItemProps } from "@/components/item-card/item-card";
+import { DetailOrder } from "@/components/item-order/item-order";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import OrderCard from "@/components/order-card/order-card";
 import ProductCard from "@/components/product-card/product-card";

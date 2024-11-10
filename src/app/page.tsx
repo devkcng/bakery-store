@@ -21,6 +21,7 @@ import ProductCard from "@/components/product-card/product-card";
 import Admin from "@/components/Admin/manage-topping-detail";
 
 import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
+import BakeStatusOrder from "@/components/Admin/manage-bake-status";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -123,6 +124,48 @@ export default function Home() {
     // Thêm các đối tượng khác vào đây
   ];
   console.log(time);
+  const pseudoBakeStatusData: BakeStatusOrder[] = [
+    {
+      ID: "001",
+      orderCode: "ORD123",
+      completeTime: "14:30",
+      leftTime: "00:45",
+      bakeStatus: "In Progress",
+      detailView: "View Details",
+    },
+    {
+      ID: "002",
+      orderCode: "ORD124",
+      completeTime: "15:00",
+      leftTime: "01:15",
+      bakeStatus: "In Progress",
+      detailView: "View Details",
+    },
+    {
+      ID: "003",
+      orderCode: "ORD125",
+      completeTime: "16:00",
+      leftTime: "02:00",
+      bakeStatus: "Pending",
+      detailView: "View Details",
+    },
+    {
+      ID: "004",
+      orderCode: "ORD126",
+      completeTime: "14:00",
+      leftTime: "00:30",
+      bakeStatus: "Completed",
+      detailView: "View Details",
+    },
+    {
+      ID: "005",
+      orderCode: "ORD127",
+      completeTime: "17:30",
+      leftTime: "03:00",
+      bakeStatus: "Pending",
+      detailView: "View Details",
+    },
+  ];
   return (
     <div>
       {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
@@ -150,10 +193,11 @@ export default function Home() {
       {/* <Admin manageBake={bakeStatusData}/> */}
       {/* <Admin orders={ordersData}/>  */}
       {/* <Admin ovens={ovensData} /> */}
-      <Admin toppings={toppingsData} />
+      {/* <Admin toppings={toppingsData} /> */}
 
       {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
       {/* <ManageProduct></ManageProduct> */}
+      <BakeStatusOrder manageBake={pseudoBakeStatusData}></BakeStatusOrder>
     </div>
   );
 }
