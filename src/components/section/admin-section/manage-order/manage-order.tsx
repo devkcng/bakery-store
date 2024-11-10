@@ -60,7 +60,7 @@ const ManageOrder = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 flex grid grid-cols-3 gap-5 ">
+        <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 grid grid-cols-3 gap-2 ">
           <OrderCard
             OrderID=""
             timeOrder=""

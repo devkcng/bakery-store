@@ -1,0 +1,17 @@
+.oven_container {
+  padding-top: 20px;
+  display: flex;
+  border-radius: 20px;
+  width: 100%;
+}
+.table {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.quote {
+  font-family: "Sansita Swashed", system-ui;
+  padding-top: 10px;
+}

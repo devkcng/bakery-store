@@ -56,7 +56,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
             />
           </div>
         </div>
-        <div className="list-order w-[100%] h-[80%] mt-5 px-0">
+        <div className="list-order w-[100%] h-[80%] mt-1 px-0">
           {/* Phần 2 */}
           {DetailOrders.map((item, index) => (
             <div key={index} className="mb-1 ">

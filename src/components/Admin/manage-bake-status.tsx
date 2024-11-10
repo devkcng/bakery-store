@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
+// import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import "./manage-bake-status.css";
 type BakeStatusOrder = {
   ID: string;

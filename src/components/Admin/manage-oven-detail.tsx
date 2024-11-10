@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
+// import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import "./manage-oven-detail.css";
 import Button from "../button/button";
 
 // Định nghĩa type cho từng chi tiết lò nướng
-type OvenDetail = {
+type OvenDetailInfo = {
   ovenID: string;
   status: string;
   startTime: string;
@@ -21,11 +21,11 @@ type OrderDetail = {
 
 // Định nghĩa type cho props của component
 type OvenProps = {
-  oven: OvenDetail; // Mảng các đối tượng OvenDetail
+  oven: OvenDetailInfo; // Mảng các đối tượng OvenDetail
   orders: OrderDetail[]; // Mảng các đối tượng OrderDetail
 };
 
-const Oven: FC<OvenProps> = ({ oven, orders }) => {
+const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
   const options = [
     { value: "Bánh Cookie", label: "Bánh Cookie" },
     { value: "Bánh Tart", label: "Bánh Tart" },
@@ -177,4 +177,4 @@ const Oven: FC<OvenProps> = ({ oven, orders }) => {
   );
 };
 
-export default Oven;
+export default OvenDetail;

@@ -36,7 +36,11 @@ const SidebarAdmin = () => {
             Đơn hàng
           </button>
 
-          <button type="button" className="btn">
+          <button
+            type="button"
+            className="btn"
+            onClick={() => router.push("/admin/manage-oven")}
+          >
             <svg
               className="icon"
               fill="#ffffff"
