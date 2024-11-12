@@ -19,8 +19,8 @@ import ProductCard from "@/components/product-card/product-card";
 // import Admin from "@/components/Admin/manage-order";
 // import Admin from "@/components/Admin/manage-oven-detail";
 import Admin from "@/components/Admin/manage-topping-detail";
-
-import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
+import LogInSignUp from "@/components/logIn-signUp/logIn-signUp";
+//import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -150,10 +150,11 @@ export default function Home() {
       {/* <Admin manageBake={bakeStatusData}/> */}
       {/* <Admin orders={ordersData}/>  */}
       {/* <Admin ovens={ovensData} /> */}
-      <Admin toppings={toppingsData} />
+      {/* <Admin toppings={toppingsData} /> */}
 
       {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
       {/* <ManageProduct></ManageProduct> */}
+      <LogInSignUp></LogInSignUp>
     </div>
   );
 }
