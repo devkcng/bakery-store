@@ -23,12 +23,7 @@ const LogInSignUp = ()  => {
                         {currentStatus.status}
                     </span>
                     <div className='flex flex-col bg-white h-[100%] border border-white items-center justify-center gap-2 py-5'>
-                     {isLogin ? <LogIn /> : <SignUp/>}
-                        <div>
-                            <button className='bg-[rgb(147,60,30)] m-5 block rounded-[20px] py-[3px] px-10 text-[20px] font-bold text-white'>
-                                {currentStatus.status}
-                            </button>
-                        </div>
+                        {isLogin ? <LogIn /> : <SignUp/>}
                         <div>
                         <span className='text-center font-display text-black text-[18px] font-semibold'>
                             {currentStatus.question}
