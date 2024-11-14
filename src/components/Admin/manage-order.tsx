@@ -1,68 +1,80 @@
 import React, { FC } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap
-import "./manage-order.css";      
+import { Table } from "react-bootstrap"; // Import Table từ react-bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "./manage-order.css";
 
 // Định nghĩa type cho mỗi chi tiết đơn hàng
-type OrderDetail = {
-    ovenID: string;
-    productName: string;
-    status: string;
-    orderedQuantity: string;
-    processingQuantity: string;
-    processedQuantity: string;
-    startTime: string;
-    leftTime: string;
+type OrderInfo = {
+  ovenID: string;
+  productName: string;
+  status: string;
+  orderedQuantity: string;
+  processingQuantity: string;
+  processedQuantity: string;
+  startTime: string;
+  leftTime: string;
 };
 
 // Định nghĩa type cho props của component
 type OrderProps = {
-    orders: OrderDetail[]; // Mảng các đối tượng OrderDetail
+  orderID: string;
+  orders: OrderInfo[];
 };
 
-const Order: FC<OrderProps> = ({ orders }) => {
-    return (
-        <div className="container">
-            <table className="table table-hover">
-                <thead>
-                    <tr className="table-dark">
-                        <th scope="col">ID Lò nướng</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Trạng thái bánh</th>
-                        <th scope="col">SL đã đặt hàng</th>
-                        <th scope="col">SL đang xử lý</th>
-                        <th scope="col">SL đã xử lý (VNĐ)</th>
-                        <th scope="col">Thời gian bắt đầu</th>
-                        <th scope="col">Thời gian kết thúc</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order, index) => (
-                        <tr key={index}>
-                            <td scope="row">{order.ovenID || " "}</td>
-                            <td scope="row">{order.productName || " "}</td>
-                            <td scope="row">{order.status || " "}</td>
-                            <td scope="row">{order.orderedQuantity || " "}</td>
-                            <td scope="row">{order.processingQuantity || " "}</td>
-                            <td scope="row">{order.processedQuantity || " "}</td>
-                            <td scope="row">{order.startTime || " "}</td>
-                            <td scope="row">{order.leftTime || " "}</td>
-                            <td scope="row">
-                                <div className="actionContainer">
-                                    <div className="actionButton">
-                                        <img src="/imgs/iconset/icons8-trash-64.png" alt="Trash" className="h-[30px] w-[30px] mr-7" />
-                                    </div>
-                                    <div className="actionButton">
-                                        <img src="/imgs/iconset/icons8-edit-64.png" alt="Edit" className="h-[25px] w-[25px] mr-7" />
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+const OrderDetail: FC<OrderProps> = ({ orders, orderID = "" }) => {
+  return (
+    <div className="orderdetail_header_container mt-4">
+      <div className="orderdetail_header mb-3 flex justify-between items-baseline w-[150px]">
+        <span className="font-semibold text-2xl">ID Order:</span>
+        <span className="font-bold text-xl">{orderID || "123"}</span>
+      </div>
+      <div className="overflow-y-auto scrollbar-hidden max-h-[550px]">
+        <Table striped bordered hover className="table">
+          <thead>
+            <tr className="table-dark">
+              <th>ID Lò nướng</th>
+              <th>Tên sản phẩm</th>
+              <th>Trạng thái bánh</th>
+              <th>SL đã đặt hàng</th>
+              <th>SL đang xử lý</th>
+              <th>SL đã xử lý</th>
+              <th>Thời gian bắt đầu</th>
+              <th>Thời gian kết thúc</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order, index) => (
+              <tr key={index}>
+                <td>{order.ovenID || " "}</td>
+                <td>{order.productName || " "}</td>
+                <td>{order.status || " "}</td>
+                <td>{order.orderedQuantity || " "}</td>
+                <td>{order.processingQuantity || " "}</td>
+                <td>{order.processedQuantity || " "}</td>
+                <td>{order.startTime || " "}</td>
+                <td>{order.leftTime || " "}</td>
+                <td>
+                  <div className="actionContainer">
+                    <img
+                      src="/imgs/iconset/icons8-trash-64.png"
+                      alt="Trash"
+                      className="h-[30px] w-[30px] mr-3"
+                    />
+                    <img
+                      src="/imgs/iconset/icons8-edit-64.png"
+                      alt="Edit"
+                      className="h-[25px] w-[25px]"
+                    />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </div>
+  );
 };
 
-export default Order;
+export default OrderDetail;

@@ -1,26 +1,14 @@
 "use client";
-import Header from "@/components/header/header";
-import ItemCard, { ItemProps } from "@/components/item-card/item-card";
-import MenuTabs from "@/components/menu-tabs/menu-tabs";
-import SearchBar from "@/components/search-bar/search-bar";
+import { ItemProps } from "@/components/item-card/item-card";
 // import MenuSection from "@/components/section/menu-section";
 
-import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
-import { useCallback, useState } from "react";
-import NavBar from "@/components/header/nav-bar";
-import Footer from "@/components/Footer/footer";
-import HomePage from "./home/page";
-import ItemOrder, { DetailOrder } from "@/components/item-order/item-order";
+import { DetailOrder } from "@/components/item-order/item-order";
 // import OrderInfoSection from "@/components/section/orderInfo-section";
-import AddProduct from "@/components/add-product/add-product";
-import OrderCard from "@/components/order-card/order-card";
-import ProductCard from "@/components/product-card/product-card";
 // import Admin from "@/components/Admin/manage-ingredient-detail";
 // import Admin from "@/components/Admin/manage-order";
 // import Admin from "@/components/Admin/manage-oven-detail";
-import Admin from "@/components/Admin/manage-topping-detail";
 
-import ManageProduct from "@/components/section/admin-manage-product-section/manage-product";
+import BakeStatusOrder from "@/components/Admin/manage-order-detail";
 export default function Home() {
   // const [selectedOption, setSelectedOption] = useState<string>("HTML");
   // const options: string[] = ["HTML", "React", "Vue", "Angular"];
@@ -123,6 +111,48 @@ export default function Home() {
     // Thêm các đối tượng khác vào đây
   ];
   console.log(time);
+  const pseudoBakeStatusData: BakeStatusOrder[] = [
+    {
+      ID: "001",
+      orderCode: "ORD123",
+      completeTime: "14:30",
+      leftTime: "00:45",
+      bakeStatus: "In Progress",
+      detailView: "View Details",
+    },
+    {
+      ID: "002",
+      orderCode: "ORD124",
+      completeTime: "15:00",
+      leftTime: "01:15",
+      bakeStatus: "In Progress",
+      detailView: "View Details",
+    },
+    {
+      ID: "003",
+      orderCode: "ORD125",
+      completeTime: "16:00",
+      leftTime: "02:00",
+      bakeStatus: "Pending",
+      detailView: "View Details",
+    },
+    {
+      ID: "004",
+      orderCode: "ORD126",
+      completeTime: "14:00",
+      leftTime: "00:30",
+      bakeStatus: "Completed",
+      detailView: "View Details",
+    },
+    {
+      ID: "005",
+      orderCode: "ORD127",
+      completeTime: "17:30",
+      leftTime: "03:00",
+      bakeStatus: "Pending",
+      detailView: "View Details",
+    },
+  ];
   return (
     <div>
       {/* <SearchBar className="mt-[50px]" isShow={true}></SearchBar> */}
@@ -150,10 +180,11 @@ export default function Home() {
       {/* <Admin manageBake={bakeStatusData}/> */}
       {/* <Admin orders={ordersData}/>  */}
       {/* <Admin ovens={ovensData} /> */}
-      <Admin toppings={toppingsData} />
+      {/* <Admin toppings={toppingsData} /> */}
 
       {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
       {/* <ManageProduct></ManageProduct> */}
+      {/* <BakeStatusOrder manageBake={pseudoBakeStatusData}></BakeStatusOrder> */}
     </div>
   );
 }

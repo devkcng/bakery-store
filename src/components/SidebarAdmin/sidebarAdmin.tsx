@@ -1,7 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import "./sidebarAdmin.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SidebarAdmin = () => {
+  const router = useRouter();
   return (
     <div>
       <div className="sidebar block">
@@ -19,7 +23,11 @@ const SidebarAdmin = () => {
             />
             Thống kê
           </button>
-          <button type="button" className="btn">
+          <button
+            onClick={() => router.push("/admin/manage-order")}
+            type="button"
+            className="btn"
+          >
             <img
               className="icon"
               src="/imgs/bakery-images/icon-order.png"
@@ -28,15 +36,11 @@ const SidebarAdmin = () => {
             Đơn hàng
           </button>
 
-          <button type="button" className="btn">
-            <img
-              className="icon"
-              src="/imgs/bakery-images/icon-product.png"
-              alt="icon-product"
-            />
-            Kho
-          </button>
-          <button type="button" className="btn">
+          <button
+            type="button"
+            className="btn"
+            onClick={() => router.push("/admin/manage-oven")}
+          >
             <svg
               className="icon"
               fill="#ffffff"
@@ -57,6 +61,31 @@ const SidebarAdmin = () => {
               </g>
             </svg>
             Lò nướng{" "}
+          </button>
+          <button type="button" className="btn inventory ">
+            <img
+              className="icon"
+              src="/imgs/bakery-images/icon-product.png"
+              alt="icon-product"
+            />
+            Kho
+            <ul className="list block">
+              <li className="block w-[auto] h-[40px]  content-center">
+                <span onClick={() => router.push("/admin/manage-product")}>
+                  Bánh
+                </span>
+              </li>
+              <li className="block w-[auto] h-[40px]  content-center">
+                <span onClick={() => router.push("/admin/manage-ingredient")}>
+                  Nguyên liệu
+                </span>
+              </li>
+              <li className="block w-[auto] h-[40px]  content-center">
+                <span onClick={() => router.push("/admin/manage-topping")}>
+                  Toppings
+                </span>
+              </li>
+            </ul>
           </button>
         </div>
       </div>
