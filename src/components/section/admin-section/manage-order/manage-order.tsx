@@ -1,8 +1,8 @@
 "use client";
-import Button from "@/components/button/button";
+import { ItemProps } from "@/components/item-card/item-card";
+import { DetailOrder } from "@/components/item-order/item-order";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import OrderCard from "@/components/order-card/order-card";
-import ProductCard from "@/components/product-card/product-card";
 import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
 import { useState } from "react";
@@ -60,7 +60,7 @@ const ManageOrder = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 flex grid grid-cols-3 gap-5 ">
+        <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 grid grid-cols-3 gap-2 ">
           <OrderCard
             OrderID=""
             timeOrder=""

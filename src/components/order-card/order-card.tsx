@@ -56,7 +56,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
             />
           </div>
         </div>
-        <div className="list-order w-[100%] h-[80%] mt-5 px-0">
+        <div className="list-order w-[100%] h-[80%] mt-1 px-0">
           {/* Phần 2 */}
           {DetailOrders.map((item, index) => (
             <div key={index} className="mb-1 ">
@@ -68,7 +68,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
             </div>
           ))}
         </div>
-        <div className="flex flex-row px-5 py-2 justify-between">
+        <div className="flex flex-row px-3 py-2 justify-between">
           {/* Phần 3 */}
           <div>
             <span className="block font-display text-[15px] font-semibold text-[#797B7E]">
@@ -78,7 +78,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
             </span>{" "}
           </div>
           <div className="flex ">
-            <div className="mr-2">
+            <div className="mr-8">
               <label
                 htmlFor=""
                 className={`${getStatusColor(status)} rounded-md p-1`}
@@ -86,7 +86,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
                 {status}
               </label>
             </div>
-            <a href="#">
+            <a href="/admin/manage-order-detail">
               {" "}
               <svg
                 width="30px"
