@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import type { Metadata } from "next";
 import "./globals.css";
 
