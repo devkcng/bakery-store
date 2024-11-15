@@ -24,7 +24,7 @@ type CartItemProps = {
   product: ProductAttribute; // Thay đổi đây
 };
 
-const CartItem: FC<CartItemProps> = ({ product }) => {
+const DetailProduct: FC<CartItemProps> = ({ product }) => {
   const {
     imagePath,
     itemName,
@@ -137,4 +137,4 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
   );
 };
 
-export default CartItem;
+export default DetailProduct;

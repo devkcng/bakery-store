@@ -11,8 +11,9 @@ const SidebarAdmin = () => {
       <div className="sidebar block">
         <img
           src="/imgs/real-logo-removebg-preview.png"
-          className="Logo"
+          className="Logo cursor-pointer"
           alt="Logo"
+          onClick={() => router.push("/home")}
         />
         <div className="btnContainer">
           <button type="button" className="btn">

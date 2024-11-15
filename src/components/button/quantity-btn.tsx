@@ -60,14 +60,14 @@ const QuantityButton: FC<QuantityButtonProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between w-32 h-10 rounded-full p-1 shadow-lg ${className}`}
+      className={`flex items-center justify-between w-[105px] h-9 rounded-full p-1 shadow-lg ${className}`}
     >
       <button
         onClick={handleDecrement}
-        className="flex items-center justify-center w-8 h-8 bg-red-500 rounded-full text-white"
+        className="flex items-center justify-center w-7 h-7 bg-red-500 rounded-full text-white"
         aria-label="Decrease quantity"
       >
-        <Minus size={20} />
+        <Minus size={15} />
       </button>
       <input
         type="text"
@@ -79,10 +79,10 @@ const QuantityButton: FC<QuantityButtonProps> = ({
       />
       <button
         onClick={handleIncrement}
-        className="flex items-center justify-center w-8 h-8 bg-tertiary rounded-full text-black"
+        className="flex items-center justify-center w-7 h-7 bg-tertiary rounded-full text-black"
         aria-label="Increase quantity"
       >
-        <Plus size={20} />
+        <Plus size={15} />
       </button>
     </div>
   );

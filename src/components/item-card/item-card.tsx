@@ -42,12 +42,12 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
         <div className="flex justify-center items-center mt-10 ">
           <Button
             bgColor="primary"
-            className="rounded-[50px] w-[110px] h-[58px] mr-3 "
+            className="rounded-[50px] w-[110px] h-[58px] mr-3 py-3 px-6"
           >
             <img
               src="/imgs/cart.png"
               alt=""
-              className="inline-flex justify-between items-center"
+              className="inline-flex justify-between items-center "
             />
           </Button>
           <Button

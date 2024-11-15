@@ -1,5 +1,9 @@
 "use client";
+import AddProduct from "@/components/add-product/add-product";
+import Cart from "@/components/cart/Cart";
+import CheckBox from "@/components/checkbox/checkbox";
 import LogInSignUp from "@/components/logIn-signUp/logIn-signUp";
+import OrderInfoSection from "@/components/section/order-info-section/orderInfo-section";
 export default function Home() {
   return (
     <div>
@@ -34,7 +38,17 @@ export default function Home() {
       {/* <ProductCard productInfo={itemInfo} productTopping=""></ProductCard> */}
       {/* <ManageProduct></ManageProduct> */}
       {/* <BakeStatusOrder manageBake={pseudoBakeStatusData}></BakeStatusOrder> */}
-      <LogInSignUp></LogInSignUp>
+      {/* <LogInSignUp></LogInSignUp> */}
+      {/* <OrderInfoSection
+        idOrder="112233"
+        addressBuyer="So 1 Vo Van Ngan"
+        idStatus="Đã giao"
+        nameBuyer="Nguyễn Văn Vũ"
+        note="Giao cho bảo vệ"
+        phonenumber="0327521953"
+        // time={time.toString()}
+      ></OrderInfoSection> */}
+      <CheckBox></CheckBox>
     </div>
   );
 }

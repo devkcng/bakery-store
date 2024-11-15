@@ -39,7 +39,7 @@ const OrderInfoSection: FC<orderInfo> = ({
   );
   return (
     <div id="container">
-      <div className="flex flex-col items-center mt-10 mb-10 ">
+      <div className="flex flex-col items-center mt-5 mb-10 ">
         <SearchBar isShow={true} className="searchBarLarger " />
         <div className="flex flex-row items-end">
           <span className="block font-display text-[14px] font-semibold text-[#797B7E] mt-2">
@@ -70,8 +70,8 @@ const OrderInfoSection: FC<orderInfo> = ({
               </div>
             </div>
           </div>
-          <div className="font-semibold text-red-600 text-[20px] h-[10px] text-center mt-2">
-            {total ? `Đơn hàng: ${total} VND` : "Đơn hàng: 200000 VND"}
+          <div className="font-semibold text-red-500 text-[20px] h-[10px] text-center mt-2">
+            {total < 0 ? `Tổng tiền: ${total} VND` : "Tổng tiền: 200,000 VND"}
           </div>
         </div>
 
