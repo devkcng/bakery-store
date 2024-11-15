@@ -2,7 +2,7 @@
 import Footer from "@/components/Footer/footer";
 import Header from "@/components/header/header";
 import NavBar from "@/components/header/nav-bar";
-import CartItem, {
+import DetailProduct, {
   ProductAttribute,
 } from "@/components/section/detail-product-section/detail-product-section";
 import React from "react";
@@ -43,9 +43,9 @@ const ProductDetail = () => {
   };
   return (
     <div>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col ">
         <NavBar className="bg-black" />
-        <CartItem product={Item}></CartItem>
+        <DetailProduct product={Item}></DetailProduct>
         <div className="mt-[35px]">
           <Footer />
         </div>

@@ -29,7 +29,7 @@ const Button: FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`py-3 px-6 capitalize mt-auto  ${bgClassName} ${className}`}
+      className={` capitalize mt-auto  ${bgClassName} ${className}`}
       {...restProps}
     >
       {children}
