@@ -248,7 +248,10 @@ const ManageTopping = () => {
         <SearchBar isShow={true}></SearchBar>
         <div className=" mt-2 flex items-center justify-between mr-4">
           <div className="font-bold text-[22px] w-[60%] ">Quản lý Toppings</div>
-          <Button className="bg-green-400 rounded-[30px] h-13 " type="button">
+          <Button
+            className="bg-green-400 rounded-[30px] h-10 w-[150px] "
+            type="button"
+          >
             <div className="flex justify-content-center">
               <svg
                 width="25px"

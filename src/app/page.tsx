@@ -4,6 +4,7 @@ import Cart from "@/components/cart/Cart";
 import CheckBox from "@/components/checkbox/checkbox";
 import LogInSignUp from "@/components/logIn-signUp/logIn-signUp";
 import OrderInfoSection from "@/components/section/order-info-section/orderInfo-section";
+import Payment from "@/components/section/payment-section/payment-section";
 export default function Home() {
   return (
     <div>
@@ -48,7 +49,8 @@ export default function Home() {
         phonenumber="0327521953"
         // time={time.toString()}
       ></OrderInfoSection> */}
-      <CheckBox></CheckBox>
+      {/* <CheckBox></CheckBox> */}
+      <Payment></Payment>
     </div>
   );
 }

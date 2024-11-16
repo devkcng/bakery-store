@@ -1,17 +1,19 @@
 .item_order_container {
   display: flex;
-  margin: auto;
+  /* margin: auto; */
   padding-top: 20px;
   margin-bottom: 1%;
   background: white;
   border-radius: 20px;
   height: 160px;
   width: 380px;
+  align-self: center;
   flex-direction: row;
   justify-content: flex-start;
   box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
   -webkit-box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
   -moz-box-shadow: -1px 5px 9px 1px rgba(150, 124, 124, 0.6);
+  margin-bottom: 10px;
 }
 img {
   width: 90%;

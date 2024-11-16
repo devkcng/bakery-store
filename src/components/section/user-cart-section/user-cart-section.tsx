@@ -3,7 +3,10 @@ import Cart from "@/components/cart/Cart";
 import CheckBox from "@/components/checkbox/checkbox";
 import React from "react";
 import "./user-cart-section.css";
+import { useRouter } from "next/navigation";
+
 const ShoppingCart = () => {
+  const router = useRouter();
   return (
     <div className="mt-5 flex flex-col w-[98%] ">
       <div className=" flex mb-5">
@@ -58,12 +61,11 @@ const ShoppingCart = () => {
             className="bg-red-600 rounded-xl text-white w-[130px] text-center h-12"
           >
             <svg
-              className="icon inline mr-1"
+              className="inline mr-"
               width="30px"
               height="30px"
-              viewBox="0 0 1024 1024"
-              fill="#fff"
-              version="1.1"
+              viewBox="0 0 24 24"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -73,15 +75,36 @@ const ShoppingCart = () => {
                 stroke-linejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
+                {" "}
                 <path
-                  d="M512 897.6c-108 0-209.6-42.4-285.6-118.4-76-76-118.4-177.6-118.4-285.6 0-108 42.4-209.6 118.4-285.6 76-76 177.6-118.4 285.6-118.4 108 0 209.6 42.4 285.6 118.4 157.6 157.6 157.6 413.6 0 571.2-76 76-177.6 118.4-285.6 118.4z m0-760c-95.2 0-184.8 36.8-252 104-67.2 67.2-104 156.8-104 252s36.8 184.8 104 252c67.2 67.2 156.8 104 252 104 95.2 0 184.8-36.8 252-104 139.2-139.2 139.2-364.8 0-504-67.2-67.2-156.8-104-252-104z"
-                  fill=""
-                ></path>
+                  d="M20.5001 6H3.5"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                ></path>{" "}
                 <path
-                  d="M707.872 329.392L348.096 689.16l-31.68-31.68 359.776-359.768z"
-                  fill=""
-                ></path>
-                <path d="M328 340.8l32-31.2 348 348-32 32z" fill=""></path>
+                  d="M9.5 11L10 16"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                ></path>{" "}
+                <path
+                  d="M14.5 11L14 16"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                ></path>{" "}
+                <path
+                  d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                ></path>{" "}
+                <path
+                  d="M18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5M18.8334 8.5L18.6334 11.5"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                ></path>{" "}
               </g>
             </svg>
             Xóa tất cả
@@ -327,7 +350,10 @@ const ShoppingCart = () => {
         </div>
       </div>
       <div className="self-center mt-5 ">
-        <Button className="bg-primary w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold">
+        <Button
+          className="bg-primary w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold"
+          onClick={() => router.push("/payment")}
+        >
           <div className="flex justify-between">
             <span className="text-white font-bold text-2xl ml-16">
               Thanh toán :

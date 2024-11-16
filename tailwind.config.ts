@@ -16,7 +16,7 @@ const config: Config = {
         tertiary: "#E9BD8C",
       },
       fontFamily: {
-        display: ["Poppins", "sans-serif"],
+        // display: ["Poppins", "sans-serif"],
         sansita: ["Sansita Swashed", "system-ui"],
       },
     },

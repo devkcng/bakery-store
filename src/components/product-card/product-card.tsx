@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import ItemCard, { ItemProps } from "../item-card/item-card";
 import "./product-card.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 export interface ProductProps {
   productInfo: ItemProps;
