@@ -37,7 +37,7 @@ const Cart = () => {
               </span>
             </div>
             <QuantityButton
-              className=" bg-primary ml-5"
+              className=" bg-primarycolor ml-5"
               textColor="white"
             ></QuantityButton>
           </div>

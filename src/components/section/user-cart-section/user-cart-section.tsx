@@ -10,7 +10,7 @@ const ShoppingCart = () => {
   return (
     <div className="mt-5 flex flex-col w-[98%] ">
       <div className=" flex mb-5">
-        <div className="text-lg font-medium text-left w-[35%] pl-5 text-primary">
+        <div className="text-lg font-medium text-left w-[35%] pl-5 text-primarycolor">
           Đã chọn: <span className="text-lg font-medium text-black">0</span> /{" "}
           <span className="text-lg font-medium text-black">5</span>
         </div>
@@ -351,7 +351,7 @@ const ShoppingCart = () => {
       </div>
       <div className="self-center mt-5 ">
         <Button
-          className="bg-primary w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold"
+          className="bg-primarycolor w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold"
           onClick={() => router.push("/payment")}
         >
           <div className="flex justify-between">

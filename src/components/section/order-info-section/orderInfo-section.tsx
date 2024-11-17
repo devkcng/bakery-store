@@ -38,7 +38,7 @@ const OrderInfoSection: FC<orderInfo> = ({
     0
   );
   return (
-    <div id="container">
+    <div id="order-info-container">
       <div className="flex flex-col items-center mt-5 mb-10 ">
         <SearchBar isShow={true} className="searchBarLarger " />
         <div className="flex flex-row items-end">

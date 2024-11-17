@@ -16,11 +16,11 @@ const Button: FC<ButtonProps> = ({
 }) => {
   let bgClassName = "";
   switch (bgColor) {
-    case "primary":
-      bgClassName = "bg-primary";
+    case "primarycolor":
+      bgClassName = "bg-primarycolor";
       break;
-    case "secondary":
-      bgClassName = "bg-secondary";
+    case "secondarycolor":
+      bgClassName = "bg-secondarycolor";
       break;
     default:
       break;

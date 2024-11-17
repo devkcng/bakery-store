@@ -14,13 +14,19 @@
     "@types/react-datepicker": "^7.0.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.454.0",
     "next": "^14.2.15",
     "react": "^18",
     "react-bootstrap": "^2.10.5",
     "react-datepicker": "^7.5.0",
     "react-dom": "^18",
-    "styled-components": "^6.1.13"
+    "recharts": "^2.13.3",
+    "styled-components": "^6.1.13",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

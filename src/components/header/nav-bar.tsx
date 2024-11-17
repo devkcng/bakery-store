@@ -24,31 +24,31 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
           <a
             href="/admin/manage-product"
-            className="menu text-[#f5f5f5]   text-[18px] ml-[30px]"
+            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Admin
           </a>
           <a
             href="/home#home"
-            className="menu text-[#f5f5f5]   text-[18px] ml-[30px]"
+            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Trang chủ
           </a>
           <a
             href="/home#menu"
-            className="menu text-[#f5f5f5]   text-[18px] ml-[30px]"
+            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Thực đơn
           </a>
           <a
             href="#footer"
-            className="menu text-[#f5f5f5]   text-[18px] ml-[30px]"
+            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Liên hệ
           </a>
           <Link
             href="/order-tracking"
-            className="menu text-[#f5f5f5] font- text-[18px] ml-[30px]"
+            className="menu text-[#f5f5f5] font-medium font- text-[18px] ml-[30px]"
           >
             Tra cứu đơn hàng
           </Link>

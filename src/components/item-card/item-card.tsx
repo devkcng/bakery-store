@@ -41,7 +41,7 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
         {/* Action button : Add to cart and View detail */}
         <div className="flex justify-center items-center mt-10 ">
           <Button
-            bgColor="primary"
+            bgColor="primarycolor"
             className="rounded-[50px] w-[110px] h-[58px] mr-3 py-3 px-6"
           >
             <img
