@@ -219,7 +219,7 @@ const Payment = () => {
             </div>
           </div>
           <div>
-            <Button className=" text-center w-[350px] h-10 bg-primary text-white font-bold rounded-2xl text-2xl p">
+            <Button className=" text-center w-[350px] h-10 bg-primarycolor text-white font-bold rounded-2xl text-2xl p">
               Thanh toán
             </Button>
           </div>

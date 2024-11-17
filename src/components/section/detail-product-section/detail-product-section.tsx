@@ -36,7 +36,7 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
 
   return (
     <div>
-      <div className="container">
+      <div className="detail-product-container">
         <div className="productInfor">
           <div
             style={{
@@ -69,7 +69,7 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
               {itemPrice === "" ? "28.000" : `${itemPrice} VNĐ`}
             </p>
             <QuantityButton
-              className="ml-[25%] bg-primary"
+              className="ml-[25%] bg-primarycolor"
               textColor="white"
             ></QuantityButton>
           </div>

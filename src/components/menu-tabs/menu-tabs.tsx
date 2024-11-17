@@ -26,8 +26,8 @@ const MenuTabs: React.FC<RadioProps> = ({
           <span
             className={` flex cursor-pointer items-center justify-center rounded-md px-2 py-1 transition-all ease-in-out duration-150 ${
               selectedOption === option
-                ? "bg-tertiary font-semibold text-gray-800 "
-                : "text-gray-800 hover:bg-tertiary hover:font-semibold"
+                ? "bg-tertiarycolor font-semibold text-gray-800 "
+                : "text-gray-800 hover:bg-tertiarycolor hover:font-semibold"
             }`}
           >
             {option}

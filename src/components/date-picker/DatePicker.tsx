@@ -92,6 +92,8 @@ const DateSelector: FC<DateSelectorProps> = ({ onDateSelect }) => {
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
+          minDate={new Date()} // Chỉ cho phép chọn từ ngày hôm nay trở đi
+          dateFormat="yyyy-MM-dd"
           customInput={
             <button className="flex items-center space-x-2 bg-[#8B4513] text-white px-4 py-2 rounded-lg">
               <CalendarDays size={20} />

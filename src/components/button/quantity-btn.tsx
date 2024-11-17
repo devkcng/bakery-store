@@ -79,7 +79,7 @@ const QuantityButton: FC<QuantityButtonProps> = ({
       />
       <button
         onClick={handleIncrement}
-        className="flex items-center justify-center w-7 h-7 bg-tertiary rounded-full text-black"
+        className="flex items-center justify-center w-7 h-7 bg-tertiarycolor rounded-full text-black"
         aria-label="Increase quantity"
       >
         <Plus size={15} />
