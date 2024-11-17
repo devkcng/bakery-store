@@ -138,9 +138,14 @@ const ManageIngredient = () => {
           <div className="font-bold text-[22px] w-[60%] ">
             Quản lý nguyên liệu
           </div>
-          <Button className="bg-green-400 rounded-[30px] h-13 " type="button">
-            <div className="flex justify-content-center">
+          <Button
+            className="bg-green-400 rounded-[30px] h-10 w-[110px] px-2 text-center"
+            type="button"
+            onClick={() => router.push("/admin/add-product")}
+          >
+            <div className="flex justify-content-center ">
               <svg
+                className="mr-2"
                 width="25px"
                 height="25px"
                 viewBox="0 0 24 24"

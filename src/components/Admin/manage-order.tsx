@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Table } from "react-bootstrap"; // Import Table từ react-bootstrap
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+// // import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "./manage-order.css";
 
 // Định nghĩa type cho mỗi chi tiết đơn hàng
