@@ -54,14 +54,6 @@ export default function Home() {
       ></OrderInfoSection> */}
       {/* <CheckBox></CheckBox> */}
       {/* <Payment></Payment> */}
-      <div className="flex justify-around items-center">
-        <CardInfo title="Doanh thu" value={1000000000}></CardInfo>
-        <CardInfo title="Chi phí" value={1000000000}></CardInfo>
-        <CardInfo title="Lợi nhuận" value={1000000000}></CardInfo>
-      </div>
-      <div className="flex justify-start mt-10">
-        <Chart></Chart>
-      </div>
     </div>
   );
 }
