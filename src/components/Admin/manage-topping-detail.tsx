@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
+// import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import Table from "react-bootstrap/Table"; // Import Table component từ react-bootstrap
 import "./manage-topping-detail.css";
 

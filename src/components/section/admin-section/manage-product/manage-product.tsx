@@ -3,8 +3,10 @@ import Button from "@/components/button/button";
 import ProductCard from "@/components/product-card/product-card";
 import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import { useRouter } from "next/navigation";
 
 const ManageProduct = () => {
+  const router = useRouter();
   return (
     <div className=" ml-[250px] mt-5 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
@@ -16,11 +18,13 @@ const ManageProduct = () => {
           </div>
 
           <Button
-            className="bg-green-400 rounded-[30px] h-10 w-[150px] "
+            className="bg-green-400 rounded-[30px] h-10 w-[110px] px-2 text-center"
             type="button"
+            onClick={() => router.push("/admin/add-product")}
           >
-            <div className="flex justify-content-center">
+            <div className="flex justify-content-center ">
               <svg
+                className="mr-2"
                 width="25px"
                 height="25px"
                 viewBox="0 0 24 24"

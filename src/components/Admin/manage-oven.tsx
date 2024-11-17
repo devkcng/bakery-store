@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+// import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import React, { FC } from "react";
 import { Table } from "react-bootstrap"; // Import Table từ React Bootstrap
 import "./manage-oven.css";

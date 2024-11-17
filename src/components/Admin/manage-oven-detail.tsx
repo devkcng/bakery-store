@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
+// import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import "./manage-oven-detail.css";
 import Button from "../button/button";
 

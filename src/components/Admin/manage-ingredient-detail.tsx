@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import { Table } from "react-bootstrap"; // Import Table từ React Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+// // import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "./manage-ingredient-detail.css";
 
 type IngredientDetail = {

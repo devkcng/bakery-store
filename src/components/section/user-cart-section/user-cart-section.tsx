@@ -61,7 +61,7 @@ const ShoppingCart = () => {
             className="bg-red-600 rounded-xl text-white w-[130px] text-center h-12"
           >
             <svg
-              className="inline mr-"
+              className="inline mr-2"
               width="30px"
               height="30px"
               viewBox="0 0 24 24"
