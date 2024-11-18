@@ -1,5 +1,7 @@
 "use client";
+import AddIngredient from "@/components/add-product/add-ingredient";
 import AddProduct from "@/components/add-product/add-product";
+import AddTopping from "@/components/add-product/add-topping";
 import Cart from "@/components/cart/Cart";
 import CheckBox from "@/components/checkbox/checkbox";
 import CardInfo from "@/components/dashboard/card-info";
@@ -54,6 +56,8 @@ export default function Home() {
       ></OrderInfoSection> */}
       {/* <CheckBox></CheckBox> */}
       {/* <Payment></Payment> */}
+      <AddIngredient></AddIngredient>
+      <AddTopping></AddTopping>
     </div>
   );
 }

@@ -44,11 +44,13 @@ const Topping: FC<ToppingProps> = ({ toppings }) => {
                     />
                   </div>
                   <div className="actionButton">
-                    <img
-                      src="/imgs/iconset/icons8-edit-64.png"
-                      alt="Edit"
-                      className="h-[25px] w-[25px]"
-                    />
+                    <a href="/admin/add-topping">
+                      <img
+                        src="/imgs/iconset/icons8-edit-64.png"
+                        alt="Edit"
+                        className="h-[25px] w-[25px]"
+                      />
+                    </a>
                   </div>
                 </div>
               </td>
