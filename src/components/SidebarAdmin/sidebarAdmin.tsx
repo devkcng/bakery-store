@@ -16,14 +16,17 @@ const SidebarAdmin = () => {
           onClick={() => router.push("/home")}
         />
         <div className="btnContainer">
-          <button type="button" className="btn">
-            <img
-              className="icon"
-              src="/imgs/bakery-images/iconstatistic.png"
-              alt="icon-statistic"
-            />
-            Thống kê
-          </button>
+          <a href="/admin/dashboard">
+            <button type="button" className="btn">
+              <img
+                className="icon"
+                src="/imgs/bakery-images/iconstatistic.png"
+                alt="icon-statistic"
+              />
+              Thống kê
+            </button>
+          </a>
+
           <button
             onClick={() => router.push("/admin/manage-order")}
             type="button"
