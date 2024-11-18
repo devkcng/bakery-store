@@ -7,6 +7,8 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from "recharts";
 import { ChartConfig, ChartContainer } from "../ui/chart";
+import { Progress } from "@/components/ui/progress";
+
 const Chart = () => {
   const chartData = [
     { month: "January", profit: 186, revenue: 80 },
@@ -27,42 +29,44 @@ const Chart = () => {
     },
   } satisfies ChartConfig;
   return (
-    <div className="max-h-[600px] w-[50%]">
+    <div className="h-[400px] ">
       <div className="m-auto text-center font-semibold text-xl  ">
         Lợi nhuận các tháng trong năm 2024
       </div>
-      <ChartContainer config={chartConfig}>
-        <BarChart accessibilityLayer data={chartData}>
-          {/* <ChartLegend content={<ChartLegendContent />} className="" /> */}
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)}
-          />
-          <YAxis>
-            {/* Tiêu đề cho trục Y */}
-            <Label
-              value="VNĐ"
-              angle={-90}
-              position="insideLeft"
-              className="text-xl"
-              x={2}
+      <div className="flex justify-between h-full">
+        <ChartContainer config={chartConfig}>
+          <BarChart accessibilityLayer data={chartData}>
+            {/* <ChartLegend content={<ChartLegendContent />} className="" /> */}
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value.slice(0, 3)}
             />
-          </YAxis>
-          <ChartTooltip content={<ChartTooltipContent />} />
+            <YAxis>
+              {/* Tiêu đề cho trục Y */}
+              <Label
+                value="VNĐ"
+                angle={-90}
+                position="insideLeft"
+                className="text-xl"
+                x={2}
+              />
+            </YAxis>
+            <ChartTooltip content={<ChartTooltipContent />} />
 
-          <Bar
-            dataKey="profit"
-            fill="var(--color-profit)"
-            radius={5}
-            barSize={70}
-          />
-          {/* <Bar dataKey="revenue" fill="var(--color-revenue)" radius={5} /> */}
-        </BarChart>
-      </ChartContainer>
+            <Bar
+              dataKey="profit"
+              fill="var(--color-profit)"
+              radius={5}
+              barSize={70}
+            />
+            {/* <Bar dataKey="revenue" fill="var(--color-revenue)" radius={5} /> */}
+          </BarChart>
+        </ChartContainer>
+      </div>
     </div>
   );
 };
