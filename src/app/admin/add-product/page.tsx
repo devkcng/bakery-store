@@ -1,11 +1,12 @@
 "use client";
-import AddProduct from "@/components/add-product/add-product";
-import React from "react";
+import AddBake from "@/components/add-product/add-bake";
+import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
 
 const page = () => {
   return (
-    <div>
-      <AddProduct></AddProduct>
+    <div className=" ml-[250px] mt-5 pl-[10px] ">
+      <SidebarAdmin></SidebarAdmin>
+      <AddBake></AddBake>
     </div>
   );
 };
