@@ -43,7 +43,7 @@ const ManageOrderDetail = () => {
     {
       ovenID: "OV004",
       productName: "Bánh kem",
-      status: "Chờ xử lý",
+      status: "Đã hoàn thành",
       orderedQuantity: "30",
       processingQuantity: "0",
       processedQuantity: "0",
@@ -63,7 +63,7 @@ const ManageOrderDetail = () => {
     {
       ovenID: "OV006",
       productName: "Bánh bông lan",
-      status: "Đang hoàn tất",
+      status: "Đang chuẩn bị",
       orderedQuantity: "75",
       processingQuantity: "30",
       processedQuantity: "35",
@@ -93,7 +93,7 @@ const ManageOrderDetail = () => {
     {
       ovenID: "OV009",
       productName: "Bánh mochi",
-      status: "Chờ xử lý",
+      status: "Đã hoàn thành",
       orderedQuantity: "40",
       processingQuantity: "0",
       processedQuantity: "0",
