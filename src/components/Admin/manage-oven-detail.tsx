@@ -1,8 +1,14 @@
 import React, { FC, useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
-import "./manage-oven-detail.css";
 import Button from "../button/button";
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 // Định nghĩa type cho từng chi tiết lò nướng
 type OvenDetailInfo = {
   ovenID: string;
@@ -85,11 +91,12 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
         </div>
         {/* Nếu lò nướng đang trống thì nút này mới xuất hiện, còn nếu lò nướng đang chứa bánh thì nút này sẽ bị ẩn */}
         <Button
-          className="bg-green-400 rounded-[30px] h-13 mr-4 "
+          className="bg-green-400 rounded-[30px] h-10 w-[110px] mr-3 px-2 text-center"
           type="button"
         >
-          <div className="flex justify-content-center">
+          <div className="flex justify-content-center ">
             <svg
+              className="mr-2"
               width="25px"
               height="25px"
               viewBox="0 0 24 24"
@@ -135,45 +142,42 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
         </Button>
       </div>
       <div className="overflow-y-auto scrollbar-hidden max-h-[380px]">
-        <table className="table">
-          <thead>
-            <tr className="table-dark">
-              <th scope="col">Mã đơn</th>
-              <th scope="col">Số lượng</th>
-              <th scope="col">Thời gian hoàn thành</th>
-              <th scope="col">Thời gian còn lại</th>
-              <th scope="col">&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[200px] font-bold  text-primarycolor text-lg">
+                Mã đơn
+              </TableHead>
+              <TableHead className="w-[200px] font-bold  text-primarycolor text-lg">
+                Số lượng
+              </TableHead>
+              <TableHead className=" font-bold w-[350px]  text-primarycolor text-lg">
+                Thời gian hoàn thành
+              </TableHead>
+              <TableHead className=" font-bold w-[350px] text-primarycolor text-lg">
+                Thời gian còn lại
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {orders.map((order, index) => (
-              <tr key={index}>
-                <td scope="row">{order.orderID || " "}</td>
-                <td scope="row">{order.quantity || " "}</td>
-                <td scope="row">{order.completeTime || " "}</td>
-                <td scope="row">{order.remainingTime || " "}</td>
-                <td scope="row">
-                  <div className="actionContainer flex justify-center items-baseline">
-                    <div className="actionButton">
-                      <img
-                        src="/imgs/iconset/icons8-trash-64.png"
-                        alt="Trash"
-                        className="h-[30px] w-[30px] mr-7"
-                      />
-                    </div>
-                    <div className="actionButton">
-                      <img
-                        src="/imgs/iconset/icons8-edit-64.png"
-                        alt="Edit"
-                        className="h-[25px] w-[25px]"
-                      />
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              <TableRow key={index}>
+                <TableCell className="w-[150px]">
+                  {order.orderID || " "}
+                </TableCell>
+                <TableCell className="w-[150px]">
+                  {order.quantity || " "}
+                </TableCell>
+                <TableCell className="w-[150px]">
+                  {order.completeTime || " "}
+                </TableCell>
+                <TableCell className="w-[150px]">
+                  {order.remainingTime || " "}
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );
