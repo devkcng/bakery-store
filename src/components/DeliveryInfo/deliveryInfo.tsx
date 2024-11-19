@@ -1,108 +1,152 @@
-import React, { FormEvent, useState } from "react";
+"use client";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { useRouter } from "next/navigation";
-// Import các component từ ShadCN UI
-import "./deliveryInfo.css";
 
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+// Định nghĩa schema validation với Zod
+const deliverySchema = z.object({
+  fullName: z.string().min(1, { message: "Họ và tên người nhận là bắt buộc." }),
+  streetName: z.string().min(1, { message: "Tên đường là bắt buộc." }),
+  district: z.string().min(1, { message: "Quận là bắt buộc." }),
+  ward: z.string().min(1, { message: "Phường là bắt buộc." }),
+  phoneNumber: z
+    .string()
+    .min(10, { message: "Số điện thoại phải có ít nhất 10 chữ số." }),
+  note: z.string().optional(),
+});
 
 const DeliveryInfo = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    streetName: "",
-    district: "",
-    ward: "",
-    phoneNumber: "",
-    note: "",
-  });
   const router = useRouter();
+  const form = useForm<z.infer<typeof deliverySchema>>({
+    resolver: zodResolver(deliverySchema),
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault(); // Ngừng hành động mặc định (gửi form)
-
-    // Log form data (hoặc có thể thực hiện hành động khác như gửi API)
-    console.log(formData);
-
-    // Sau khi ngừng gửi form, thực hiện điều hướng
+  // Hàm xử lý submit form
+  function onSubmit(values: z.infer<typeof deliverySchema>) {
+    console.log(values);
     router.push("/payment");
-  };
+  }
 
   return (
     <div>
       <div className="deliveryInfoContainer flex flex-col items-center">
-        <form className="formInfo" onSubmit={handleSubmit}>
-          <h1>Thông tin đặt hàng</h1>
-
-          <div className="formGroup">
-            <Input
+        <div className="text-3xl font-bold tracking-wide mt-5 mb-5">
+          Thông tin giao hàng
+        </div>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-1 w-[350px]"
+          >
+            {/* Tên người nhận */}
+            <FormField
+              control={form.control}
               name="fullName"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Họ và tên người nhận"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tên người nhận</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập tên người nhận" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div className="formGroup">
-            <Input
+            {/* Tên đường */}
+            <FormField
+              control={form.control}
               name="streetName"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Tên đường"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tên đường</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập tên đường" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div className="formGroup">
-            <Input
+            {/* Quận */}
+            <FormField
+              control={form.control}
               name="district"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Quận"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Quận</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập quận" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div className="formGroup">
-            <Input
+            {/* Phường */}
+            <FormField
+              control={form.control}
               name="ward"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Phường"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phường</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập phường" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div className="formGroup">
-            <Input
+            {/* Số điện thoại */}
+            <FormField
+              control={form.control}
               name="phoneNumber"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Số điện thoại nhận hàng"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Số điện thoại</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập số điện thoại" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div className="formGroup">
-            <Input
+            {/* Ghi chú */}
+            <FormField
+              control={form.control}
               name="note"
-              className="inputInfo"
-              type="text"
-              onChange={handleChange}
-              placeholder="Ghi chú"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Ghi chú (tùy chọn)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Nhập ghi chú (nếu có)" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          {/* Sử dụng Button của ShadCN UI */}
-          <Button className="btnNext" type="submit">
-            Tiếp tục
-          </Button>
-        </form>
+            {/* Nút submit */}
+            <div className="inline-flex justify-center w-full">
+              <Button type="submit" className="bg-primarycolor w-[50%]">
+                Tiếp tục
+              </Button>
+            </div>
+          </form>
+        </Form>
       </div>
     </div>
   );
