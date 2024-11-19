@@ -5,7 +5,9 @@ import ItemOrder from "@/components/item-order/item-order";
 import "./payment-section.css";
 import { formatVND } from "@/utils/formatCurrency";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-const clientId: string = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.toString();
+const clientId: string | undefined =
+  process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.toString();
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Payment = () => {
   // const time = new Date("2022-01-01T12:00:00").toLocaleString("en-GB", {
@@ -22,16 +24,16 @@ const Payment = () => {
   const sampleItemTopping = "Nho khô, hạnh nhân"; // Các loại topping
   return (
     <div>
-      {/* <div className="text-3xl font-extrabold m-auto mb-10 mt-5 text-center">
+      <div className="text-3xl font-extrabold m-auto mb-5 mt-5 text-center">
         Thanh toán
-      </div> */}
+      </div>
       <div className="flex justify-between items-start mt-5">
         <div className="flex flex-col w-[50%] justify-center items-center ">
           <div className="font-semibold text-2xl tracking-[0.2rem] mb-2">
             Thông tin đơn hàng
           </div>
           <div className="">
-            <div className="list-order min-h-[530px] self-center flex flex-col p-5">
+            <div className="list-order min-h-[360px] self-center flex flex-col p-5">
               <div className="">
                 <ItemOrder
                   itemInfo={sampleItemInfo}
@@ -74,7 +76,7 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        <div className="flex-col mx-auto my-auto ">
+        <div className="flex-col mx-auto  ">
           <div className="font-semibold text-2xl tracking-[0.1rem] mb-2 text-center">
             Thông tin giao hàng
           </div>
