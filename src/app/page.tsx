@@ -11,6 +11,7 @@ import { Component } from "@/components/dashboard/dashboard";
 import LogInSignUp from "@/components/logIn-signUp/logIn-signUp";
 import OrderInfoSection from "@/components/section/order-info-section/orderInfo-section";
 import Payment from "@/components/section/payment-section/payment-section";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 export default function Home() {
   return (
     <div>
@@ -57,7 +58,7 @@ export default function Home() {
       ></OrderInfoSection> */}
       {/* <CheckBox></CheckBox> */}
       {/* <Payment></Payment> */}
-      <AddBake></AddBake>
+      {/* <AddBake></AddBake> */}
     </div>
   );
 }
