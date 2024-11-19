@@ -353,7 +353,7 @@ const ShoppingCart = () => {
       <div className="self-center mt-5 ">
         <Button
           className="bg-primarycolor w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold"
-          onClick={() => router.push("/payment")}
+          onClick={() => router.push("/delivery-info")}
         >
           <div className="flex justify-between">
             <span className="text-white font-bold text-2xl ml-16">
