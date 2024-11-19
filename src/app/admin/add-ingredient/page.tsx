@@ -1,6 +1,6 @@
 "use client";
 import AddIngredient from "@/components/add-product/add-ingredient";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import React from "react";
 
 const AddIngredientPage = () => {

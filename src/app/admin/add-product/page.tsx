@@ -1,6 +1,6 @@
 "use client";
 import AddBake from "@/components/add-product/add-bake";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const page = () => {
   return (

@@ -1,7 +1,7 @@
 "use client";
 import CardInfo from "@/components/dashboard/card-info";
 import Chart from "@/components/dashboard/chart";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import { Progress } from "@/components/ui/progress";
 import { CalendarDays } from "lucide-react";
 import React, { useState } from "react";
