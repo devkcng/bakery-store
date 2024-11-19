@@ -4,6 +4,7 @@ import CheckBox from "@/components/checkbox/checkbox";
 import React from "react";
 import "./user-cart-section.css";
 import { useRouter } from "next/navigation";
+import { formatVND } from "@/utils/formatCurrency";
 
 const ShoppingCart = () => {
   const router = useRouter();
@@ -359,7 +360,7 @@ const ShoppingCart = () => {
               Thanh toán :
             </span>
             <span className="text-white font-bold text-2xl mr-16">
-              894,000 VNĐ
+              {formatVND(849000)}
             </span>
           </div>
         </Button>

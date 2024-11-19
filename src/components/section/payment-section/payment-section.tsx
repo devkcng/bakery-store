@@ -3,6 +3,7 @@ import Button from "@/components/button/button";
 import { ItemProps } from "@/components/item-card/item-card";
 import ItemOrder from "@/components/item-order/item-order";
 import "./payment-section.css";
+import { formatVND } from "@/utils/formatCurrency";
 const Payment = () => {
   const time = new Date("2022-01-01T12:00:00").toLocaleString("en-GB", {
     timeZone: "Asia/Ho_Chi_Minh",
@@ -87,13 +88,13 @@ const Payment = () => {
             Chi tiết thanh toán
           </div>
           <div className="font-light text-lg ml-[18%]">
-            Tổng tiền hàng: <span>789,000 VNĐ</span>
+            Tổng tiền hàng: <span>{formatVND(789000)}</span>
           </div>
           <div className="font-light text-lg ml-[18%]">
-            Phí vận chuyển: <span>30,000 VNĐ</span>
+            Phí vận chuyển: <span>{formatVND(30000)}</span>
           </div>
           <div className="font-light text-lg ml-[18%]">
-            Tổng thanh toán: <span>819,000 VNĐ</span>
+            Tổng thanh toán: <span>{formatVND(819000)} </span>
           </div>
           <div className="font-semibold text-2xl mb-2 mt-2 text-center">
             Chọn phương thức thanh toán
