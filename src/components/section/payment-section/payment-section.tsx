@@ -5,9 +5,9 @@ import ItemOrder from "@/components/item-order/item-order";
 import "./payment-section.css";
 import { formatVND } from "@/utils/formatCurrency";
 const Payment = () => {
-  const time = new Date("2022-01-01T12:00:00").toLocaleString("en-GB", {
-    timeZone: "Asia/Ho_Chi_Minh",
-  });
+  // const time = new Date("2022-01-01T12:00:00").toLocaleString("en-GB", {
+  //   timeZone: "Asia/Ho_Chi_Minh",
+  // });
   const sampleItemInfo: ItemProps = {
     itemName: "Bánh Muffin",
     itemPrice: 28000, // Giá sản phẩm
@@ -17,7 +17,6 @@ const Payment = () => {
   // Define other props
   const sampleItemCount = 2; // Số lượng sản phẩm
   const sampleItemTopping = "Nho khô, hạnh nhân"; // Các loại topping
-  const sampleClassName = "custom-class"; // Optional className for styling
   return (
     <div>
       <div className="text-3xl font-extrabold m-auto mb-10 mt-5 text-center">

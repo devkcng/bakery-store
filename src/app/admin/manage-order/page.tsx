@@ -4,7 +4,7 @@ import { DetailOrder } from "@/components/item-order/item-order";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import OrderCard from "@/components/order-card/order-card";
 import SearchBar from "@/components/search-bar/search-bar";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import { useState } from "react";
 const ManageOrder = () => {
   const options = [

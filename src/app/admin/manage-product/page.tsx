@@ -2,7 +2,7 @@
 import Button from "@/components/button/button";
 import ProductCard from "@/components/product-card/product-card";
 import SearchBar from "@/components/search-bar/search-bar";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import { useRouter } from "next/navigation";
 
 const ManageProduct = () => {

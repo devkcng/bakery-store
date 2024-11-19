@@ -1,6 +1,6 @@
 "use client";
 import AddTopping from "@/components/add-product/add-topping";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const AddToppingPage = () => {
   return (

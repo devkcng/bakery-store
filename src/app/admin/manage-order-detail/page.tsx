@@ -1,7 +1,7 @@
 "use client";
-import OrderDetail from "@/components/Admin/manage-order";
+import OrderDetail from "@/components/admin/manage-order";
 import SearchBar from "@/components/search-bar/search-bar";
-import SidebarAdmin from "@/components/SidebarAdmin/sidebarAdmin";
+import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const ManageOrderDetail = () => {
   const pseudoData = [

@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import "./header.css";
+
 type NavBarProps = {
   className?: string;
 };
@@ -24,37 +26,37 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
           <a
             href="/admin/manage-product"
-            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
+            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Admin
           </a>
           <a
             href="/home#home"
-            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
+            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Trang chủ
           </a>
           <a
             href="/home#menu"
-            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
+            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Thực đơn
           </a>
           <a
             href="#footer"
-            className="menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
+            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Liên hệ
           </a>
           <Link
             href="/order-tracking"
-            className="menu text-[#f5f5f5] font-medium font- text-[18px] ml-[30px]"
+            className="nav-menu text-[#f5f5f5] font-medium font- text-[18px] ml-[30px]"
           >
             Tra cứu đơn hàng
           </Link>
           <svg
             onClick={() => router.push("/shopping-cart")}
-            className="menu logo p-0 object-cover cursor-pointer ml-[30px]"
+            className="nav-menu logo p-0 object-cover cursor-pointer ml-[30px]"
             width="55px"
             height="50px"
             viewBox="0 -0.5 25 25"
