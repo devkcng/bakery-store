@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import styled from "styled-components";
 type OvenProps = {
   ovenID: string;
   orderID: string[];
@@ -19,6 +20,20 @@ type OvenProps = {
 type OvenInfo = {
   info: OvenProps[];
 };
+const StatusCell = styled.div<{ status: string }>`
+  padding: 8px 5px;
+  width: auto;
+  border-radius: 30px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  background-color: ${({ status }) =>
+    status === "Đang xử lý"
+      ? "#f6dc49"
+      : status === "Hoàn thành"
+      ? "#5cf061"
+      : "#f65c5c"};
+`;
 
 const Oven: FC<OvenInfo> = ({ info }) => {
   return (
@@ -29,7 +44,7 @@ const Oven: FC<OvenInfo> = ({ info }) => {
             <TableHead className="w-[150px] font-bold  text-primarycolor text-lg">
               Mã lò
             </TableHead>
-            <TableHead className="w-[450px] font-bold  text-primarycolor text-lg">
+            <TableHead className="w-[350px] font-bold  text-primarycolor text-lg">
               Mã đơn hàng đang được xử lý
             </TableHead>
             <TableHead className=" font-bold  text-primarycolor text-lg">
@@ -53,7 +68,11 @@ const Oven: FC<OvenInfo> = ({ info }) => {
                     ))
                   : "Không có đơn hàng"}
               </TableCell>
-              <TableCell className="w-[150px]">{item.status || " "}</TableCell>
+              <TableCell className="w-[100px]">
+                <StatusCell status={item.status}>
+                  {item.status || " "}
+                </StatusCell>
+              </TableCell>
               <TableCell className="w-[150px]">
                 <a href="/admin/manage-oven-detail" className="underline">
                   Xem chi tiết

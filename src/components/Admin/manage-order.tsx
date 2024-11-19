@@ -132,7 +132,7 @@ const OrderDetail: FC<OrderProps> = ({ orders, orderID = "" }) => {
                   {order.productName || " "}
                 </TableCell>
                 <TableCell className="w-[250px]">
-                  <StatusCell status={order.status || "Còn lại"}>
+                  <StatusCell status={order.status}>
                     {order.status || " "}
                   </StatusCell>
                 </TableCell>
