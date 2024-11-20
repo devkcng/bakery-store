@@ -37,7 +37,7 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
         </span>{" "}
         {/* Item price */}
         <span className="block text-center font-display text-[25px] font-semibold text-[#EB953C] mt-4">
-          {itemPrice < 0 ? formatVND(itemPrice) : " "}
+          {itemPrice === 0 ? formatVND(itemPrice) : "200,000 VNĐ "}
         </span>
         {/* Action button : Add to cart and View detail */}
         <div className="flex justify-center items-center mt-10 ">
