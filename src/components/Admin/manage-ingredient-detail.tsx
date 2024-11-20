@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
+import { formatVND } from "@/utils/formatCurrency";
 // // import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import {
   Table,
@@ -14,7 +15,7 @@ type IngredientDetail = {
   ingredientName: string;
   quantity: string;
   unit: string;
-  ingredientPrice: string;
+  ingredientPrice: number;
 };
 
 type IngredientDetailProp = {
@@ -138,7 +139,7 @@ const IngredientDetail: FC<IngredientDetailProp> = ({ detail }) => {
                 {details.unit || " "}
               </TableCell>
               <TableCell className="w-[150px] ">
-                {details.ingredientPrice || " "}
+              {details.ingredientPrice ? formatVND(details.ingredientPrice) : " "}
               </TableCell>
               <TableCell className="w-[150px] ">
                 <div className="actionContainer flex align-items-center">

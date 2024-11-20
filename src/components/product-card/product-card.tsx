@@ -2,6 +2,8 @@
 import React, { FC } from "react";
 import ItemCard, { ItemProps } from "../item-card/item-card";
 import "./product-card.css";
+import { formatVND } from "@/utils/formatCurrency";
+
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 export interface ProductProps {
@@ -39,8 +41,8 @@ const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
       <div className="pl-20 ml-20">
         <span className="block font-display text-[18px] font-semibold text-black mt-4">
           {productInfo?.itemPrice === 0
-            ? `Đơn giá: ${productInfo.itemPrice} VNĐ`
-            : `Đơn giá: 28000 VNĐ`}
+          ? `Đơn giá: ${formatVND(productInfo.itemPrice)}`
+          : `Đơn giá: ${formatVND(28000)}`}
         </span>
         <div className="flex flex-row justify-end space-x-2 mt-2">
           <svg
