@@ -4,17 +4,18 @@ import "./detail-product-section.css";
 import QuantityButton from "../../button/quantity-btn";
 import DateSelector from "../../date-picker/DatePicker";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
+import { formatVND } from "@/utils/formatCurrency";
 
 type Topping = {
   toppingId: string; // Mã topping
   toppingName: string; // Tên topping
-  toppingPrice: string; // Giá topping
+  toppingPrice: number; // Giá topping
 };
 
 export type ProductAttribute = {
   imagePath: string;
   itemName: string;
-  itemPrice: string;
+  itemPrice: number;
   toppings: Topping[]; // Mảng các topping
   itemDescription: string;
   relatedProduct: ItemProps[];
@@ -66,7 +67,7 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
           <p id="txtName">{`${itemName === "" ? "Bánh muffin" : itemName}`}</p>
           <div className="flex justify-start items-baseline">
             <p id="txtPrice">
-              {itemPrice === "" ? "28.000" : `${itemPrice} VNĐ`}
+            {itemPrice === 0 ? formatVND(28000) : formatVND(itemPrice)}
             </p>
             <QuantityButton
               className="ml-[25%] bg-primarycolor"
@@ -86,12 +87,13 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
                 <div key={item.toppingId}>
                   <div className="topptingAttributeContainer flex items-baseline">
                     <div className="topptingAttribute">{`${
-                      item.toppingName === "" ? "Nho khô" : item.toppingName
-                    }`}</div>
+                      item.toppingName === "" ? "Nho khô" : item.toppingName}`}</div>
                     <div className="topptingAttribute">
-                      {item.toppingPrice === ""
-                        ? "10.000"
-                        : `${item.toppingPrice} VNĐ`}
+                      <span>
+                      {item.toppingPrice === 0 
+                      ? formatVND(10000) 
+                      : formatVND(item.toppingPrice)}
+                      </span>
                     </div>
                     <div className="topptingAttribute">
                       <QuantityButton className="border border-black "></QuantityButton>

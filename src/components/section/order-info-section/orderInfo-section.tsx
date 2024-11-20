@@ -3,6 +3,8 @@ import "./orderInfo.css";
 import ItemOrder, { DetailOrder } from "../../item-order/item-order";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
 import SearchBar from "../../search-bar/search-bar";
+import { formatVND } from "@/utils/formatCurrency";
+
 const itemInfo: ItemProps = {
   imagePath: "", // Đường dẫn đến ảnh
   itemName: "", // Tên món
@@ -71,7 +73,7 @@ const OrderInfoSection: FC<orderInfo> = ({
             </div>
           </div>
           <div className="font-semibold text-red-500 text-[20px] h-[10px] text-center mt-2">
-            {total < 0 ? `Tổng tiền: ${total} VND` : "Tổng tiền: 200,000 VND"}
+            <span>{total < 0 ? `Tổng tiền: ${formatVND(total)} ` : `Tổng tiền: ${formatVND(200000)}`}</span>
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import QuantityButton from "../button/quantity-btn";
-
+import { formatVND } from "@/utils/formatCurrency";
 const Cart = () => {
   return (
     <div>
@@ -33,7 +33,7 @@ const Cart = () => {
                 Bánh Sừng Trâu
               </span>
               <span className="block text-lg font-bold text-[#eb953c]">
-                28,000 VNĐ
+               {formatVND(28000)}
               </span>
             </div>
             <QuantityButton
@@ -54,7 +54,7 @@ const Cart = () => {
                 {/* {item.toppingPrice === ""
                   ? "10.000"
                   : `${item.toppingPrice} VNĐ`} */}
-                10,000 VNĐ
+               <span>{formatVND(10000)}</span>
               </div>
               <div className="topptingAttribute ml-4">
                 <QuantityButton className="border border-black "></QuantityButton>
@@ -72,7 +72,7 @@ const Cart = () => {
                 {/* {item.toppingPrice === ""
                   ? "10.000"
                   : `${item.toppingPrice} VNĐ`} */}
-                10,000 VNĐ
+                <span>{formatVND(10000)}</span>
               </div>
               <div className="topptingAttribute ml-4">
                 <QuantityButton className="border border-black "></QuantityButton>
@@ -87,7 +87,7 @@ const Cart = () => {
             Tổng:{" "}
           </span>
           <span className="font-bold text-3xl text-red-500 text-center">
-            300,000 VNĐ
+          {formatVND(30000)}
           </span>
         </div>
       </div>

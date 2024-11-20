@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
+import { formatVND } from "@/utils/formatCurrency";
+
 // import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import {
   Table,
@@ -15,7 +17,7 @@ import {
 export type ToppingDetail = {
   iD: string;
   toppingName: string;
-  toppingPrice: string;
+  toppingPrice: number;
 };
 
 // Định nghĩa type cho props của component
@@ -86,7 +88,7 @@ const Topping: FC<ToppingProps> = ({ toppings }) => {
             <TableRow key={index}>
               <TableCell>{topping.iD || " "}</TableCell>
               <TableCell>{topping.toppingName || " "}</TableCell>
-              <TableCell>{topping.toppingPrice || " "}</TableCell>
+              <TableCell>{topping.toppingPrice ? formatVND(topping.toppingPrice) : " "}</TableCell>
               <TableCell>
                 <div className="actionContainer flex align-items-center">
                   <div className="actionButton mr-3">

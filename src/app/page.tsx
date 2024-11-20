@@ -1,13 +1,13 @@
 "use client";
 import AddBake from "@/components/add-product/add-bake";
 import AddIngredient from "@/components/add-product/add-ingredient";
-import AddProduct from "@/components/add-product/add-product";
+// import AddProduct from "@/components/add-product/add-product";
 import AddTopping from "@/components/add-product/add-topping";
 import Cart from "@/components/cart/Cart";
 import CheckBox from "@/components/checkbox/checkbox";
 import CardInfo from "@/components/dashboard/card-info";
 import Chart from "@/components/dashboard/chart";
-import { Component } from "@/components/dashboard/dashboard";
+// import { Component } from "@/components/dashboard/dashboard";
 import LogInSignUp from "@/components/logIn-signUp/logIn-signUp";
 import OrderInfoSection from "@/components/section/order-info-section/orderInfo-section";
 import Payment from "@/components/section/payment-section/payment-section";
