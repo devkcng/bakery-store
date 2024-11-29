@@ -35,7 +35,7 @@ const DeliveryInfo = () => {
   // Hàm xử lý submit form
   function onSubmit(values: z.infer<typeof deliverySchema>) {
     console.log(values);
-    router.push("/payment");
+    window.location.href = "/payment";
   }
 
   return (

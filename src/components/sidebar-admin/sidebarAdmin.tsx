@@ -13,7 +13,7 @@ const SidebarAdmin = () => {
           src="/imgs/real-logo-removebg-preview.png"
           className="Logo cursor-pointer"
           alt="Logo"
-          onClick={() => router.push("/home")}
+          onClick={() => (window.location.href = "/home")}
         />
         <div className="btnContainer">
           <a href="/admin/dashboard">
@@ -28,7 +28,7 @@ const SidebarAdmin = () => {
           </a>
 
           <button
-            onClick={() => router.push("/admin/manage-order")}
+            onClick={() => (window.location.href = "/admin/manage-order")}
             type="button"
             className="btn"
           >
@@ -43,7 +43,7 @@ const SidebarAdmin = () => {
           <button
             type="button"
             className="btn"
-            onClick={() => router.push("/admin/manage-oven")}
+            onClick={() => (window.location.href = "/admin/manage-oven")}
           >
             <svg
               className="icon"
@@ -75,17 +75,29 @@ const SidebarAdmin = () => {
             Kho
             <ul className="list block">
               <li className="block w-[auto] h-[40px]  content-center">
-                <span onClick={() => router.push("/admin/manage-product")}>
+                <span
+                  onClick={() =>
+                    (window.location.href = "/admin/manage-product")
+                  }
+                >
                   Bánh
                 </span>
               </li>
               <li className="block w-[auto] h-[40px]  content-center">
-                <span onClick={() => router.push("/admin/manage-ingredient")}>
+                <span
+                  onClick={() =>
+                    (window.location.href = "/admin/manage-ingredient")
+                  }
+                >
                   Nguyên liệu
                 </span>
               </li>
               <li className="block w-[auto] h-[40px]  content-center">
-                <span onClick={() => router.push("/admin/manage-topping")}>
+                <span
+                  onClick={() =>
+                    (window.location.href = "/admin/manage-topping")
+                  }
+                >
                   Toppings
                 </span>
               </li>

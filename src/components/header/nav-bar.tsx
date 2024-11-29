@@ -20,7 +20,7 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
             src="/imgs/real-logo-removebg-preview.png"
             className="logo w-[100px] h-[80px] object-cover cursor-pointer"
             alt="Logo"
-            onClick={() => router.push("/home")}
+            onClick={() => (window.location.href = "/home")}
           />
         </div>
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
@@ -48,14 +48,14 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
           >
             Liên hệ
           </a>
-          <Link
+          <a
             href="/order-tracking"
             className="nav-menu text-[#f5f5f5] font-medium font- text-[18px] ml-[30px]"
           >
             Tra cứu đơn hàng
-          </Link>
+          </a>
           <svg
-            onClick={() => router.push("/shopping-cart")}
+            onClick={() => (window.location.href = "/shopping-cart")}
             className="nav-menu logo p-0 object-cover cursor-pointer ml-[30px]"
             width="55px"
             height="50px"

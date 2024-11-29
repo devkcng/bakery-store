@@ -20,7 +20,7 @@ const ManageProduct = () => {
           <Button
             className="bg-green-400 rounded-[30px] h-10 w-[110px] px-2 text-center"
             type="button"
-            onClick={() => router.push("/admin/add-product")}
+            onClick={() => (window.location.href = "/admin/add-product")}
           >
             <div className="flex justify-content-center ">
               <svg

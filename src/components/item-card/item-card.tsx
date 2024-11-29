@@ -51,12 +51,14 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
               className="inline-flex justify-between items-center "
             />
           </Button>
-          <Button
-            className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold"
-            onClick={() => router.push("/product")}
-          >
-            Xem chi tiết
-          </Button>
+          <a href="/product">
+            <Button
+              className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold"
+              onClick={() => (window.location.href = "/product")}
+            >
+              Xem chi tiết
+            </Button>
+          </a>
         </div>
       </div>
     </>

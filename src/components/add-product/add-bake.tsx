@@ -71,7 +71,7 @@ const AddBake = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-2">
+    <div className="flex flex-col items-center mt-5 ">
       <span className="text-3xl font-bold tracking-[0.2rem] text-center mb-5">
         Thêm bánh
       </span>
@@ -82,6 +82,7 @@ const AddBake = () => {
         >
           <div className="flex justify-around items-center">
             {/* Upload image for bake section */}
+
             <div className="h-[300px] w-[300px] rounded-lg shadow-[4px_4px_30px_rgba(0,0,0,0.2)] flex flex-col items-center justify-between p-2.5 gap-1.5 ">
               <div className="flex-1 w-full border-2 border-dashed border-royalblue rounded-lg flex flex-col items-center justify-center">
                 <img
@@ -203,6 +204,31 @@ const AddBake = () => {
                       <SelectItem value="Bơ">Bơ</SelectItem>
                       <SelectItem value="Đường">Đường</SelectItem>
                       <SelectItem value="Sữa">Sữa</SelectItem>
+                      <SelectItem value="Trứng">Trứng</SelectItem>
+                      <SelectItem value="Bột mì">Bột mì</SelectItem>
+                      <SelectItem value="Bột ca cao">Bột ca cao</SelectItem>
+                      <SelectItem value="Muối">Muối</SelectItem>
+                      <SelectItem value="Đường nâu">Đường nâu</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
+                      <SelectItem value="Vani">Vani</SelectItem>
                     </SelectContent>
                   </Select>
                   {/* Render selected ingredients */}
