@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/components/Footer/footer";
+import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import RecipeMainpage from "@/components/recipeMainpage/recipeMainpage";
 import MenuSection from "@/components/section/menu-section/menu-section";

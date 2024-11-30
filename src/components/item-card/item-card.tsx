@@ -9,8 +9,14 @@ export interface ItemProps {
   imagePath: string;
   itemName: string;
   itemPrice: number;
+  itemID?: number;
 }
-const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
+const ItemCard: FC<ItemProps> = ({
+  imagePath,
+  itemName,
+  itemPrice,
+  itemID,
+}) => {
   const router = useRouter();
   return (
     <>
@@ -41,19 +47,10 @@ const ItemCard: FC<ItemProps> = ({ imagePath, itemName, itemPrice }) => {
         </span>
         {/* Action button : Add to cart and View detail */}
         <div className="flex justify-center items-center mt-10 ">
-          <Button
-            bgColor="primarycolor"
-            className="rounded-[50px] w-[110px] h-[58px] mr-3 py-3 px-6"
-          >
-            <img
-              src="/imgs/cart.png"
-              alt=""
-              className="inline-flex justify-between items-center "
-            />
-          </Button>
-          <a href="/product">
+          <a href={`/product/${itemID}`}>
             <Button
-              className="rounded-[50px] w-[165px] h-[58px]  bg-transparent border-2 border-white text-white font-display text-center font-semibold"
+              bgColor="primarycolor"
+              className="rounded-[50px] w-[165px] h-[58px] border-primarycolor text-white font-display text-center font-semibold"
               onClick={() => (window.location.href = "/product")}
             >
               Xem chi tiết
