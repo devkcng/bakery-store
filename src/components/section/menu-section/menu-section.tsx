@@ -22,7 +22,7 @@ const MenuSection = () => {
         let response;
         if (selectedOption === "Tất cả") {
           // Call API to get all products
-          response = await axios.get("/api/products/get-all-products");
+          response = await axios.get("http://localhost:8080/api/products");
         } else {
           // Map category name to corresponding category_id
           const categoryMap = {
@@ -31,9 +31,12 @@ const MenuSection = () => {
           };
 
           const categoryId = categoryMap[selectedOption];
-          response = await axios.get(`/api/products/get-products-by-category`, {
-            params: { category_id: categoryId },
-          });
+          response = await axios.get(
+            `http://localhost:8080/api/products/category`,
+            {
+              params: { category_id: categoryId },
+            }
+          );
         }
 
         setData(response.data.products);
