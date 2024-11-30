@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
       <NavBar className="bg-black" />
-      <div className="mb-10">
+      <div className="">
         <ShoppingCart></ShoppingCart>
       </div>
     </div>

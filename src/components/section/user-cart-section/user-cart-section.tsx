@@ -112,7 +112,7 @@ const ShoppingCart = () => {
           </Button>
         </div>
       </div>
-      <div className="list-order-cart-detail overflow-y-auto h-screen self-center mx-auto pb-5 ">
+      <div className="list-order-cart-detail overflow-y-auto h-[425px] self-center mx-auto pb-5 ">
         <div className="cart-detail flex items-center justify-center">
           <Cart></Cart>
           <div className="flex items-center p-2">
@@ -352,7 +352,7 @@ const ShoppingCart = () => {
       </div>
       <div className="self-center mt-5 ">
         <Button
-          className="bg-primarycolor w-[1024px] h-16 rounded-2xl text-center text-white font-extrabold"
+          className="bg-primarycolor w-full h-16 rounded-2xl text-center text-white font-extrabold"
           onClick={() => (window.location.href = "/delivery-info")}
         >
           <div className="flex justify-between">
