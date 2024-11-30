@@ -2,7 +2,7 @@
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/nav-bar";
 import DetailProduct, {
-  ProductAttribute,
+  CartItemProps,
 } from "@/components/section/detail-product-section/detail-product-section";
 import { useEffect, useState } from "react";
 
@@ -41,17 +41,19 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
   //   ],
   // };
 
-  const [data, setData] = useState();
+  const [data, setData] = useState<CartItemProps | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(` ${params.id}`);
+        const response = await fetch(
+          `/api/products/get-product-by-id?id=${params.id}`
+        );
         if (!response.ok) {
           throw new Error("Error");
         }
         const result = await response.json();
-        setData(result.product);
+        setData(result.data);
       } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Undefined Error");
       }
@@ -61,11 +63,16 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
   console.log(data);
   return (
     <div>
-      <div className="flex flex-col ">
+      <div className="min-h-screen">
         <NavBar className="bg-black" />
-        {/* <DetailProduct product={}></DetailProduct>  */}
-        <div className="mt-[35px]">
-          <Footer />
+        <div className="mb-14">
+          {data && (
+            <DetailProduct
+              product={data.product}
+              toppings={data.toppings}
+              relatedProduct={data.relatedProducts}
+            ></DetailProduct>
+          )}
         </div>
       </div>
     </div>

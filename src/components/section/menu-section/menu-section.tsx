@@ -1,28 +1,43 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuTabs from "../../menu-tabs/menu-tabs";
 import SearchBar from "../../search-bar/search-bar";
 import ItemCard from "../../item-card/item-card";
 import axios from "axios";
-interface DataType {
-  id: number;
-  name: string;
-  price: number;
-  img_path: string;
-}
+import { Product } from "@prisma/client";
+
 const MenuSection = () => {
   const options = ["Tất cả", "Bánh ngọt", "Bánh mặn"];
   const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+  const [data, setData] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
   };
-  const [data, setData] = useState<DataType[]>([]);
-  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/products/get-all-products");
+        let response;
+        if (selectedOption === "Tất cả") {
+          // Call API to get all products
+          response = await axios.get("/api/products/get-all-products");
+        } else {
+          // Map category name to corresponding category_id
+          const categoryMap = {
+            "Bánh ngọt": 1, // Giả sử ID 1 là bánh ngọt
+            "Bánh mặn": 2, // Giả sử ID 2 là bánh mặn
+          };
+
+          const categoryId = categoryMap[selectedOption];
+          response = await axios.get(`/api/products/get-products-by-category`, {
+            params: { category_id: categoryId },
+          });
+        }
+
         setData(response.data.products);
+        setError(null); // Clear any previous errors
       } catch (err) {
         if (axios.isAxiosError(err)) {
           setError(err.response?.data?.message || "Error fetching data");
@@ -35,7 +50,7 @@ const MenuSection = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedOption]); // Rerun when selectedOption changes
   console.log(data);
   return (
     <>
@@ -55,13 +70,7 @@ const MenuSection = () => {
           <div className="grid grid-cols-3 gap-1">
             {data.length > 0 &&
               data.map((item, index) => (
-                <ItemCard
-                  key={index}
-                  itemID={item.id}
-                  itemName={item.name}
-                  itemPrice={item.price}
-                  imagePath={item.img_path}
-                />
+                <ItemCard key={index} product={item} />
               ))}
           </div>
         </div>

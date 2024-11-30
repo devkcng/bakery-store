@@ -5,36 +5,20 @@ import QuantityButton from "../../button/quantity-btn";
 import DateSelector from "../../date-picker/DatePicker";
 import ItemCard, { ItemProps } from "@/components/item-card/item-card";
 import { formatVND } from "@/utils/formatCurrency";
+import { Topping } from "@prisma/client";
+import { Product } from "@prisma/client";
 
-type Topping = {
-  toppingId: string; // Mã topping
-  toppingName: string; // Tên topping
-  toppingPrice: number; // Giá topping
+export type CartItemProps = {
+  product: Product; // Thay đổi đây
+  relatedProduct: Product[];
+  toppings: Topping[];
 };
 
-export type ProductAttribute = {
-  imagePath: string;
-  itemName: string;
-  itemPrice: number;
-  toppings: Topping[]; // Mảng các topping
-  itemDescription: string;
-  relatedProduct: ItemProps[];
-};
-
-type CartItemProps = {
-  product: ProductAttribute; // Thay đổi đây
-};
-
-const DetailProduct: FC<CartItemProps> = ({ product }) => {
-  const {
-    imagePath,
-    itemName,
-    itemPrice,
-    toppings,
-    itemDescription,
-    relatedProduct,
-  } = product;
-
+const DetailProduct: FC<CartItemProps> = ({
+  product,
+  relatedProduct,
+  toppings,
+}) => {
   return (
     <div>
       <div className="detail-product-container">
@@ -50,24 +34,34 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
             <img
               id="productImg"
               src={`${
-                imagePath === "" ? "/imgs/bakery-images/muffinb.png" : imagePath
+                product.img_path === ""
+                  ? "/imgs/bakery-images/muffinb.png"
+                  : product.img_path
               }`}
               alt=""
             />
           </div>
-          <div className="description mt-3">
+          <div className="description h-auto mt-3">
             <b>Mô tả</b>
             <br />
-            <p id="txtDescription">
-              {`${itemDescription === "" ? "" : itemDescription}`}
-            </p>
+            <textarea
+              id="txtDescription"
+              readOnly
+              className="border-none outline-none focus:outline-none focus:border-none "
+            >
+              {`${product.description === "" ? "" : product.description}`}
+            </textarea>
           </div>
         </div>
         <div className="actionOnProduct">
-          <p id="txtName">{`${itemName === "" ? "Bánh muffin" : itemName}`}</p>
+          <p id="txtName">{`${
+            product.name === "" ? "Bánh muffin" : product.name
+          }`}</p>
           <div className="flex justify-start items-baseline">
             <p id="txtPrice">
-            {itemPrice === 0 ? formatVND(28000) : formatVND(itemPrice)}
+              {product.price === 0
+                ? formatVND(28000)
+                : formatVND(product.price)}
             </p>
             <QuantityButton
               className="ml-[25%] bg-primarycolor"
@@ -83,16 +77,17 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
               </ul>
             </div>
             {toppings &&
-              toppings.map((item) => (
-                <div key={item.toppingId}>
+              toppings.map((item, index) => (
+                <div key={index}>
                   <div className="topptingAttributeContainer flex items-baseline">
                     <div className="topptingAttribute">{`${
-                      item.toppingName === "" ? "Nho khô" : item.toppingName}`}</div>
+                      item.name === "" ? "Nho khô" : item.name
+                    }`}</div>
                     <div className="topptingAttribute">
                       <span>
-                      {item.toppingPrice === 0 
-                      ? formatVND(10000) 
-                      : formatVND(item.toppingPrice)}
+                        {item.price === 0
+                          ? formatVND(10000)
+                          : formatVND(item.price)}
                       </span>
                     </div>
                     <div className="topptingAttribute">
@@ -126,11 +121,7 @@ const DetailProduct: FC<CartItemProps> = ({ product }) => {
           {relatedProduct &&
             relatedProduct.map((item, index) => (
               <div key={index}>
-                <ItemCard
-                  imagePath={item.imagePath}
-                  itemName={item.itemName}
-                  itemPrice={item.itemPrice}
-                ></ItemCard>
+                <ItemCard product={item}></ItemCard>
               </div>
             ))}
         </div>

@@ -7,8 +7,20 @@
     display: none;
   }
 }
+html,
+body {
+  height: 100%; /* Đảm bảo chiều cao của body và html chiếm toàn bộ chiều cao của cửa sổ */
+  margin: 0; /* Loại bỏ margin mặc định */
+}
 
 body {
+  display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử */
+  flex-direction: column; /* Các phần tử trong body sẽ được xếp theo cột */
+  min-height: 100vh; /* Đảm bảo chiều cao của body luôn bằng chiều cao của viewport */
+}
+
+body {
+  height: auto;
   margin: 0;
   display: flex; /* This makes the body a flex container */
   flex-direction: column; /* Sets the flex container to have a vertical column layout. */

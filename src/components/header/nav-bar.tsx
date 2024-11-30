@@ -43,7 +43,7 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
             Thực đơn
           </a>
           <a
-            href="#footer"
+            href="/home#footer"
             className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
             Liên hệ

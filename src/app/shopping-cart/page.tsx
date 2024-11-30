@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
       <NavBar className="bg-black" />
-      <ShoppingCart></ShoppingCart>
+      {/* <ShoppingCart></ShoppingCart> */}
       <div className="mt-[35px]">
         <Footer />
       </div>
