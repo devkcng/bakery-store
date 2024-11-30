@@ -7,9 +7,8 @@ const page = () => {
   return (
     <div>
       <NavBar className="bg-black" />
-      {/* <ShoppingCart></ShoppingCart> */}
-      <div className="mt-[35px]">
-        <Footer />
+      <div className="mb-10">
+        <ShoppingCart></ShoppingCart>
       </div>
     </div>
   );
