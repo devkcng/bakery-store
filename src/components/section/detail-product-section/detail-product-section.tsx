@@ -1,12 +1,10 @@
-import React, { FC } from "react";
-import Image from "next/image";
-import "./detail-product-section.css";
+import ItemCard from "@/components/item-card/item-card";
+import { formatVND } from "@/utils/formatCurrency";
+import { Product, Topping } from "@prisma/client";
+import { FC, useState } from "react";
 import QuantityButton from "../../button/quantity-btn";
 import DateSelector from "../../date-picker/DatePicker";
-import ItemCard, { ItemProps } from "@/components/item-card/item-card";
-import { formatVND } from "@/utils/formatCurrency";
-import { Topping } from "@prisma/client";
-import { Product } from "@prisma/client";
+import "./detail-product-section.css";
 
 export type CartItemProps = {
   product: Product; // Thay đổi đây
@@ -19,10 +17,106 @@ const DetailProduct: FC<CartItemProps> = ({
   relatedProduct,
   toppings,
 }) => {
+  // State for product quantity
+  const [productQuantity, setProductQuantity] = useState(0);
+  // State for topping quantities
+  const [toppingQuantities, setToppingQuantities] = useState<
+    Record<number, number>
+  >({});
+  const [selectedDate, setSelectedDate] = useState<{
+    day: string;
+    date: number;
+    month: string;
+    year: number;
+  } | null>(null);
+
+  // Handle quantity change for toppings
+  const handleToppingQuantityChange = (toppingId: number, quantity: number) => {
+    setToppingQuantities((prev) => ({ ...prev, [toppingId]: quantity }));
+  };
+
+  // Handle Add to Cart
+  const handleAddToCart = () => {
+    if (productQuantity < 1) {
+      alert("Vui lòng chọn số lượng bánh cần đặt hàng!");
+      return;
+    }
+    if (!selectedDate) {
+      alert("Vui lòng chọn ngày nhận hàng!");
+      return;
+    }
+    // Lọc topping có số lượng lớn hơn 0
+    const selectedToppings = toppings
+      .map((topping) => ({
+        id: topping.id,
+        name: topping.name,
+        quantity: toppingQuantities[topping.id] || 0,
+        price: topping.price,
+      }))
+      .filter((topping) => topping.quantity > 0);
+
+    // Xây dựng cart item mới
+    const cartItem = {
+      productId: product.id,
+      productName: product.name,
+      productPrice: product.price,
+      productImgPath: product.img_path,
+      productQuantity,
+      isSelected: false,
+      toppings: selectedToppings,
+      deliveryDate: selectedDate,
+    };
+
+    // Lấy giỏ hàng hiện tại từ localStorage
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // Tìm sản phẩm đã tồn tại trong giỏ hàng
+    const existingItemIndex = existingCart.findIndex(
+      (item: any) =>
+        item.productId === cartItem.productId &&
+        item.deliveryDate.day === cartItem.deliveryDate.day &&
+        item.deliveryDate.date === cartItem.deliveryDate.date &&
+        item.deliveryDate.month === cartItem.deliveryDate.month &&
+        item.deliveryDate.year === cartItem.deliveryDate.year
+    );
+    if (existingItemIndex !== -1) {
+      // Nếu sản phẩm đã tồn tại, cộng dồn số lượng và topping
+      const existingItem = existingCart[existingItemIndex];
+
+      // Cộng dồn số lượng sản phẩm
+      existingItem.productQuantity += cartItem.productQuantity;
+
+      // Cộng dồn topping
+      cartItem.toppings.forEach((newTopping: any) => {
+        const existingToppingIndex = existingItem.toppings.findIndex(
+          (t: any) => t.id === newTopping.id
+        );
+        if (existingToppingIndex !== -1) {
+          // Nếu topping đã tồn tại, cộng số lượng
+          existingItem.toppings[existingToppingIndex].quantity +=
+            newTopping.quantity;
+        } else {
+          // Nếu topping chưa tồn tại, thêm vào danh sách
+          existingItem.toppings.push(newTopping);
+        }
+      });
+
+      // Cập nhật lại giỏ hàng
+      existingCart[existingItemIndex] = existingItem;
+    } else {
+      // Nếu sản phẩm chưa tồn tại, thêm vào giỏ hàng
+      existingCart.push(cartItem);
+    }
+
+    // Lưu lại giỏ hàng vào localStorage
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+  };
   return (
     <div>
       <div className="detail-product-container">
-        <div className="productInfor">
+        <div className="productInfor ">
           <div
             style={{
               backgroundImage: "url('/imgs/bakery-images/item-background.png')",
@@ -48,9 +142,10 @@ const DetailProduct: FC<CartItemProps> = ({
               id="txtDescription"
               readOnly
               className="border-none outline-none focus:outline-none focus:border-none "
-            >
-              {`${product.description === "" ? "" : product.description}`}
-            </textarea>
+              defaultValue={`${
+                product.description === "" ? "" : product.description
+              }`}
+            ></textarea>
           </div>
         </div>
         <div className="actionOnProduct">
@@ -64,7 +159,8 @@ const DetailProduct: FC<CartItemProps> = ({
                 : formatVND(product.price)}
             </p>
             <QuantityButton
-              className="ml-[25%] bg-primarycolor"
+              onQuantityChange={setProductQuantity}
+              className="product-quantity-btn ml-[25%] bg-primarycolor"
               textColor="white"
             ></QuantityButton>
           </div>
@@ -91,7 +187,12 @@ const DetailProduct: FC<CartItemProps> = ({
                       </span>
                     </div>
                     <div className="topptingAttribute">
-                      <QuantityButton className="border border-black "></QuantityButton>
+                      <QuantityButton
+                        onQuantityChange={(quantity) =>
+                          handleToppingQuantityChange(item.id, quantity)
+                        }
+                        className="topping-quantity-btn border border-black "
+                      ></QuantityButton>
                     </div>
                   </div>
 
@@ -101,14 +202,16 @@ const DetailProduct: FC<CartItemProps> = ({
           </div>
           <div className="mt-3  ml-7 flex justify-between">
             <div>
-              <DateSelector></DateSelector>
+              <DateSelector
+                onDateSelect={(dateInfo) => setSelectedDate(dateInfo)}
+              ></DateSelector>
             </div>
             <span className="mr-[6rem] font-semibold">
               Số lượng còn lại:
               <span className="text-red-500 font-bold"> 1000</span>
             </span>
           </div>
-          <button id="btnAddToCart" type="button">
+          <button id="btnAddToCart" type="button" onClick={handleAddToCart}>
             Thêm vào giỏ hàng
           </button>
         </div>

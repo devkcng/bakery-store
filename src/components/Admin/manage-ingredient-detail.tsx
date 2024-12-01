@@ -66,11 +66,11 @@ const IngredientDetail: FC<IngredientDetailProp> = ({ detail }) => {
                       height="30px"
                       stroke="#1283ed"
                     >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         {" "}
@@ -139,7 +139,9 @@ const IngredientDetail: FC<IngredientDetailProp> = ({ detail }) => {
                 {details.unit || " "}
               </TableCell>
               <TableCell className="w-[150px] ">
-              {details.ingredientPrice ? formatVND(details.ingredientPrice) : " "}
+                {details.ingredientPrice
+                  ? formatVND(details.ingredientPrice)
+                  : " "}
               </TableCell>
               <TableCell className="w-[150px] ">
                 <div className="actionContainer flex align-items-center">
@@ -163,11 +165,11 @@ const IngredientDetail: FC<IngredientDetailProp> = ({ detail }) => {
                       height="30px"
                       stroke="#1283ed"
                     >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         {" "}
