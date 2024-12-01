@@ -47,6 +47,11 @@ const ShoppingCart = () => {
   const handleProductQuantityChange = (index: number, newQuantity: number) => {
     const updatedCart = [...cartItems];
     updatedCart[index].productQuantity = newQuantity;
+    // Nếu số lượng sản phẩm = 0, xóa sản phẩm khỏi localStorage
+    if (newQuantity === 0) {
+      updatedCart.splice(index, 1); // Xóa sản phẩm tại index
+    }
+
     updateCart(updatedCart);
   };
   // update topping quantity
@@ -61,6 +66,12 @@ const ShoppingCart = () => {
     );
     if (topping) {
       topping.quantity = newQuantity;
+      // Nếu số lượng topping = 0, xóa topping đó khỏi sản phẩm
+      if (newQuantity === 0) {
+        updatedCart[productIndex].toppings = updatedCart[
+          productIndex
+        ].toppings.filter((topping) => topping.id !== toppingId);
+      }
     }
     updateCart(updatedCart);
   };
