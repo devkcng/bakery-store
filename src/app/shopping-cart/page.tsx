@@ -1,5 +1,4 @@
 "use client";
-import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/nav-bar";
 import ShoppingCart from "@/components/section/user-cart-section/user-cart-section";
 

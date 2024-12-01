@@ -36,11 +36,11 @@ const CardInfo: FC<CardInfoProps> = ({
           preserveAspectRatio="xMidYMid meet"
           fill="#000000"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
@@ -73,7 +73,7 @@ const CardInfo: FC<CardInfoProps> = ({
               <path
                 d="M71.16 48.99c-12.67 27.06-14.85 61.23-14.85 61.23"
                 stroke="#6B4B46"
-                stroke-width="5"
+                strokeWidth="5"
                 stroke-miterlimit="10"
               >
                 {" "}

@@ -59,7 +59,10 @@ const DetailProduct: FC<CartItemProps> = ({
     const cartItem = {
       productId: product.id,
       productName: product.name,
+      productPrice: product.price,
+      productImgPath: product.img_path,
       productQuantity,
+      isSelected: false,
       toppings: selectedToppings,
       deliveryDate: selectedDate,
     };
@@ -113,7 +116,7 @@ const DetailProduct: FC<CartItemProps> = ({
   return (
     <div>
       <div className="detail-product-container">
-        <div className="productInfor">
+        <div className="productInfor ">
           <div
             style={{
               backgroundImage: "url('/imgs/bakery-images/item-background.png')",
