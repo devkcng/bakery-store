@@ -1,22 +1,42 @@
 "use client";
 import React, { FC, useState } from "react";
+
 export interface SearchBarProps {
   className?: string;
-  isShow: boolean; // "isShow" property is used to determine the search bar has ability to automatically minimize or not
+  isShow: boolean;
+  onSearchChange: (value: string) => void; // Thêm prop để nhận callback từ component cha
 }
-const SearchBar: FC<SearchBarProps> = ({ className = "", isShow }) => {
+
+const SearchBar: FC<SearchBarProps> = ({
+  className = "",
+  isShow,
+  onSearchChange,
+}) => {
   const [isFocused, setIsFocused] = useState<boolean>(isShow);
-  //   const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>("");
+
+  // Hàm xử lý thay đổi input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    setInputValue(e.target.value); // Cập nhật giá trị nhập vào
   };
+
+  // Hàm xử lý khi người dùng nhấn phím
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      // Nếu phím nhấn là Enter, gọi callback để cập nhật state ở component cha
+      onSearchChange(inputValue);
+    }
+  };
+
   return (
     <div className={`relative text-white ${className}`}>
       <input
         type="text"
         name="text"
+        value={inputValue} // Gán giá trị inputValue để quản lý trạng thái
         required
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown} // Lắng nghe sự kiện nhấn phím
         placeholder="Tìm kiếm tại đây ..."
         className={`transition-all duration-300 ease-in-out h-10 pl-10 pr-3 text-lg rounded-full bg-white text-black outline-none border-2
             ${isFocused ? "w-52 shadow-inner" : "w-10 cursor-pointer"}

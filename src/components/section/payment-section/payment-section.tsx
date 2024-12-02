@@ -54,9 +54,21 @@ const Payment = () => {
   }, []);
 
   // Hàm lấy ngày hiện tại theo định dạng YYYY-MM-DD
-  const getCurrentDate = () => {
+  const getCurrentDateTime = () => {
     const today = new Date();
-    return today.toISOString().split("T")[0]; // Định dạng YYYY-MM-DD
+
+    // Lấy ngày, tháng, năm
+    const day = String(today.getDate()).padStart(2, "0"); // Thêm số 0 nếu ngày có 1 chữ số
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Thêm số 0 nếu tháng có 1 chữ số
+    const year = today.getFullYear();
+
+    // Lấy giờ, phút, giây
+    const hours = String(today.getHours()).padStart(2, "0"); // Thêm số 0 nếu giờ có 1 chữ số
+    const minutes = String(today.getMinutes()).padStart(2, "0"); // Thêm số 0 nếu phút có 1 chữ số
+    const seconds = String(today.getSeconds()).padStart(2, "0"); // Thêm số 0 nếu giây có 1 chữ số
+
+    // Trả về ngày tháng năm và thời gian theo định dạng dd/mm/yyyy hh:mm:ss
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
   };
 
   // Hàm xử lý khi thanh toán thành công
@@ -70,7 +82,7 @@ const Payment = () => {
 
       // Thêm thông tin đơn hàng vào localStorage
       const orderID = details.id; // Mã giao dịch PayPal
-      const orderDate = getCurrentDate(); // Ngày hiện tại
+      const orderDate = getCurrentDateTime(); // Ngày hiện tại
       const totalAmount = totalOrder + shippingCost; // Tổng số tiền (hàng + phí vận chuyển)
 
       const order = {
