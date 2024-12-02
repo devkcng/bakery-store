@@ -1,4 +1,4 @@
-.container {
+.detail-product-container {
   display: flex;
   margin-top: 80px;
 }
@@ -7,13 +7,11 @@
   width: 35%;
   margin-left: 10%;
 }
-.imageContainer {
-  margin-bottom: 10px;
-}
 
 #productImg {
-  height: auto;
-  width: auto;
+  height: 300px;
+  width: 80%;
+  object-fit: contain;
 }
 .description {
   border: 1px solid rgb(187, 186, 186);
@@ -64,7 +62,7 @@
   width: 25%;
 }
 .all {
-  margin-left: 30px;
+  margin-left: 5px;
 }
 .separateLine {
   width: 70%;

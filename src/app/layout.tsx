@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 
 // const geistSans = localFont({
@@ -26,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
-        />
+        /> */}
         <link
           href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap"
           rel="stylesheet"

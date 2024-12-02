@@ -1,0 +1,16 @@
+.containerProductAdmin {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 1%;
+  background: white;
+  border-radius: 20px;
+  border: 0px solid black;
+  height: 160px;
+  width: 65%;
+  justify-content: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: -1px 5px 5px 1px rgba(150, 124, 124, 0.6);
+  -webkit-box-shadow: -1px 5px 5px 1px rgba(150, 124, 124, 0.6);
+  -moz-box-shadow: -1px 5px 5px 1px rgba(150, 124, 124, 0.6);
+}

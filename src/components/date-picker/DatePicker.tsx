@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 interface DateBoxProps {
   date: Date;
+  isSelected: boolean; // Kiểm tra nếu DateBox này được chọn
   onClick: (dayInfo: {
     day: string;
     date: number;
@@ -47,7 +48,7 @@ const vietnameseMonths = [
   "Tháng 12",
 ];
 
-const DateBox: FC<DateBoxProps> = ({ date, onClick }) => {
+const DateBox: FC<DateBoxProps> = ({ date, isSelected, onClick }) => {
   const handleClick = () => {
     onClick({
       day: vietnameseDays[date.getDay()],
@@ -59,7 +60,11 @@ const DateBox: FC<DateBoxProps> = ({ date, onClick }) => {
 
   return (
     <div
-      className="border border-gray-300 p-4 text-center w-32 cursor-pointer"
+      className={`p-4 text-center w-32 cursor-pointer ${
+        isSelected
+          ? "border-[3px] border-primarycolor"
+          : "border border-gray-300"
+      }`} // Áp dụng border dày 2px khi DateBox được chọn
       onClick={handleClick}
     >
       <div className="text-lg font-semibold">
@@ -73,9 +78,24 @@ const DateBox: FC<DateBoxProps> = ({ date, onClick }) => {
 
 const DateSelector: FC<DateSelectorProps> = ({ onDateSelect }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedBox, setSelectedBox] = useState<number | null>(null); // Lưu chỉ số của DateBox được chọn
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
+    setSelectedBox(null); // Reset khi thay đổi ngày
+  };
+
+  const handleBoxClick = (
+    index: number,
+    dayInfo: {
+      day: string;
+      date: number;
+      month: string;
+      year: number;
+    }
+  ) => {
+    setSelectedBox(index); // Cập nhật chỉ số DateBox được chọn
+    onDateSelect(dayInfo); // Gọi hàm onDateSelect với thông tin ngày được chọn
   };
 
   const getNextDays = (date: Date): Date[] => {
@@ -92,6 +112,8 @@ const DateSelector: FC<DateSelectorProps> = ({ onDateSelect }) => {
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
+          minDate={new Date()} // Chỉ cho phép chọn từ ngày hôm nay trở đi
+          dateFormat="yyyy-MM-dd"
           customInput={
             <button className="flex items-center space-x-2 bg-[#8B4513] text-white px-4 py-2 rounded-lg">
               <CalendarDays size={20} />
@@ -103,7 +125,12 @@ const DateSelector: FC<DateSelectorProps> = ({ onDateSelect }) => {
       <div className="flex space-x-4 mb-4 mt-4">
         {selectedDate &&
           getNextDays(selectedDate).map((date, index) => (
-            <DateBox key={index} date={date} onClick={onDateSelect} />
+            <DateBox
+              key={index}
+              date={date}
+              isSelected={selectedBox === index} // Kiểm tra nếu DateBox này được chọn
+              onClick={(dayInfo) => handleBoxClick(index, dayInfo)} // Gọi handleBoxClick khi chọn một DateBox
+            />
           ))}
       </div>
     </div>

@@ -32,7 +32,9 @@ const Header = () => {
   return (
     <header id="home">
       <NavBar
-        className={`${showHeader ? " bg-black fixed" : " absolute"}`}
+        className={`${
+          showHeader ? " bg-black fixed " : " absolute shadow-none"
+        }`}
       ></NavBar>
 
       <div>
@@ -51,14 +53,14 @@ const Header = () => {
           <div className="mt-32 flex items-content-between justify-center -z-[1] gap-x-3 text-sm w-full">
             <a
               className="text-[#fff] text-xl inline-flex bg-[#933C24] justify-center items-center border border-transparent rounded-[30px] w-auto h-12 px-5 font-display"
-              href="#"
+              href="#menu"
             >
               Đặt hàng ngay
             </a>
 
             <a
               className="text-[#fff] text-xl inline-flex justify-center items-center border border-white rounded-[30px] w-auto h-12 px-5 font-display"
-              href="#"
+              href="#footer"
             >
               Về chúng tôi
             </a>

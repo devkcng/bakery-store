@@ -1,0 +1,7 @@
+.list-order {
+  /* Chiều cao cố định */
+  overflow-y: auto; /* Cho phép cuộn dọc */
+  /* scrollbar-width: none; Ẩn thanh cuộn cho Firefox */
+  height: 350px;
+  scrollbar-width: thin;
+}

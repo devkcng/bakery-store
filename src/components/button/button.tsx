@@ -10,17 +10,17 @@ const Button: FC<ButtonProps> = ({
   onClick,
   className = "",
   type = "button",
-  bgColor = "primary",
+  bgColor = "",
   children,
   ...restProps
 }) => {
-  let bgClassName = "bg-primary";
+  let bgClassName = "";
   switch (bgColor) {
-    case "primary":
-      bgClassName = "bg-primary";
+    case "primarycolor":
+      bgClassName = "bg-primarycolor";
       break;
-    case "secondary":
-      bgClassName = "bg-secondary";
+    case "secondarycolor":
+      bgClassName = "bg-secondarycolor";
       break;
     default:
       break;
@@ -29,7 +29,7 @@ const Button: FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`py-3 px-6 capitalize mt-auto ${bgClassName} ${className}`}
+      className={` capitalize mt-auto  ${bgClassName} ${className}`}
       {...restProps}
     >
       {children}
