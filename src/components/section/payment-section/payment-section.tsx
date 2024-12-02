@@ -1,14 +1,24 @@
-/* eslint-disable @next/next/no-img-element */
 import { formatUSD, formatVND } from "@/utils/formatCurrency";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import "./payment-section.css";
 import ItemOrder from "@/components/item-order/item-order";
+import { useEffect, useState } from "react";
+import { CartProps } from "../user-cart-section/user-cart-section";
+
 const clientId: string | undefined =
   process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.toString();
 
 const Payment = () => {
-  const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
-  const selectedOrder = listItems.filter((product) => product.isSelected);
+  const [cartItems, setCartItems] = useState<CartProps[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCartItems(listItems); // Cập nhật cartItems
+    }
+  }, []);
+
+  const selectedOrder = cartItems.filter((product) => product.isSelected);
   const orderData = selectedOrder.map((product) => {
     const toppingTotal = product.toppings.reduce(
       (sum, topping) => sum + topping.price * topping.quantity,
@@ -22,16 +32,32 @@ const Payment = () => {
       productQuantity: product.productQuantity,
       productPrice: product.productPrice,
       productImgPath: product.productImgPath,
-      toppings: product.toppings.map((topping) => topping.name), // Lấy tên của các loại topping
+      toppings: product.toppings.map((topping) => topping.name),
       totalPrice: productTotal,
     };
   });
+
   const totalOrder = orderData.reduce(
     (acc, amout) => acc + amout.totalPrice,
     0
   );
+  const shippingCost: number = 30000;
 
-  const deliveryInfo = JSON.parse(localStorage.getItem("deliveryInfo") || "[]");
+  const [deliveryInfo, setdeliveryInfo] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const deliveryData = JSON.parse(
+        localStorage.getItem("deliveryInfo") || "[]"
+      );
+      setdeliveryInfo(deliveryData); // Cập nhật deliveryInfo
+    }
+  }, []);
+
+  // Hàm lấy ngày hiện tại theo định dạng YYYY-MM-DD
+  const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // Định dạng YYYY-MM-DD
+  };
 
   // Hàm xử lý khi thanh toán thành công
   const handlePaymentSuccess = (details: any) => {
@@ -41,11 +67,42 @@ const Payment = () => {
       alert(
         `Giao dịch thành công, cảm ơn bạn, ${details.payer.name.given_name}!`
       );
+
+      // Thêm thông tin đơn hàng vào localStorage
+      const orderID = details.id; // Mã giao dịch PayPal
+      const orderDate = getCurrentDate(); // Ngày hiện tại
+      const totalAmount = totalOrder + shippingCost; // Tổng số tiền (hàng + phí vận chuyển)
+
+      const order = {
+        orderID,
+        totalAmount,
+        orderStatus: "PENDING",
+        orderDate,
+        orderDetails: orderData,
+      };
+
+      // Kiểm tra nếu đơn hàng đã tồn tại trong localStorage
+      let existingOrders = JSON.parse(localStorage.getItem("order") || "[]");
+
+      // Nếu không có đơn hàng trong localStorage, khởi tạo mảng mới
+      if (!Array.isArray(existingOrders)) {
+        existingOrders = [];
+      }
+
+      // Thêm đơn hàng mới vào danh sách đơn hàng
+      existingOrders.push(order);
+
+      // Lưu lại danh sách đơn hàng vào localStorage
+      localStorage.setItem("order", JSON.stringify(existingOrders));
+
+      // Xóa giỏ hàng và thông tin giao hàng sau khi thanh toán
       localStorage.removeItem("cart");
       localStorage.removeItem("deliveryInfo");
+
+      // Điều hướng người dùng đến trang thành công
       window.location.href = "/success";
     } else {
-      // Trường hợp giao dịch không thành công
+      // Giao dịch không thành công
       console.log("Transaction failed:", details);
       alert("Giao dịch không thành công, vui lòng thử lại.");
     }
@@ -114,14 +171,14 @@ const Payment = () => {
             <div className="font-medium text-sm">
               <span className="w-[40%] inline-block">Tổng thanh toán:</span>
               <span className="font-bold text-red-400">
-                {formatVND(totalOrder + 30000)}{" "}
+                {formatVND(totalOrder + shippingCost)}{" "}
               </span>
             </div>
             <hr className="w-[full] h-[1.5px] bg-black my-2" />
             <div className="font-medium text-sm">
               <span className="w-[40%] inline-block">Total amount:</span>
               <span className="font-bold text-red-400">
-                {formatUSD(totalOrder + 30000)}
+                {formatUSD(totalOrder + shippingCost)}
                 {" USD"}
               </span>
             </div>
@@ -140,7 +197,7 @@ const Payment = () => {
                             purchase_units: [
                               {
                                 amount: {
-                                  value: formatUSD(totalOrder + 30000), // Tổng thanh toán
+                                  value: formatUSD(totalOrder), // Tổng thanh toán
                                 },
                               },
                             ],
