@@ -79,6 +79,7 @@ const Payment = () => {
         orderStatus: "PENDING",
         orderDate,
         orderDetails: orderData,
+        deliveryInfo: deliveryInfo,
       };
 
       // Kiểm tra nếu đơn hàng đã tồn tại trong localStorage
