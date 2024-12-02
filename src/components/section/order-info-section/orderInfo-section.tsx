@@ -28,20 +28,7 @@ export interface orderInfo {
   note: string;
 }
 
-const OrderInfoSection: FC<orderInfo> = ({
-  idOrder,
-  idStatus,
-  time,
-  nameBuyer,
-  addressBuyer,
-  phoneNumber,
-  note,
-}) => {
-  const total = items.reduce(
-    (acc, item) => acc + item.itemCount * item.itemInfo.itemPrice,
-    0
-  );
-
+const OrderInfoSection = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const handleSearchChange = (value: string) => {
     setSearchValue(value); // Cập nhật giá trị state khi nhập liệu vào SearchBar

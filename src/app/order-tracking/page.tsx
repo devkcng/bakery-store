@@ -9,15 +9,7 @@ const page = () => {
   return (
     <div>
       <NavBar className="bg-black" />
-      <OrderInfoSection
-        idOrder="112233"
-        addressBuyer="So 1 Vo Van Ngan"
-        idStatus="Đã giao"
-        nameBuyer="Nguyễn Văn Vũ"
-        note="Giao cho bảo vệ"
-        phonenumber="0327521953"
-        time={time.toString()}
-      ></OrderInfoSection>
+      <OrderInfoSection></OrderInfoSection>
     </div>
   );
 };

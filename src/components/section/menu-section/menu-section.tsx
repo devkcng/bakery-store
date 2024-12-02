@@ -11,6 +11,11 @@ const MenuSection = () => {
   const [selectedOption, setSelectedOption] = useState<string>(options[0]);
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value); // Cập nhật giá trị state khi nhập liệu vào SearchBar
+  };
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
@@ -20,11 +25,20 @@ const MenuSection = () => {
     const fetchData = async () => {
       try {
         let response;
-        if (selectedOption === "Tất cả") {
-          // Call API to get all products
+
+        if (searchValue.trim() !== "") {
+          // Khi có searchValue, fetch dữ liệu tìm kiếm theo từ khóa
+          response = await axios.get(
+            "http://localhost:8080/api/products/search",
+            {
+              params: { keyword: searchValue },
+            }
+          );
+        } else if (selectedOption === "Tất cả") {
+          // Nếu không có searchValue và chọn "Tất cả", fetch tất cả sản phẩm
           response = await axios.get("http://localhost:8080/api/products");
         } else {
-          // Map category name to corresponding category_id
+          // Nếu có category filter
           const categoryMap = {
             "Bánh ngọt": 1, // Giả sử ID 1 là bánh ngọt
             "Bánh mặn": 2, // Giả sử ID 2 là bánh mặn
@@ -32,7 +46,7 @@ const MenuSection = () => {
 
           const categoryId = categoryMap[selectedOption];
           response = await axios.get(
-            `http://localhost:8080/api/products/category`,
+            "http://localhost:8080/api/products/category",
             {
               params: { category_id: categoryId },
             }
@@ -52,9 +66,9 @@ const MenuSection = () => {
       }
     };
 
+    // Fetch data mỗi khi searchValue hoặc selectedOption thay đổi
     fetchData();
-  }, [selectedOption]); // Rerun when selectedOption changes
-  console.log(data);
+  }, [searchValue, selectedOption]); // Rerun when searchValue or selectedOption changes
   return (
     <>
       <div id="menu">
@@ -67,7 +81,10 @@ const MenuSection = () => {
               selectedOption={selectedOption}
             ></MenuTabs>
           </div>
-          <SearchBar isShow={false}></SearchBar>
+          <SearchBar
+            onSearchChange={handleSearchChange}
+            isShow={false}
+          ></SearchBar>
         </div>
         <div className="flex justify-center mt-10">
           <div className="grid grid-cols-3 gap-1">
