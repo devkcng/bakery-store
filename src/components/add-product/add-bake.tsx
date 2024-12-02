@@ -17,9 +17,12 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { fetchToppingNamesFromAPI } from "@/app/api/toppings/route";
+import { fetchIngredientNamesFromAPI } from "@/app/api/warehouses/route";
+import { addProduct } from "@/app/api/products/add-product/route";
 
 const formSchema = z.object({
   price: z.number().min(1000, {
@@ -41,6 +44,23 @@ const AddBake = () => {
     { name: string; quantity: number }[]
   >([]);
 
+  // fetching ingredient names from the API
+
+  const [ingredientNames, setIngredientNames] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchIngredientNames = async () => {
+      try {
+        const data = await fetchIngredientNamesFromAPI();
+        setIngredientNames(data);
+      } catch (error) {
+        console.error("Error fetching ingredient names:", error);
+      }
+    };
+
+    fetchIngredientNames();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   const handleAddIngredient = (ingredientName: string) => {
     if (!ingredients.find((ing) => ing.name === ingredientName)) {
       setIngredients([...ingredients, { name: ingredientName, quantity: 0 }]);
@@ -55,19 +75,48 @@ const AddBake = () => {
 
   const [toppings, setToppings] = useState<{ name: string }[]>([]);
 
+  // Fetching topping names from the API
+  const [toppingNames, setToppingNames] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchToppingNames = async () => {
+      try {
+        const data = await fetchToppingNamesFromAPI();
+        setToppingNames(data);
+      } catch (error) {
+        console.error("Error fetching topping names:", error);
+      }
+    };
+
+    fetchToppingNames();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   const handleAddTopping = (toppingName: string) => {
     if (!toppings.find((topp) => topp.name === toppingName)) {
       setToppings([...toppings, { name: toppingName }]);
     }
   };
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const bakeData = {
-      ...values,
+      name: values.bakeName,
+      price: values.price,
+      description: "Default description", // Add appropriate description
+      category_id: 1, // Add appropriate category_id
+      img_path: "/imgs/bakery-images/browniesb.png", // Add appropriate img_path
+      max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
+      product_capacity_per_batch: values.maxCapacity,
       ingredients,
       toppings,
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
+
+    try {
+      await addProduct(bakeData);
+      console.log('Product added successfully');
+    } catch (error) {
+      console.error('Error adding product:', error);
+    }
   };
 
   return (
@@ -201,34 +250,11 @@ const AddBake = () => {
                       <SelectValue placeholder="+ Thêm nguyên liệu" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Bơ">Bơ</SelectItem>
-                      <SelectItem value="Đường">Đường</SelectItem>
-                      <SelectItem value="Sữa">Sữa</SelectItem>
-                      <SelectItem value="Trứng">Trứng</SelectItem>
-                      <SelectItem value="Bột mì">Bột mì</SelectItem>
-                      <SelectItem value="Bột ca cao">Bột ca cao</SelectItem>
-                      <SelectItem value="Muối">Muối</SelectItem>
-                      <SelectItem value="Đường nâu">Đường nâu</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
+                      {ingredientNames.map((ingredient) => (
+                        <SelectItem key={ingredient.id} value={ingredient.name}>
+                          {ingredient.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   {/* Render selected ingredients */}
@@ -262,10 +288,14 @@ const AddBake = () => {
                       <SelectValue placeholder="+ Chọn loại Toppings" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Nho khô">Nho khô</SelectItem>
-                      <SelectItem value="Dâu tây">Dâu tây</SelectItem>
-                      <SelectItem value="Hạnh nhân">Hạnh nhân</SelectItem>
+                      {toppingNames.map((topping) => (
+                        <SelectItem key={topping.id} value={topping.name}>
+                          {topping.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
+
+
                   </Select>
                   {/* Render selected toppings */}
                   <div className="w-full mt-4 space-y-4 ">
