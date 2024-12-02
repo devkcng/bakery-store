@@ -56,9 +56,13 @@ const AddBake = () => {
     { name: string; quantity: number }[]
   >([]);
 
-  // fetching ingredient names from the API
-
   const [ingredientNames, setIngredientNames] = useState<string[]>([]);
+
+  const [toppings, setToppings] = useState<Topping[]>([]);
+
+  const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     const fetchIngredientNames = async () => {
@@ -70,8 +74,18 @@ const AddBake = () => {
       }
     };
 
+    const fetchToppings = async () => {
+      try {
+        const data = await fetchToppingsFromAPI();
+        setToppings(data);
+      } catch (error) {
+        console.error("Error fetching topping names:", error);
+      }
+    };
+
     fetchIngredientNames();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    fetchToppings();
+  }, []); 
 
   const handleAddIngredient = (ingredientName: string) => {
     if (!ingredients.find((ing) => ing.name === ingredientName)) {
@@ -85,24 +99,6 @@ const AddBake = () => {
     setIngredients(updatedIngredients);
   };
 
-  const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
-
-  // Fetching topping names from the API
-  const [toppings, setToppings] = useState<Topping[]>([]);
-
-  useEffect(() => {
-    const fetchToppings = async () => {
-      try {
-        const data = await fetchToppingsFromAPI();
-        setToppings(data);
-      } catch (error) {
-        console.error("Error fetching topping names:", error);
-      }
-    };
-
-    fetchToppings();
-  }, []); // Empty dependency array ensures this runs only once on mount
-
   const handleAddTopping = (value: string) => {
     const [toppingName, toppingId] = value.split('|');
     if (!selectedToppings.find((topp) => topp.name === toppingName)) {
@@ -114,11 +110,10 @@ const AddBake = () => {
     try {
       const numberOfProducts = await getNumberOfProducts();
       return numberOfProducts + 1;
-    }catch (error) {
+    } catch (error) {
       console.error('Error creating product ID:', error);
     }
   };
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const product_id = await createProductId();
@@ -132,7 +127,7 @@ const AddBake = () => {
       max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
       product_capacity_per_batch: values.maxCapacity,
       ingredients,
-      
+
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
