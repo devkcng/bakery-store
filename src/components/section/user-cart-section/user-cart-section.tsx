@@ -28,22 +28,34 @@ export interface CartProps {
 }
 
 const ShoppingCart = () => {
-  const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
   const [cartItems, setCartItems] = useState<CartProps[]>([]);
-  const countSelected: number = cartItems.reduce((acc, selected) => {
-    if (selected.isSelected) return acc + 1;
-    return acc;
-  }, 0);
+  const [selectedCount, setSelectedCount] = useState(0);
+
   useEffect(() => {
+    // Kiểm tra nếu ứng dụng đang chạy trong môi trường trình duyệt
     if (typeof window !== "undefined" && window.localStorage) {
       const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
-      setCartItems(listItems);
+      setCartItems(listItems); // Cập nhật cartItems
     }
   }, []);
-  const [selectedCount, setSelectedCount] = useState(countSelected);
-  const [isSelectedAll, setSelectedAll] = useState(
-    cartItems.filter((item) => item.isSelected).length === cartItems.length
-  );
+
+  // Tính lại selectedCount mỗi khi cartItems thay đổi
+  useEffect(() => {
+    const countSelected = cartItems.reduce((acc, selected) => {
+      if (selected.isSelected) return acc + 1;
+      return acc;
+    }, 0);
+    setSelectedCount(countSelected); // Cập nhật selectedCount
+  }, [cartItems]); // Chạy khi cartItems thay đổi
+
+  // console.log("Count: ", countSelected);
+
+  const [isSelectedAll, setSelectedAll] = useState<boolean>();
+  useEffect(() => {
+    const count: number = cartItems.filter((item) => item.isSelected).length;
+    setSelectedAll(count === cartItems.length);
+  }, [cartItems]);
+
   // update cartItems to localStorage
   const updateCart = (updatedCart: CartProps[]) => {
     setCartItems(updatedCart);
@@ -163,13 +175,13 @@ const ShoppingCart = () => {
         <div className="mt-5 flex flex-col w-[98%]">
           <div className="flex mb-5">
             <div className="text-lg font-medium text-left w-[35%] pl-5 text-primarycolor">
-              Đã chọn:{" "}
+              Đã chọn:
               <span className="text-lg font-medium text-black">
                 {selectedCount}
               </span>{" "}
               /{" "}
               <span className="text-lg font-medium text-black">
-                {listItems.length}
+                {cartItems.length}
               </span>
             </div>
             <div className="text-center font-bold text-[38px] mb-1 w-[30%]">
@@ -193,8 +205,8 @@ const ShoppingCart = () => {
             </div>
           </div>
           <div className="list-order-cart-detail overflow-y-auto h-[425px] self-center mx-auto pb-5">
-            {listItems.length > 0 &&
-              listItems.map((item: CartProps, index: number) => (
+            {cartItems.length > 0 &&
+              cartItems.map((item: CartProps, index: number) => (
                 <div
                   className="w-[auto] px-10 h-[auto] pb-1 bg-white border-solid border-gray-500 border-[1px] m-auto mt-2 rounded-3xl flex justify-start items-center mb-10"
                   key={index}
