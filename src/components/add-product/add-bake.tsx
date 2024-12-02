@@ -20,9 +20,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { fetchToppingNamesFromAPI } from "@/app/api/toppings/route";
+import { fetchToppingsFromAPI } from "@/app/api/toppings/route";
 import { fetchIngredientNamesFromAPI } from "@/app/api/warehouses/route";
 import { addProduct } from "@/app/api/products/add-product/route";
+import { addProductTopping } from "@/app/api/product-toppings/route";
+import { getNumberOfProducts } from "@/app/api/products/route";
+
+type Topping = {
+  id: string;
+  name: string;
+};
+
+type Category = {
+  id: number;
+  name: string;
+};
 
 const formSchema = z.object({
   price: z.number().min(1000, {
@@ -73,31 +85,44 @@ const AddBake = () => {
     setIngredients(updatedIngredients);
   };
 
-  const [toppings, setToppings] = useState<{ name: string }[]>([]);
+  const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
 
   // Fetching topping names from the API
-  const [toppingNames, setToppingNames] = useState<string[]>([]);
+  const [toppings, setToppings] = useState<Topping[]>([]);
 
   useEffect(() => {
-    const fetchToppingNames = async () => {
+    const fetchToppings = async () => {
       try {
-        const data = await fetchToppingNamesFromAPI();
-        setToppingNames(data);
+        const data = await fetchToppingsFromAPI();
+        setToppings(data);
       } catch (error) {
         console.error("Error fetching topping names:", error);
       }
     };
 
-    fetchToppingNames();
+    fetchToppings();
   }, []); // Empty dependency array ensures this runs only once on mount
 
-  const handleAddTopping = (toppingName: string) => {
-    if (!toppings.find((topp) => topp.name === toppingName)) {
-      setToppings([...toppings, { name: toppingName }]);
+  const handleAddTopping = (value: string) => {
+    const [toppingName, toppingId] = value.split('|');
+    if (!selectedToppings.find((topp) => topp.name === toppingName)) {
+      setSelectedToppings([...selectedToppings, { name: toppingName, id: toppingId }]);
     }
   };
+
+  const createProductId = async () => {
+    try {
+      const numberOfProducts = await getNumberOfProducts();
+      return numberOfProducts + 1;
+    }catch (error) {
+      console.error('Error creating product ID:', error);
+    }
+  };
+  
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const product_id = await createProductId();
     const bakeData = {
+      id: product_id,
       name: values.bakeName,
       price: values.price,
       description: "Default description", // Add appropriate description
@@ -106,7 +131,7 @@ const AddBake = () => {
       max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
       product_capacity_per_batch: values.maxCapacity,
       ingredients,
-      toppings,
+      
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
@@ -114,6 +139,15 @@ const AddBake = () => {
     try {
       await addProduct(bakeData);
       console.log('Product added successfully');
+
+      for (const topping of selectedToppings) {
+        const productTopping = {
+          product_id: Number(product_id),
+          topping_id: Number(topping.id),
+        }
+        await addProductTopping(productTopping);
+      }
+
     } catch (error) {
       console.error('Error adding product:', error);
     }
@@ -288,23 +322,18 @@ const AddBake = () => {
                       <SelectValue placeholder="+ Chọn loại Toppings" />
                     </SelectTrigger>
                     <SelectContent>
-                      {toppingNames.map((topping) => (
-                        <SelectItem key={topping.id} value={topping.name}>
+                      {toppings.map((topping) => (
+                        <SelectItem key={topping.id} value={`${topping.name}|${topping.id}`}>
                           {topping.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
-
-
                   </Select>
                   {/* Render selected toppings */}
                   <div className="w-full mt-4 space-y-4 ">
-                    {toppings.map((topping) => (
-                      <div
-                        key={topping.name}
-                        className="flex items-center gap-4"
-                      >
-                        <Input className="w-[100px]" value={topping.name} />
+                    {selectedToppings.map((topping) => (
+                      <div key={topping.name} className="flex items-center gap-4">
+                        <Input className="w-[100px]" value={topping.name} readOnly />
                       </div>
                     ))}
                   </div>

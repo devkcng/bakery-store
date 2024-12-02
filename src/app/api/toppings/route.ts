@@ -88,7 +88,7 @@ export async function DELETE(req: Request) {
 }
 
 // function used in the frontend to fetch topping names from the API (used on add-bakery component)
-export async function fetchToppingNamesFromAPI() {
+export async function fetchToppingsFromAPI() {
   try {
     const response = await fetch("/api/toppings");
     if (!response.ok) {
