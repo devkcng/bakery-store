@@ -166,39 +166,41 @@ const DetailProduct: FC<CartItemProps> = ({
           </div>
           <div className="all">
             <div className="prtAttributeContainer">
-              <ul className="flex ">
+              <ul className="flex  ">
                 <li className="productAttribute">Topping</li>
-                <li className="productAttribute">Giá</li>
-                <li className="productAttribute ml-5">Số lượng</li>
+                <li className="productAttribute ml-5">Giá</li>
+                <li className="productAttribute ml-12">Số lượng</li>
               </ul>
             </div>
-            {toppings &&
-              toppings.map((item, index) => (
-                <div key={index}>
-                  <div className="topptingAttributeContainer flex items-baseline">
-                    <div className="topptingAttribute">{`${
-                      item.name === "" ? "Nho khô" : item.name
-                    }`}</div>
-                    <div className="topptingAttribute">
-                      <span>
-                        {item.price === 0
-                          ? formatVND(10000)
-                          : formatVND(item.price)}
-                      </span>
+            <div className="overflow-y-auto h-[250px] w-[full]">
+              {toppings &&
+                toppings.map((item, index) => (
+                  <div key={index}>
+                    <div className="topptingAttributeContainer flex items-baseline justify-start">
+                      <div className="topptingAttribute">{`${
+                        item.name === "" ? "Nho khô" : item.name
+                      }`}</div>
+                      <div className="topptingAttribute">
+                        <span>
+                          {item.price === 0
+                            ? formatVND(10000)
+                            : formatVND(item.price)}
+                        </span>
+                      </div>
+                      <div className="topptingAttribute">
+                        <QuantityButton
+                          onQuantityChange={(quantity) =>
+                            handleToppingQuantityChange(item.id, quantity)
+                          }
+                          className="topping-quantity-btn border border-black "
+                        ></QuantityButton>
+                      </div>
                     </div>
-                    <div className="topptingAttribute">
-                      <QuantityButton
-                        onQuantityChange={(quantity) =>
-                          handleToppingQuantityChange(item.id, quantity)
-                        }
-                        className="topping-quantity-btn border border-black "
-                      ></QuantityButton>
-                    </div>
-                  </div>
 
-                  <hr className="separateLine" />
-                </div>
-              ))}
+                    <hr className="separateLine" />
+                  </div>
+                ))}
+            </div>
           </div>
           <div className="mt-3  ml-7 flex justify-between">
             <div>

@@ -1,106 +1,188 @@
-/* eslint-disable @next/next/no-img-element */
-import Button from "@/components/button/button";
-import { ItemProps } from "@/components/item-card/item-card";
-import ItemOrder from "@/components/item-order/item-order";
+import { formatUSD, formatVND } from "@/utils/formatCurrency";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import "./payment-section.css";
-import { formatVND } from "@/utils/formatCurrency";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import ItemOrder from "@/components/item-order/item-order";
+import { useEffect, useState } from "react";
+import { CartProps } from "../user-cart-section/user-cart-section";
+
 const clientId: string | undefined =
   process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.toString();
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Payment = () => {
-  // const time = new Date("2022-01-01T12:00:00").toLocaleString("en-GB", {
-  //   timeZone: "Asia/Ho_Chi_Minh",
-  // });
-  const sampleItemInfo: ItemProps = {
-    itemName: "Bánh Muffin",
-    itemPrice: 28000, // Giá sản phẩm
-    imagePath: "/imgs/bakery-images/muffinb.png",
+  const [cartItems, setCartItems] = useState<CartProps[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCartItems(listItems); // Cập nhật cartItems
+    }
+  }, []);
+
+  const selectedOrder = cartItems.filter((product) => product.isSelected);
+  const orderData = selectedOrder.map((product) => {
+    const toppingTotal = product.toppings.reduce(
+      (sum, topping) => sum + topping.price * topping.quantity,
+      0
+    );
+    const productTotal =
+      product.productQuantity * product.productPrice + toppingTotal;
+    return {
+      productId: product.productId,
+      productName: product.productName,
+      productQuantity: product.productQuantity,
+      productPrice: product.productPrice,
+      productImgPath: product.productImgPath,
+      toppings: product.toppings.map((topping) => topping.name),
+      totalPrice: productTotal,
+    };
+  });
+
+  const totalOrder = orderData.reduce(
+    (acc, amout) => acc + amout.totalPrice,
+    0
+  );
+  const shippingCost: number = 30000;
+
+  const [deliveryInfo, setdeliveryInfo] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const deliveryData = JSON.parse(
+        localStorage.getItem("deliveryInfo") || "[]"
+      );
+      setdeliveryInfo(deliveryData); // Cập nhật deliveryInfo
+    }
+  }, []);
+
+  // Hàm lấy ngày hiện tại theo định dạng YYYY-MM-DD
+  const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // Định dạng YYYY-MM-DD
   };
 
-  // Define other props
-  const sampleItemCount = 2; // Số lượng sản phẩm
-  const sampleItemTopping = "Nho khô, hạnh nhân"; // Các loại topping
+  // Hàm xử lý khi thanh toán thành công
+  const handlePaymentSuccess = (details: any) => {
+    if (details.status === "COMPLETED") {
+      // Thanh toán thành công
+      console.log("Transaction completed:", details);
+      alert(
+        `Giao dịch thành công, cảm ơn bạn, ${details.payer.name.given_name}!`
+      );
+
+      // Thêm thông tin đơn hàng vào localStorage
+      const orderID = details.id; // Mã giao dịch PayPal
+      const orderDate = getCurrentDate(); // Ngày hiện tại
+      const totalAmount = totalOrder + shippingCost; // Tổng số tiền (hàng + phí vận chuyển)
+
+      const order = {
+        orderID,
+        totalAmount,
+        orderStatus: "PENDING",
+        orderDate,
+        orderDetails: orderData,
+        deliveryInfo: deliveryInfo,
+      };
+
+      // Kiểm tra nếu đơn hàng đã tồn tại trong localStorage
+      let existingOrders = JSON.parse(localStorage.getItem("order") || "[]");
+
+      // Nếu không có đơn hàng trong localStorage, khởi tạo mảng mới
+      if (!Array.isArray(existingOrders)) {
+        existingOrders = [];
+      }
+
+      // Thêm đơn hàng mới vào danh sách đơn hàng
+      existingOrders.push(order);
+
+      // Lưu lại danh sách đơn hàng vào localStorage
+      localStorage.setItem("order", JSON.stringify(existingOrders));
+
+      // Xóa giỏ hàng và thông tin giao hàng sau khi thanh toán
+      localStorage.removeItem("cart");
+      localStorage.removeItem("deliveryInfo");
+
+      // Điều hướng người dùng đến trang thành công
+      window.location.href = "/success";
+    } else {
+      // Giao dịch không thành công
+      console.log("Transaction failed:", details);
+      alert("Giao dịch không thành công, vui lòng thử lại.");
+    }
+  };
+
   return (
     <div>
       <div className="text-3xl font-extrabold m-auto mb-5 mt-5 text-center">
         Thanh toán
       </div>
-      <div className="flex justify-between items-start mt-5">
+      <div className="flex justify-center items-center mt-5">
         <div className="flex flex-col w-[50%] justify-center items-center ">
           <div className="font-semibold text-2xl tracking-[0.2rem] mb-2">
             Thông tin đơn hàng
           </div>
           <div className="">
             <div className="list-order min-h-[360px] self-center flex flex-col p-5">
-              <div className="">
-                <ItemOrder
-                  itemInfo={sampleItemInfo}
-                  itemCount={sampleItemCount}
-                  itemTopping={sampleItemTopping}
-                />
-              </div>
-
-              <div className="">
-                <ItemOrder
-                  itemInfo={sampleItemInfo}
-                  itemCount={sampleItemCount}
-                  itemTopping={sampleItemTopping}
-                />
-              </div>
-
-              <div className="">
-                <ItemOrder
-                  itemInfo={sampleItemInfo}
-                  itemCount={sampleItemCount}
-                  itemTopping={sampleItemTopping}
-                />
-              </div>
-
-              <div className="">
-                <ItemOrder
-                  itemInfo={sampleItemInfo}
-                  itemCount={sampleItemCount}
-                  itemTopping={sampleItemTopping}
-                />
-              </div>
-
-              <div className="">
-                <ItemOrder
-                  itemInfo={sampleItemInfo}
-                  itemCount={sampleItemCount}
-                  itemTopping={sampleItemTopping}
-                />
-              </div>
+              {orderData &&
+                orderData.map((item, index) => (
+                  <div className="" key={index}>
+                    <ItemOrder
+                      productID={item.productId}
+                      productImgPath={item.productImgPath}
+                      productName={item.productName}
+                      productPrice={item.productPrice}
+                      productQuantiy={item.productQuantity}
+                      toppings={item.toppings}
+                      totalPrice={item.totalPrice}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
-        <div className="flex-col mx-auto  ">
+        <div className="flex-col mx-auto   ">
           <div className="font-semibold text-2xl tracking-[0.1rem] mb-2 text-center">
             Thông tin giao hàng
           </div>
-          <div className="flex flex-col items-start ml-[15%]">
+          <div className="text-center m-auto  ">
             <div className="">
-              <div className="font-normal text-sm  mr-5">Nguyễn Văn Vũ</div>
-              <div className="font-normal text-sm ">0327521953</div>
+              <div className="font-normal text-sm overflow-auto">
+                {deliveryInfo.fullName}
+              </div>
+              <div className="font-normal text-sm overflow-auto ">
+                {deliveryInfo.phoneNumber}
+              </div>
             </div>
-
-            <div className="font-normal text-sm  text-left">
-              Số 1 Võ Văn Ngân, Thủ Đức, Hồ Chí Minh
+            <div className="font-normal text-sm  overflow-auto">
+              {`${deliveryInfo.streetName}, ${deliveryInfo.district}, ${deliveryInfo.ward}`}
             </div>
           </div>
           <div className="font-semibold text-2xl tracking-[0.2rem] mb-2 mt-2 text-center">
             Chi tiết thanh toán
           </div>
-          <div className="font-normal text-sm  ml-[18%]">
-            Tổng tiền hàng: <span>{formatVND(789000)}</span>
-          </div>
-          <div className="font-normal text-sm  ml-[18%]">
-            Phí vận chuyển: <span>{formatVND(30000)}</span>
-          </div>
-          <div className="font-normal text-sm  ml-[18%]">
-            Tổng thanh toán: <span>{formatVND(819000)} </span>
+          <div className="m-auto text-center px-5">
+            <div className="font-medium text-sm ">
+              <span className="w-[40%] inline-block">Tổng tiền hàng:</span>
+              <span className="font-bold text-red-400">
+                {formatVND(totalOrder)}
+              </span>
+            </div>
+            <div className="font-medium text-sm">
+              <span className="w-[40%] inline-block">Phí vận chuyển:</span>
+              <span className="font-bold text-red-400">{formatVND(30000)}</span>
+            </div>
+            <div className="font-medium text-sm">
+              <span className="w-[40%] inline-block">Tổng thanh toán:</span>
+              <span className="font-bold text-red-400">
+                {formatVND(totalOrder + shippingCost)}{" "}
+              </span>
+            </div>
+            <hr className="w-[full] h-[1.5px] bg-black my-2" />
+            <div className="font-medium text-sm">
+              <span className="w-[40%] inline-block">Total amount:</span>
+              <span className="font-bold text-red-400">
+                {formatUSD(totalOrder + shippingCost)}
+                {" USD"}
+              </span>
+            </div>
           </div>
           <div>
             <div className="font-semibold text-2xl tracking-[0.2rem] mb-2 mt-2 text-center">
@@ -116,7 +198,7 @@ const Payment = () => {
                             purchase_units: [
                               {
                                 amount: {
-                                  value: 819, // Tổng thanh toán
+                                  value: formatUSD(totalOrder), // Tổng thanh toán
                                 },
                               },
                             ],
@@ -124,9 +206,8 @@ const Payment = () => {
                         }}
                         onApprove={(data, actions) => {
                           return actions.order.capture().then((details) => {
-                            alert(
-                              `Transaction completed by ${details.payer.name.given_name}`
-                            );
+                            // Gọi hàm kiểm tra kết quả giao dịch sau khi thanh toán thành công
+                            handlePaymentSuccess(details);
                           });
                         }}
                         onError={(err) => {

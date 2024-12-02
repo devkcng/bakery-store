@@ -62,18 +62,22 @@ const OrderInfoSection: FC<orderInfo> = ({
               <div className="m-auto w-auto ">
                 {items.map((item, index) => (
                   <div key={index} className="mb-2">
-                    <ItemOrder
+                    {/* <ItemOrder
                       itemInfo={item.itemInfo}
                       itemCount={item.itemCount}
                       itemTopping={item.itemTopping}
-                    />
+                    /> */}
                   </div>
                 ))}
               </div>
             </div>
           </div>
           <div className="font-semibold text-red-500 text-[20px] h-[10px] text-center mt-2">
-            <span>{total < 0 ? `Tổng tiền: ${formatVND(total)} ` : `Tổng tiền: ${formatVND(200000)}`}</span>
+            <span>
+              {total < 0
+                ? `Tổng tiền: ${formatVND(total)} `
+                : `Tổng tiền: ${formatVND(200000)}`}
+            </span>
           </div>
         </div>
 

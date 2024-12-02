@@ -28,16 +28,34 @@ export interface CartProps {
 }
 
 const ShoppingCart = () => {
-  const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
-  const [cartItems, setCartItems] = useState<CartProps[]>(listItems);
-  const countSelected: number = cartItems.reduce((acc, selected) => {
-    if (selected.isSelected) return acc + 1;
-    return acc;
-  }, 0);
-  const [selectedCount, setSelectedCount] = useState(countSelected);
-  const [isSelectedAll, setSelectedAll] = useState(
-    cartItems.filter((item) => item.isSelected).length === cartItems.length
-  );
+  const [cartItems, setCartItems] = useState<CartProps[]>([]);
+  const [selectedCount, setSelectedCount] = useState(0);
+
+  useEffect(() => {
+    // Kiểm tra nếu ứng dụng đang chạy trong môi trường trình duyệt
+    if (typeof window !== "undefined" && window.localStorage) {
+      const listItems = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCartItems(listItems); // Cập nhật cartItems
+    }
+  }, []);
+
+  // Tính lại selectedCount mỗi khi cartItems thay đổi
+  useEffect(() => {
+    const countSelected = cartItems.reduce((acc, selected) => {
+      if (selected.isSelected) return acc + 1;
+      return acc;
+    }, 0);
+    setSelectedCount(countSelected); // Cập nhật selectedCount
+  }, [cartItems]); // Chạy khi cartItems thay đổi
+
+  // console.log("Count: ", countSelected);
+
+  const [isSelectedAll, setSelectedAll] = useState<boolean>();
+  useEffect(() => {
+    const count: number = cartItems.filter((item) => item.isSelected).length;
+    setSelectedAll(count === cartItems.length);
+  }, [cartItems]);
+
   // update cartItems to localStorage
   const updateCart = (updatedCart: CartProps[]) => {
     setCartItems(updatedCart);
@@ -47,6 +65,11 @@ const ShoppingCart = () => {
   const handleProductQuantityChange = (index: number, newQuantity: number) => {
     const updatedCart = [...cartItems];
     updatedCart[index].productQuantity = newQuantity;
+    //// If the product quantity equals 0, remove the product from localStorage
+    if (newQuantity === 0) {
+      updatedCart.splice(index, 1); // // Remove product at specified index
+    }
+
     updateCart(updatedCart);
   };
   // update topping quantity
@@ -61,24 +84,30 @@ const ShoppingCart = () => {
     );
     if (topping) {
       topping.quantity = newQuantity;
+      // Nếu số lượng topping = 0, xóa topping đó khỏi sản phẩm
+      if (newQuantity === 0) {
+        updatedCart[productIndex].toppings = updatedCart[
+          productIndex
+        ].toppings.filter((topping) => topping.id !== toppingId);
+      }
     }
     updateCart(updatedCart);
   };
   // handle checkbox
   const handleCheckboxChange = (isChecked: boolean, index: number) => {
-    // Cập nhật trạng thái isSelected của item tại index
+    // Update the isSelected status of the item at the specified index
     const updatedItems = cartItems.map((item, i) =>
       i === index ? { ...item, isSelected: isChecked } : item
     );
     updateCart(updatedItems);
 
-    // Cập nhật selectedCount
+    // Update the count of selected items
     const newSelectedCount = updatedItems.filter(
       (item) => item.isSelected
     ).length;
     setSelectedCount(newSelectedCount);
 
-    // Kiểm tra xem nếu tất cả các item đều được chọn, thì cần cập nhật isSelectedAll thành true
+    // Check if all items are selected, then update isSelectedAll to true
     if (newSelectedCount === cartItems.length) {
       setSelectedAll(true);
     } else {
@@ -87,7 +116,7 @@ const ShoppingCart = () => {
   };
   // handle select all items
   const handleSelectAllChange = () => {
-    const newIsSelectedAll = !isSelectedAll; // Đảo ngược trạng thái của select all
+    const newIsSelectedAll = !isSelectedAll;
     const updatedItems = cartItems.map((item) => ({
       ...item,
       isSelected: newIsSelectedAll,
@@ -95,10 +124,10 @@ const ShoppingCart = () => {
 
     updateCart(updatedItems);
 
-    // Cập nhật lại selectedCount theo trạng thái mới
+    // Update the count of selected items based on the new selection status
     const newSelectedCount = newIsSelectedAll ? cartItems.length : 0;
     setSelectedCount(newSelectedCount);
-    setSelectedAll(newIsSelectedAll); // Cập nhật trạng thái select all
+    setSelectedAll(newIsSelectedAll);
   };
 
   // calculate total price for each item
@@ -122,17 +151,11 @@ const ShoppingCart = () => {
   };
 
   const handleDeleteItemCart = (index: number) => {
-    // Kiểm tra nếu index hợp lệ
     if (index >= 0 && index < cartItems.length) {
-      // Tạo một bản sao của cartItems và xóa phần tử tại index
       const updatedCart = [...cartItems];
-      updatedCart.splice(index, 1); // Xóa phần tử tại vị trí index
-
-      // Cập nhật lại mảng vào localStorage
+      updatedCart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-      // Cập nhật lại state của React
-      setCartItems(updatedCart); // Đảm bảo rằng UI được cập nhật
+      setCartItems(updatedCart);
     }
   };
   const handleDeleteAll = () => {
@@ -152,13 +175,13 @@ const ShoppingCart = () => {
         <div className="mt-5 flex flex-col w-[98%]">
           <div className="flex mb-5">
             <div className="text-lg font-medium text-left w-[35%] pl-5 text-primarycolor">
-              Đã chọn:{" "}
+              Đã chọn:
               <span className="text-lg font-medium text-black">
                 {selectedCount}
               </span>{" "}
               /{" "}
               <span className="text-lg font-medium text-black">
-                {listItems.length}
+                {cartItems.length}
               </span>
             </div>
             <div className="text-center font-bold text-[38px] mb-1 w-[30%]">
@@ -182,8 +205,8 @@ const ShoppingCart = () => {
             </div>
           </div>
           <div className="list-order-cart-detail overflow-y-auto h-[425px] self-center mx-auto pb-5">
-            {listItems.length > 0 &&
-              listItems.map((item: CartProps, index: number) => (
+            {cartItems.length > 0 &&
+              cartItems.map((item: CartProps, index: number) => (
                 <div
                   className="w-[auto] px-10 h-[auto] pb-1 bg-white border-solid border-gray-500 border-[1px] m-auto mt-2 rounded-3xl flex justify-start items-center mb-10"
                   key={index}
