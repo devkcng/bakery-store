@@ -34,8 +34,11 @@ const DeliveryInfo = () => {
 
   // Hàm xử lý submit form
   function onSubmit(values: z.infer<typeof deliverySchema>) {
+    // Lưu thông tin vào localStorage
+    localStorage.setItem("deliveryInfo", JSON.stringify(values));
     console.log(values);
-    window.location.href = "/payment";
+    // Chuyển hướng đến trang thanh toán sau khi lưu thông tin vào localStorage
+    router.push("/payment");
   }
 
   return (
@@ -141,7 +144,7 @@ const DeliveryInfo = () => {
 
             {/* Nút submit */}
             <div className="inline-flex justify-center w-full">
-              <Button type="submit" className="bg-primarycolor w-[50%]">
+              <Button className="bg-primarycolor w-[50%] mt-3 mb-3">
                 Tiếp tục
               </Button>
             </div>
