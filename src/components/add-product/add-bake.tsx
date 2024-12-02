@@ -118,7 +118,8 @@ const AddBake = () => {
       console.error('Error creating product ID:', error);
     }
   };
-  
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const product_id = await createProductId();
     const bakeData = {
@@ -147,6 +148,18 @@ const AddBake = () => {
         }
         await addProductTopping(productTopping);
       }
+
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 3000);
+
+      form.reset({
+        price: 0,
+        bakeName: "",
+        completeTime: 0,
+        maxCapacity: 0,
+      });
+      setIngredients([]);
+      setSelectedToppings([]);
 
     } catch (error) {
       console.error('Error adding product:', error);
@@ -348,7 +361,13 @@ const AddBake = () => {
             </Button>
           </div>
         </form>
-      </Form>
+      </Form>{showSuccessMessage && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
+            <p className="text-xl font-bold">Thêm thành công</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
