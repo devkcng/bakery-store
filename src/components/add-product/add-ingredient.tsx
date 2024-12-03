@@ -19,6 +19,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
+import { Warehouse } from "lucide-react";
+import { addIngredient } from "@/app/api/warehouses/route";
+
+// ingredient as known as warehouse
+type Warehouse = {
+  name: string;
+  quantity: number;
+  unit: string;
+};
+
 const formSchema = z.object({
   price: z.number().min(1000, {
     message: "Price must be greater than 1,000 VNĐ.",
@@ -30,6 +41,7 @@ const formSchema = z.object({
     message: "Quantity must be greater than 1",
   }),
 });
+
 const AddIngredient = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,8 +49,29 @@ const AddIngredient = () => {
       price: 0,
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    const data: Warehouse = {
+      name: values.ingredientName,
+      quantity: Number(values.quantity),
+      unit: values.ingredientUnit,
+    };
+    console.log(data);
+
+    try {
+      await addIngredient(data);
+      console.log("Ingredient added successfully");
+
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 3000);
+
+      form.reset();
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
   }
   return (
     <div className="flex flex-col items-center mt-16">
@@ -163,7 +196,13 @@ const AddIngredient = () => {
             </Button>
           </div>
         </form>
-      </Form>
+      </Form>{showSuccessMessage && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
+            <p className="text-xl font-bold">Thêm thành công</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

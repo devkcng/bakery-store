@@ -25,11 +25,16 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, quantity, unit } = body;
 
+    console.log("Request body:", body);
+
     const response = await axios.post(baseUrl, { name, quantity, unit });
+    console.log("Response data:", response.data);
+
     return NextResponse.json(response.data, { status: 201 });
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
+    console.error("Error creating warehouse:", errorMessage);
     return NextResponse.json(
       { message: "Error creating warehouse", error: errorMessage },
       { status: 500 }
@@ -100,4 +105,32 @@ export async function fetchIngredientNamesFromAPI() {
    console.error("Error fetching topping names:", error);
    throw error;
  }
+}
+
+// create AddIngredient function to add ingredient to warehouse
+
+type Warehouse = {
+  name: string;
+  quantity: number;
+  unit: string;
+};
+
+export async function addIngredient(ingredient: Warehouse) {
+  try {
+    const response = await fetch("/api/warehouses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ingredient),
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error adding ingredient:", error);
+    throw error;
+  }
 }
