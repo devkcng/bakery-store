@@ -1,8 +1,8 @@
 "use client";
-import IngredientDetail from "@/components/admin/manage-ingredient-detail";
+import IngredientDetail from "@/components/Admin/manage-ingredient-detail";
 import Topping, {
   ToppingDetail,
-} from "@/components/admin/manage-topping-detail";
+} from "@/components/Admin/manage-topping-detail";
 import Button from "@/components/button/button";
 import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";

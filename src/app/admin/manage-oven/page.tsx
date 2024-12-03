@@ -1,7 +1,7 @@
 "use client";
 import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
-import Oven from "@/components/admin/manage-oven";
+import Oven from "@/components/Admin/manage-oven";
 const ManageOvenDetail = () => {
   const pseudoData = [
     {
