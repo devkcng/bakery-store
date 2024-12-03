@@ -68,7 +68,15 @@ const AddBake = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>();
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string>("/imgs/uploadPic.png");
 
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (file) {
+        const imageUrl = URL.createObjectURL(file); // Tạo URL tạm thời cho file
+        setImageSrc(imageUrl);
+    }
+  };
   useEffect(() => {
     const fetchIngredientNames = async () => {
       try {
@@ -144,14 +152,13 @@ const AddBake = () => {
       price: values.price,
       description: "Default description", // Add appropriate description
       category_id: Number(selectedCategory.id), // Add appropriate category_id
-      img_path: "/imgs/bakery-images/browniesb.png", // Add appropriate img_path
+      img_path: `/imgs/bakery-images/${values.bakeName}b.png`, // Add appropriate img_path
       max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
       product_capacity_per_batch: values.maxCapacity,
-
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
-
+    
     try {
       await addProduct(bakeData);
       console.log('Product added successfully');
@@ -166,7 +173,7 @@ const AddBake = () => {
 
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000);
-
+      setImageSrc("/imgs/uploadPic.png");
       form.reset({
         price: 0,
         bakeName: "",
@@ -175,6 +182,8 @@ const AddBake = () => {
       });
       setIngredients([]);
       setSelectedToppings([]);
+      setSelectedCategory(undefined);
+
 
     } catch (error) {
       console.error('Error adding product:', error);
@@ -197,7 +206,7 @@ const AddBake = () => {
             <div className="h-[300px] w-[300px] rounded-lg shadow-[4px_4px_30px_rgba(0,0,0,0.2)] flex flex-col items-center justify-between p-2.5 gap-1.5 ">
               <div className="flex-1 w-full border-2 border-dashed border-royalblue rounded-lg flex flex-col items-center justify-center">
                 <img
-                  src="/imgs/bakery-images/browniesb.png"
+                  src={imageSrc}
                   alt="Hello"
                   className="object-cover w-[135px] h-[135px]"
                 />
@@ -209,7 +218,11 @@ const AddBake = () => {
               >
                 <p className="flex-1 text-center">Chọn ảnh</p>
               </label>
-              <input id="file" type="file" className="hidden" />
+              <input id="file" 
+              type="file" 
+              className="hidden" 
+              onChange={handleImageChange}
+              accept="image/*"/>
             </div>
             {/* Information of bake section */}
 
