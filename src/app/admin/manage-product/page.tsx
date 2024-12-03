@@ -75,9 +75,9 @@ const ManageProduct = () => {
           productInfo={{
           imagePath: "/imgs/bakery-images/muffinb.png",
           itemName: "Bánh muffin",
-          itemPrice: 28000,
+          itemPrice: 20000,
         }}
-        productTopping="nho khô"
+        productTopping="nho khô, việt quất, mâm xôi, hạt vừng, phô mai sợi, kiwi"
       />
       <ProductCard
           productInfo={{
@@ -85,7 +85,7 @@ const ManageProduct = () => {
           itemName: "Bánh cookies",
           itemPrice: 20000,
         }}
-        productTopping="sốt socola"
+        productTopping="sốt socola, nho khô, hạnh nhân lát"
       />
       <ProductCard
           productInfo={{
@@ -93,16 +93,77 @@ const ManageProduct = () => {
           itemName: "Bánh donut",
           itemPrice: 30000,
         }}
-        productTopping="sốt socola"
+        productTopping="Socola đen, mứt trái cây, Bánh oreo, Mứt việt quất"
       />
       <ProductCard
           productInfo={{
           imagePath: "/imgs/bakery-images/cupcakeb.png",
           itemName: "Bánh cupcake",
+          itemPrice: 20000,
+        }}
+        productTopping="Mứt việt quất, Socola đen, Bột cacao"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/pizzab.png",
+          itemName: "Pizza hải sản",
+          itemPrice: 200000,
+        }}
+        productTopping="tôm, nghêu, ớt chuông"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/eggtartb.png",
+          itemName: "Bánh tart trứng",
+          itemPrice: 30000,
+        }}
+        productTopping="Hạnh nhân khô"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/saltedb.png",
+          itemName: "Bông lan trứng muối",
+          itemPrice: 150000,
+        }}
+        productTopping="Thịt nguội, Sốt mayonaise, Hạt vừng"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/browniesb.png",
+          itemName: "Bánh brownies",
           itemPrice: 50000,
         }}
-        productTopping="hạnh nhân khô"
+        productTopping="Kiwi, Bột matcha, Mứt đào, Mứt việt quất"
       />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/bananapieb.png",
+          itemName: "Bánh chuối",
+          itemPrice: 80000,
+        }}
+        productTopping="Hạt vừng, nho khô, Hạnh nhân lát"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/chouxbb.png",
+          itemName: "Bánh su kem",
+          itemPrice: 10000,
+        }}
+        productTopping="Kem tươi, Mật ong, Sốt caramel"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/macaronb.png",
+          itemName: "Bánh macaron",
+          itemPrice: 20000,
+        }}
+        productTopping="Bơ đậu phộng, Dâu tây tươi, Mâm xôi"
+      />
+
+
+
+
+
       </div>
     </div>
   );

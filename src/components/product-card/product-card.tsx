@@ -12,7 +12,7 @@ export interface ProductProps {
 }
 const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
   return (
-    <div className="containerProductAdmin">
+    <div className="containerProductAdmin ">
       <div
         style={{
           backgroundImage: "url('/imgs/bakery-images/item-background.png')",
@@ -27,7 +27,7 @@ const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
           className="h-[80%] item-image block w-full object-contain"
         />
       </div>
-      <div className="pl-10 pt-3">
+      <div className="pl-10 pt-3 w-[150px]">
         <span className="block font-display text-[18px] font-semibold mt-1">
           {productInfo?.itemName ? productInfo.itemName : "Bánh Muffin"}
         </span>{" "}

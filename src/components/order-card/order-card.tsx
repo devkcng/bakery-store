@@ -61,6 +61,8 @@ const OrderCard: FC<DetailOrderAdmin> = ({
           {DetailOrders.map((item, index) => (
             <div key={index} className="mb-1 ">
               <ItemOrder
+                OrderID={item.OrderID}
+                timeOrder={item.timeOrder}
                 itemInfo={item.itemInfo}
                 itemCount={item.itemCount}
                 itemTopping={item.itemTopping}
