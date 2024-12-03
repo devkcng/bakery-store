@@ -70,7 +70,7 @@ const AddIngredient = () => {
 
       form.reset();
     } catch (error) {
-      console.error("Error adding product:", error);
+      console.error("Error adding ingredient:", error);
     }
   }
   return (

@@ -101,3 +101,30 @@ export async function fetchToppingsFromAPI() {
     throw error;
   }
 }
+
+type Topping = {
+  name: string;
+  price: number;
+}
+
+// function used in the frontend to add a topping to the API (used on add-toppings component)
+
+export async function addTopping(topping: Topping) {
+  try {
+    const response = await fetch("/api/toppings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(topping),
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error adding topping:", error);
+    throw error;
+  }
+}
