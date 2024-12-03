@@ -1,92 +1,104 @@
 // src/app/api/categories/route.ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import axios from "axios";
 
 const baseUrl = process.env.BACKEND_URL + "categories";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === "GET") {
-    try {
-      const response = await axios.get(baseUrl);
-      res.status(200).json(response.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        res
-          .status(500)
-          .json({ message: "Error fetching categories", error: error.message });
-      } else {
-        res
-          .status(500)
-          .json({
-            message: "Error fetching categories",
-            error: "Unknown error",
-          });
-      }
-    }
-  } else if (req.method === "POST") {
-    try {
-      const { name } = req.body;
-
-      const response = await axios.post(baseUrl, { name });
-      res.status(201).json(response.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        res
-          .status(500)
-          .json({ message: "Error creating category", error: error.message });
-      } else {
-        res
-          .status(500)
-          .json({ message: "Error creating category", error: "Unknown error" });
-      }
-    }
-  } else if (req.method === "PATCH") {
-    try {
-      const { id, ...updateData } = req.body;
-
-      if (!id) {
-        return res.status(400).json({ message: "Category ID is required" });
-      }
-
-      const response = await axios.patch(`${baseUrl}/${id}`, updateData);
-      res.status(200).json(response.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        res
-          .status(500)
-          .json({ message: "Error updating category", error: error.message });
-      } else {
-        res
-          .status(500)
-          .json({ message: "Error updating category", error: "Unknown error" });
-      }
-    }
-  } else if (req.method === "DELETE") {
-    try {
-      const { id } = req.body;
-
-      if (!id) {
-        return res.status(400).json({ message: "Category ID is required" });
-      }
-
-      const response = await axios.delete(`${baseUrl}/${id}`);
-      res.status(200).json(response.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        res
-          .status(500)
-          .json({ message: "Error deleting category", error: error.message });
-      } else {
-        res
-          .status(500)
-          .json({ message: "Error deleting category", error: "Unknown error" });
-      }
-    }
-  } else {
-    res.setHeader("Allow", ["GET", "POST", "PATCH", "DELETE"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+// GET Handler
+export async function GET() {
+  try {
+    const response = await axios.get(baseUrl);
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json(
+      { message: "Error fetching categories", error: errorMessage },
+      { status: 500 }
+    );
   }
 }
+
+// POST Handler
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { name } = body;
+
+    const response = await axios.post(baseUrl, { name });
+    return NextResponse.json(response.data, { status: 201 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json(
+      { message: "Error creating category", error: errorMessage },
+      { status: 500 }
+    );
+  }
+}
+
+// PATCH Handler
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, ...updateData } = body;
+
+    if (!id) {
+      return NextResponse.json(
+        { message: "Category ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const response = await axios.patch(`${baseUrl}/${id}`, updateData);
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json(
+      { message: "Error updating category", error: errorMessage },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE Handler
+export async function DELETE(req: Request) {
+  try {
+    const body = await req.json();
+    const { id } = body;
+
+    if (!id) {
+      return NextResponse.json(
+        { message: "Category ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const response = await axios.delete(`${baseUrl}/${id}`);
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json(
+      { message: "Error deleting category", error: errorMessage },
+      { status: 500 }
+    );
+  }
+}
+
+// Function used in the frontend to fetch category names from the API
+export const fetchCategoriesFromAPI = async () => {
+  try {
+    const response = await fetch("/api/categories");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("Categories data:", data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw error;
+  }
+};
