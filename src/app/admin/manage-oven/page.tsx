@@ -25,69 +25,59 @@ const ManageOvenDetail = () => {
       status: "Đang xử lý",
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV005",
+      orderID: ["ORD1007"],
+      status: "Hoàn thành"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV006",
+      orderID: [],
+      status: "Đang trống"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV007",
+      orderID: ["ORD1008", "ORD1009", "ORD1010"],
+      status: "Đang xử lý"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV008",
+      orderID: ["ORD1011"],
+      status: "Hoàn thành"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV009",
+      orderID: [],
+      status: "Đang trống"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV010",
+      orderID: ["ORD1012", "ORD1013"],
+      status: "Đang xử lý"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV011",
+      orderID: ["ORD1014"],
+      status: "Hoàn thành"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV012",
+      orderID: [],
+      status: "Đang trống"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV013",
+      orderID: ["ORD1015", "ORD1016"],
+      status: "Đang xử lý"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV014",
+      orderID: ["ORD1017"],
+      status: "Hoàn thành"
     },
     {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
-    },
-    {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
-    },
-    {
-      ovenID: "OV004",
-      orderID: ["ORD1005", "ORD1006"],
-      status: "Đang xử lý",
+      ovenID: "OV015",
+      orderID: [],
+      status: "Đang trống"
     },
   ];
   return (

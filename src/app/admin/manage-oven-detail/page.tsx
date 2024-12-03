@@ -20,132 +20,27 @@ const ManageOvenDetail = () => {
     },
     orders: [
       {
-        orderID: "ORD001",
+        orderID: "ORD1001",
         quantity: 2,
         completeTime: "14:30",
         remainingTime: "00:15",
       },
       {
-        orderID: "ORD002",
+        orderID: "ORD1002",
         quantity: 3,
         completeTime: "15:00",
         remainingTime: "00:45",
       },
       {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
-        quantity: 1,
-        completeTime: "16:00",
-        remainingTime: "01:30",
-      },
-      {
-        orderID: "ORD003",
+        orderID: "ORD1003",
         quantity: 1,
         completeTime: "16:00",
         remainingTime: "01:30",
       },
     ],
+  
+    
+   
   };
 
   return (

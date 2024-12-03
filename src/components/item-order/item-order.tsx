@@ -37,7 +37,7 @@ const ItemOrder: FC<DetailOrder> = ({
       </div>
       <div className="pl-2.5">
         <span className="block font-display text-[14px] font-semibold mt-1">
-          {productName ? productName : "Bánh Muffin"}
+          {productName ? productName : "Bánh "}
         </span>{" "}
         <span className="block font-display text-sm font-light text-[#797B7E] mt-2 w-[150px] overflow-auto">
           {!listToppingName ? "Không có topping" : listToppingName}

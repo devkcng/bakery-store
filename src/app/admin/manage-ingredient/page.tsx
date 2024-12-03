@@ -7,123 +7,242 @@ import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 const ManageIngredient = () => {
   const pseudoIngredientData: IngredientDetail[] = [
     {
-      iD: "001",
-      ingredientName: "Chocolate Chip",
-      quantity: "200",
-      unit: "g",
-      ingredientPrice: "20000",
-    },
-    {
-      iD: "002",
-      ingredientName: "Vanilla Extract",
-      quantity: "50",
-      unit: "ml",
-      ingredientPrice: "15000",
-    },
-    {
-      iD: "003",
-      ingredientName: "Strawberry Jam",
+      iD: "1",
+      ingredientName: "Bột mì",
       quantity: "100",
-      unit: "g",
-      ingredientPrice: "25000",
+      unit: "kg",
+      ingredientPrice: "2000000",
     },
     {
-      iD: "004",
-      ingredientName: "Whipped Cream",
-      quantity: "150",
-      unit: "g",
-      ingredientPrice: "18000",
-    },
-    {
-      iD: "005",
-      ingredientName: "Sprinkles",
+      iD: "2",
+      ingredientName: "Đường",
       quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      unit: "kg",
+      ingredientPrice: "1500000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "3",
+      ingredientName: "Sữa tươi",
+      quantity: "100",
+      unit: "l",
+      ingredientPrice: "2500000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "4",
+      ingredientName: "Bơ thực vật",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "1000000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
+      iD: "5",
+      ingredientName: "Sữa đặc",
       quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      unit: "l",
+      ingredientPrice: "1000000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "6",
+      ingredientName: "Trứng gà",
+      quantity: "1000",
+      unit: "quả",
+      ingredientPrice: "1200000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
+      iD: "7",
+      ingredientName: "Bột nở",
       quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      unit: "kg",
+      ingredientPrice: "1000000",
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "8",
+      ingredientName: "Bơ nhạt",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "1000000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "9",
+      ingredientName: "Men",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "800000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "10",
+      ingredientName: "Bột bắp",
+      quantity: "30",
+      unit: "kg",
+      ingredientPrice: "1000000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "11",
+      ingredientName: "Socola đen",
+      quantity: "100",
+      unit: "kg",
+      ingredientPrice: "2000000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "12",
+      ingredientName: "Bột cacao",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "1200000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
-      quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      iD: "13",
+      ingredientName: "Bơ đậu phộng",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "600000"
     },
     {
-      iD: "005",
-      ingredientName: "Sprinkles",
+      iD: "14",
+      ingredientName: "Chuối",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "300000"
+    },
+    {
+      iD: "15",
+      ingredientName: "Nho khô",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "500000"
+    },
+    {
+      iD: "16",
+      ingredientName: "Táo tươi",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "500000"
+    },
+    {
+      iD: "17",
+      ingredientName: "Bột baking powder",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "300000"
+    },
+    {
+      iD: "18",
+      ingredientName: "Bột mì",
+      quantity: "100",
+      unit: "kg",
+      ingredientPrice: "1000000"
+    },
+    {
+      iD: "19",
+      ingredientName: "Cà phê",
+      quantity: "5",
+      unit: "kg",
+      ingredientPrice: "500000"
+    },
+    {
+      iD: "20",
+      ingredientName: "Kem tươi",
+      quantity: "100",
+      unit: "kg",
+      ingredientPrice: "500000"
+    },
+    {
+      iD: "21",
+      ingredientName: "Mật ong",
+      quantity: "100",
+      unit: "kg",
+      ingredientPrice: "1000000"
+    },
+    {
+      iD: "22",
+      ingredientName: "Tinh chất vani",
+      quantity: "5",
+      unit: "kg",
+      ingredientPrice: "200000"
+    },
+    {
+      iD: "23",
+      ingredientName: "Muối",
       quantity: "50",
-      unit: "g",
-      ingredientPrice: "12000",
+      unit: "kg",
+      ingredientPrice: "200000"
+    },
+    {
+      iD: "24",
+      ingredientName: "Chanh",
+      quantity: "1",
+      unit: "kg",
+      ingredientPrice: "10000"
+    },
+    {
+      iD: "25",
+      ingredientName: "Dầu ăn",
+      quantity: "100",
+      unit: "l",
+      ingredientPrice: "1200000"
+    },
+    {
+      iD: "26",
+      ingredientName: "Tôm",
+      quantity: "20",
+      unit: "kg",
+      ingredientPrice: "2000000"
+    },
+    {
+      iD: "27",
+      ingredientName: "Nghêu",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "1000000"
+    },
+    {
+      iD: "28",
+      ingredientName: "Ớt chuông",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "500000"
+    },
+    {
+      iD: "29",
+      ingredientName: "Tỏi",
+      quantity: "3",
+      unit: "kg",
+      ingredientPrice: "12000"
+    },
+    {
+      iD: "30",
+      ingredientName: "Hành",
+      quantity: "2",
+      unit: "kg",
+      ingredientPrice: "12000"
+    },
+    {
+      iD: "31",
+      ingredientName: "Cà chua",
+      quantity: "10",
+      unit: "kg",
+      ingredientPrice: "100000"
+    },
+    {
+      iD: "32",
+      ingredientName: "Tương cà",
+      quantity: "3",
+      unit: "kg",
+      ingredientPrice: "50000"
+    },
+    {
+      iD: "33",
+      ingredientName: "Dầu oliu",
+      quantity: "3",
+      unit: "kg",
+      ingredientPrice: "100000"
+    },
+    {
+      iD: "34",
+      ingredientName: "Phô mai",
+      quantity: "3",
+      unit: "kg",
+      ingredientPrice: "50000"
     },
   ];
   return (

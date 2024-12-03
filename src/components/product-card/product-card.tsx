@@ -12,7 +12,7 @@ export interface ProductProps {
 }
 const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
   return (
-    <div className="containerProductAdmin">
+    <div className="containerProductAdmin ">
       <div
         style={{
           backgroundImage: "url('/imgs/bakery-images/item-background.png')",
@@ -27,12 +27,11 @@ const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
           className="h-[80%] item-image block w-full object-contain"
         />
       </div>
-      <div className="pl-10 pt-3">
+      <div className="pl-10 pt-3 w-[150px]">
         <span className="block font-display text-[18px] font-semibold mt-1">
           {productInfo?.itemName ? productInfo.itemName : "Bánh Muffin"}
         </span>{" "}
         <span className="block font-display text-[18px] font-bold text-[#797B7E] mt-2">
-          Topping
         </span>
         <span className="block font-display text-[16px] font-semibold text-[#797B7E] mt-2">
           {productTopping === "" ? "nho khô, hạnh nhân" : productTopping}
@@ -40,9 +39,9 @@ const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
       </div>
       <div className="pl-20 ml-20">
         <span className="block font-display text-[18px] font-semibold text-black mt-4">
-          {productInfo?.itemPrice === 0
+          {productInfo?.itemPrice
           ? `Đơn giá: ${formatVND(productInfo.itemPrice)}`
-          : `Đơn giá: ${formatVND(28000)}`}
+          : `Đơn giá: ${formatVND(30000)}`}
         </span>
         <div className="flex flex-row justify-end space-x-2 mt-2">
           <svg
