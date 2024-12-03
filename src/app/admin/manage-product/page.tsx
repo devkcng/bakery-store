@@ -71,11 +71,38 @@ const ManageProduct = () => {
         </div>
       </div>
       <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-3 w-full ">
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/muffinb.png",
+          itemName: "Bánh muffin",
+          itemPrice: 28000,
+        }}
+        productTopping="nho khô"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/cookiesb.png",
+          itemName: "Bánh cookies",
+          itemPrice: 20000,
+        }}
+        productTopping="sốt socola"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/donutb.png",
+          itemName: "Bánh donut",
+          itemPrice: 30000,
+        }}
+        productTopping="sốt socola"
+      />
+      <ProductCard
+          productInfo={{
+          imagePath: "/imgs/bakery-images/cupcakeb.png",
+          itemName: "Bánh cupcake",
+          itemPrice: 50000,
+        }}
+        productTopping="hạnh nhân khô"
+      />
       </div>
     </div>
   );

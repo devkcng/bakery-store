@@ -26,7 +26,7 @@ const ItemOrder: FC<DetailOrder> = ({
   totalPrice,
   className = "",
 }) => {
-  const listToppingName = toppings.join(", ");
+  const listToppingName = Array.isArray(toppings) ? toppings.join(", ") : "";
   return (
     <div className={`item_order_container ${className}`}>
       <div className="pl-2.5">
