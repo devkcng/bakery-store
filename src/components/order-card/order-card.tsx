@@ -35,6 +35,36 @@ const OrderCard: FC<DetailOrderAdmin> = ({
   DetailOrders,
   status,
 }) => {
+  const dummyDataList = [
+    {
+      productID: 101,
+      productName: "Bánh Cookies",
+      productQuantiy: 2,
+      productImgPath: "/imgs/bakery-images/cookiesb.png",
+      productPrice: 35000,
+      toppings: ["Hạnh nhân", "Nho khô"],
+      totalPrice: 70000,
+    },
+    {
+      productID: 102,
+      productName: "Bánh donut",
+      productQuantiy: 1,
+      productImgPath: "/imgs/bakery-images/donutb.png",
+      productPrice: 25000,
+      toppings: ["Sô-cô-la", "Đường bột"],
+      totalPrice: 25000,
+    },
+    {
+      productID: 103,
+      productName: "Bánh muffin",
+      productQuantiy: 3,
+      productImgPath: "/imgs/bakery-images/muffinb.png",
+      productPrice: 28000,
+      toppings: ["Dâu tây", "Socola chip"],
+      totalPrice: 84000,
+    },
+  ];
+
   return (
     <div>
       <div className="containerDetailcard">
@@ -58,12 +88,17 @@ const OrderCard: FC<DetailOrderAdmin> = ({
         </div>
         <div className="list-order w-[100%] h-[80%] mt-3 px-0 flex flex-col items-center">
           {/* Phần 2 */}
-          {DetailOrders.map((item, index) => (
-            <div key={index} className="mb-1 ">
+          {dummyDataList.map((item, index) => (
+            <div key={index} className="mb-1">
               <ItemOrder
-                itemInfo={item.itemInfo}
-                itemCount={item.itemCount}
-                itemTopping={item.itemTopping}
+                productID={item.productID}
+                productName={item.productName}
+                productQuantiy={item.productQuantiy}
+                productImgPath={item.productImgPath}
+                productPrice={item.productPrice}
+                toppings={item.toppings}
+                totalPrice={item.totalPrice}
+                className=""
               />
             </div>
           ))}
@@ -72,9 +107,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
           {/* Phần 3 */}
           <div>
             <span className="block font-display text-[15px] font-semibold text-[#797B7E]">
-              {DetailOrders.length === 0
-                ? `x0 items`
-                : `x${DetailOrders.length} items`}
+              {DetailOrders.length === 0 ? `x0 items` : `x${3} items`}
             </span>{" "}
           </div>
           <div className="flex ">
