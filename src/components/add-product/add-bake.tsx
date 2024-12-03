@@ -25,6 +25,7 @@ import { fetchIngredientNamesFromAPI } from "@/app/api/warehouses/route";
 import { addProduct } from "@/app/api/products/add-product/route";
 import { addProductTopping } from "@/app/api/product-toppings/route";
 import { getNumberOfProducts } from "@/app/api/products/route";
+import { fetchCategoriesFromAPI } from "@/app/api/categories/route";
 
 type Topping = {
   id: string;
@@ -32,7 +33,7 @@ type Topping = {
 };
 
 type Category = {
-  id: number;
+  id: string;
   name: string;
 };
 
@@ -62,6 +63,10 @@ const AddBake = () => {
 
   const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
 
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const [selectedCategory, setSelectedCategory] = useState<Category>();
+
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
@@ -83,8 +88,19 @@ const AddBake = () => {
       }
     };
 
+    const fetchCategories = async () => {
+      try {
+        const data = await fetchCategoriesFromAPI();
+        console.log(data);
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
     fetchIngredientNames();
     fetchToppings();
+    fetchCategories();
   }, []); 
 
   const handleAddIngredient = (ingredientName: string) => {
@@ -106,6 +122,11 @@ const AddBake = () => {
     }
   };
 
+  const handleAddCategory = (value: string) => {
+    const [categoryName, categoryId] = value.split('|');
+    setSelectedCategory({ name: categoryName, id: categoryId });
+  };
+
   const createProductId = async () => {
     try {
       const numberOfProducts = await getNumberOfProducts();
@@ -122,11 +143,10 @@ const AddBake = () => {
       name: values.bakeName,
       price: values.price,
       description: "Default description", // Add appropriate description
-      category_id: 1, // Add appropriate category_id
+      category_id: Number(selectedCategory.id), // Add appropriate category_id
       img_path: "/imgs/bakery-images/browniesb.png", // Add appropriate img_path
       max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
       product_capacity_per_batch: values.maxCapacity,
-      ingredients,
 
     };
     console.log(bakeData);
@@ -347,6 +367,36 @@ const AddBake = () => {
                   </div>
                 </div>
               </div>
+              {/* Category section */}
+              <div className="flex flex-col items-start mt-2">
+                <FormLabel className="mb-5">Danh mục</FormLabel>
+                <Select onValueChange={handleAddCategory} value="">
+                  <SelectTrigger className="w-[250px]">
+                    <SelectValue placeholder="+ Chọn danh mục" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category.id} value={`${category.name}|${category.id}`}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                    
+                  </SelectContent>
+                </Select>
+                {/* Render selected category */}
+                <div className="w-full mt-4 space-y-4 ">
+                  {selectedCategory && (
+                    <div className="flex items-center gap-4">
+                      <Input
+                        className="w-[100px]"
+                        value={selectedCategory.name}
+                        readOnly
+                      />
+                    </div>
+                  )}
+                </div>
+                </div>
+                
             </div>
           </div>
 
