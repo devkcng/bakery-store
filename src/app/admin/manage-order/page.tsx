@@ -27,21 +27,63 @@ const ManageOrder = () => {
   const time: string = new Date().toLocaleString("vi-VN", {
     timeZone: "Asia/Ho_Chi_Minh",
   });
-  const listOfOrders: DetailOrder[] = [
+  const listOfOrders1: DetailOrder[] = [
     {
-      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
-      itemCount: 2,
-      itemTopping: "chân trâu, dậu đỏ",
-    },
-    {
-      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
-      itemCount: 4,
-      itemTopping: "mè đen",
-    },
-    {
-      itemInfo: { imagePath: "", itemName: "", itemPrice: 28000 },
+      itemInfo: { imagePath: "/imgs/bakery-images/applepieb.png", itemName: "Bánh táo", itemPrice: 150000 },
       itemCount: 5,
+      itemTopping: "mật ong",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/chouxbb.png", itemName: "Bánh choux", itemPrice: 15000 },
+      itemCount: 4,
+      itemTopping: "socola",
+    },
+    
+  ];
+  const listOfOrders2: DetailOrder[] = [
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/cupcakeb.png", itemName: "Bánh Cupcake", itemPrice: 25000 },
+      itemCount: 10,
       itemTopping: "hạnh nhân",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/pizzab.png", itemName: "Pizza Hải sản", itemPrice: 350000},
+      itemCount: 4,
+      itemTopping: "",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/cupcakeb.png", itemName: "Bánh Cupcake", itemPrice: 25000 },
+      itemCount: 20,
+      itemTopping: "sô cô la",
+    },
+  ];
+  const listOfOrders3: DetailOrder[] = [
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/donutb.png", itemName: "Bánh donut", itemPrice: 12000 },
+      itemCount: 50,
+      itemTopping: "sô cô la",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/donutb.png", itemName: "Bánh donut", itemPrice: 12000 },
+      itemCount: 50,
+      itemTopping: "dâu",
+    },
+  ];
+  const listOfOrders4: DetailOrder[] = [
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/croissantb.png", itemName: "Bánh sừng trâu", itemPrice: 25000 },
+      itemCount: 10,
+      itemTopping: "hạnh nhân",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/eggtartb.png", itemName: "Bánh tart trứng", itemPrice: 12000 },
+      itemCount: 20,
+      itemTopping: "phô mai",
+    },
+    {
+      itemInfo: { imagePath: "/imgs/bakery-images/macaronb.png", itemName: "Bánh macaroon", itemPrice: 30000 },
+      itemCount: 30,
+      itemTopping: "",
     },
   ];
   return (
@@ -62,40 +104,28 @@ const ManageOrder = () => {
         </div>
         <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 grid grid-cols-3 gap-2 ">
           <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
+            OrderID="Dec123"
+            timeOrder="06 Dec 2024"
+            DetailOrders={listOfOrders1}
             status="Đang tiến hành"
           ></OrderCard>
           <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
-            status="Đang tiến hành"
+            OrderID="Dec125"
+            timeOrder="05 Dec 2024"
+            DetailOrders={listOfOrders2}
+            status="Hoàn thành"
           ></OrderCard>
           <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
-            status="Đang tiến hành"
+            OrderID="Dec124"
+            timeOrder="06 Dec 2024"
+            DetailOrders={listOfOrders3}
+            status="Đã giao"
           ></OrderCard>
           <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
-            status="Đang tiến hành"
-          ></OrderCard>
-          <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
-            status="Đang tiến hành"
-          ></OrderCard>
-          <OrderCard
-            OrderID=""
-            timeOrder=""
-            DetailOrders={listOfOrders}
-            status="Đang tiến hành"
+            OrderID="Dec126"
+            timeOrder="06 Dec 2024"
+            DetailOrders={listOfOrders4}
+            status="Đã hủy"
           ></OrderCard>
         </div>
       </div>
