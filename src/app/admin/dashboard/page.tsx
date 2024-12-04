@@ -42,8 +42,8 @@ const Page = () => {
         </div>
         <div className="flex justify-around items-center ">
           <CardInfo title="Doanh thu" value={1000000000}></CardInfo>
-          <CardInfo title="Chi phí" value={1000000000}></CardInfo>
-          <CardInfo title="Lợi nhuận" value={1000000000}></CardInfo>
+          <CardInfo title="Chi phí" value={300000000}></CardInfo>
+          <CardInfo title="Lợi nhuận" value={1000000000 - 300000000}></CardInfo>
         </div>
         <div className="flex justify-between mt-10">
           <div className="ml-3">
@@ -62,21 +62,21 @@ const Page = () => {
             </div>
             <div>
               <div className="flex justify-between mb-2">
-                <div>Bánh Cookies</div>
+                <div>Bánh Donut</div>
                 <div>50%</div>
               </div>
               <Progress value={50} />
             </div>
             <div>
               <div className="flex justify-between mb-2">
-                <div>Bánh Cookies</div>
+                <div>Bánh Muffine</div>
                 <div>40%</div>
               </div>
               <Progress value={40} />
             </div>
             <div>
               <div className="flex justify-between mb-2">
-                <div>Bánh Cookies</div>
+                <div>Bánh Tart Trứng</div>
                 <div>25%</div>
               </div>
               <Progress value={25} />
