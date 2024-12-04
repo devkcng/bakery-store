@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
-import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/nav-bar";
 import DetailProduct, {
   CartItemProps,
 } from "@/components/section/detail-product-section/detail-product-section";
+import { useEffect, useState } from "react";
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState<CartItemProps | null>(null);
