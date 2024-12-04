@@ -16,8 +16,8 @@
   margin-bottom: 10px;
 }
 .item_order_container img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-left: 5%;
   object-fit: contain;
 }

@@ -29,10 +29,11 @@ const ItemOrder: FC<DetailOrder> = ({
   const listToppingName = Array.isArray(toppings) ? toppings.join(", ") : "";
   return (
     <div className={`item_order_container ${className}`}>
-      <div className="pl-2.5">
+      <div className="pl-2.5 text-center inline-flex justify-center items-center">
         <img
           src={`${productImgPath || "/imgs/bakery-images/muffinb.png"}`}
           alt=""
+          className="w-1"
         />
       </div>
       <div className="pl-2.5">
