@@ -137,11 +137,11 @@ const Payment = () => {
                 orderData.map((item, index) => (
                   <div className="" key={index}>
                     <ItemOrder
-                      productID={item.productId}
+                      productId={item.productId.toString()}
                       productImgPath={item.productImgPath}
                       productName={item.productName}
                       productPrice={item.productPrice}
-                      productQuantiy={item.productQuantity}
+                      productQuantity={item.productQuantity}
                       toppings={item.toppings}
                       totalPrice={item.totalPrice}
                     />
