@@ -5,6 +5,7 @@ import SearchBar from "../../search-bar/search-bar";
 import ItemCard from "../../item-card/item-card";
 import axios from "axios";
 import { Product } from "@prisma/client";
+import { createData } from "@/utils/data";
 
 const MenuSection = () => {
   const options = ["Tất cả", "Bánh ngọt", "Bánh mặn"];
@@ -69,7 +70,8 @@ const MenuSection = () => {
     // Fetch data mỗi khi searchValue hoặc selectedOption thay đổi
     fetchData();
   }, [searchValue, selectedOption]); // Rerun when searchValue or selectedOption changes
-  console.log(data);
+  // console.log(data);
+  createData();
   return (
     <>
       <div id="menu">
