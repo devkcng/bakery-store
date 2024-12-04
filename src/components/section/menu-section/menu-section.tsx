@@ -69,6 +69,7 @@ const MenuSection = () => {
     // Fetch data mỗi khi searchValue hoặc selectedOption thay đổi
     fetchData();
   }, [searchValue, selectedOption]); // Rerun when searchValue or selectedOption changes
+  console.log(data);
   return (
     <>
       <div id="menu">

@@ -9,7 +9,7 @@ export interface ItemProps {
   product: Product;
 }
 const ItemCard: FC<ItemProps> = ({ product }) => {
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <>
       <div

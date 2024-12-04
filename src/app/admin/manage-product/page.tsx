@@ -1,11 +1,34 @@
 "use client";
 import Button from "@/components/button/button";
 import ProductCard from "@/components/product-card/product-card";
+import { CartItemProps } from "@/components/section/detail-product-section/detail-product-section";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const ManageProduct = () => {
   const router = useRouter();
+  const [data, setData] = useState<CartItemProps[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/api/products/admin/all-products"
+        );
+        if (!response.ok) {
+          throw new Error("Error fetching data");
+        }
+
+        const result = await response.json();
+        console.log("API Response: ", result[0].product); // Kiểm tra kết quả trả về
+        setData(result); // Hoặc thay result.data bằng kết quả đúng
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : "Undefined Error");
+      }
+    };
+    fetchData();
+  }, []); // Chạy lại khi params.id thay đổi
   return (
     <div className=" ml-[250px] mt-5 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
@@ -69,15 +92,16 @@ const ManageProduct = () => {
         </div>
       </div>
       <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-3 w-full ">
-        <ProductCard
-          productInfo={{
-            imagePath: "/imgs/bakery-images/muffinb.png",
-            itemName: "Bánh muffin",
-            itemPrice: 20000,
-          }}
-          productTopping="nho khô, việt quất, mâm xôi, hạt vừng, phô mai sợi, kiwi"
-        />
-        <ProductCard
+        {data &&
+          data.map((item, index) => (
+            <ProductCard
+              key={index}
+              product={item.product}
+              toppings={item.toppings}
+            />
+          ))}
+
+        {/* <ProductCard
           productInfo={{
             imagePath: "/imgs/bakery-images/cookiesb.png",
             itemName: "Bánh cookies",
@@ -156,7 +180,7 @@ const ManageProduct = () => {
             itemPrice: 20000,
           }}
           productTopping="Bơ đậu phộng, Dâu tây tươi, Mâm xôi"
-        />
+        /> */}
       </div>
     </div>
   );

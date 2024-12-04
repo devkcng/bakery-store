@@ -1,47 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FC } from "react";
-import ItemCard, { ItemProps } from "../item-card/item-card";
-import "./product-card.css";
 import { formatVND } from "@/utils/formatCurrency";
+import { FC } from "react";
+import { CartItemProps } from "../section/detail-product-section/detail-product-section";
+import "./product-card.css";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
-export interface ProductProps {
-  productInfo: ItemProps;
-  productTopping: string;
-}
-const ProductCard: FC<ProductProps> = ({ productInfo, productTopping }) => {
+
+const ProductCard: FC<CartItemProps> = ({ product, toppings }) => {
   return (
-    <div className="containerProductAdmin ">
+    <div className="containerProductAdmin  ">
       <div
         style={{
           backgroundImage: "url('/imgs/bakery-images/item-background.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="item_card border-transparent rounded-[30px] my-2 mx-5 w-auto aspect-square"
+        className="item_card border-transparent rounded-[30px] my-2 mx-5 w-auto aspect-square text-center inline-flex justify-center items-center"
       >
         <img
-          src={`${productInfo?.imagePath || "/imgs/bakery-images/muffinb.png"}`}
+          src={`${product?.img_path || "/imgs/bakery-images/muffinb.png"}`}
           alt=""
           className="h-[80%] item-image block w-full object-contain"
         />
       </div>
-      <div className="pl-10 pt-3 w-[150px]">
+      <div className="pl-10 pt-3 w-[400px]">
         <span className="block font-display text-[18px] font-semibold mt-1">
-          {productInfo?.itemName ? productInfo.itemName : "Bánh Muffin"}
+          {product?.name ? product.name : "Bánh Muffin"}
         </span>{" "}
-        <span className="block font-display text-[18px] font-bold text-[#797B7E] mt-2">
-        </span>
-        <span className="block font-display text-[16px] font-semibold text-[#797B7E] mt-2">
-          {productTopping === "" ? "nho khô, hạnh nhân" : productTopping}
+        <span className="block font-display text-[18px] font-bold text-[#797B7E] mt-2"></span>
+        <span className="block font-display text-sm font-normal text-black mt-2">
+          {Array.isArray(toppings)
+            ? `${toppings.map((topping) => topping.name).join(", ")}`
+            : "nho khô, hạnh nhân"}
         </span>
       </div>
-      <div className="pl-20 ml-20">
+      <div className="ml-5">
         <span className="block font-display text-[18px] font-semibold text-black mt-4">
-          {productInfo?.itemPrice
-          ? `Đơn giá: ${formatVND(productInfo.itemPrice)}`
-          : `Đơn giá: ${formatVND(30000)}`}
+          {product?.price
+            ? `Đơn giá: ${formatVND(product.price)}`
+            : `Đơn giá: ${formatVND(30000)}`}
         </span>
         <div className="flex flex-row justify-end space-x-2 mt-2">
           <svg
