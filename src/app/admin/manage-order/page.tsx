@@ -3,7 +3,6 @@ import { ItemProps } from "@/components/item-card/item-card";
 import { DetailOrder } from "@/components/item-order/item-order";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import OrderCard from "@/components/order-card/order-card";
-import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 import { useState } from "react";
 const ManageOrder = () => {
@@ -29,59 +28,98 @@ const ManageOrder = () => {
   });
   const listOfOrders1: DetailOrder[] = [
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/applepieb.png", itemName: "Bánh táo", itemPrice: 150000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/applepieb.png",
+        itemName: "Bánh táo",
+        itemPrice: 150000,
+      },
       itemCount: 5,
       itemTopping: "mật ong",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/chouxbb.png", itemName: "Bánh choux", itemPrice: 15000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/chouxbb.png",
+        itemName: "Bánh choux",
+        itemPrice: 15000,
+      },
       itemCount: 4,
       itemTopping: "socola",
     },
-    
   ];
   const listOfOrders2: DetailOrder[] = [
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/cupcakeb.png", itemName: "Bánh Cupcake", itemPrice: 25000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/cupcakeb.png",
+        itemName: "Bánh Cupcake",
+        itemPrice: 25000,
+      },
       itemCount: 10,
       itemTopping: "hạnh nhân",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/pizzab.png", itemName: "Pizza Hải sản", itemPrice: 350000},
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/pizzab.png",
+        itemName: "Pizza Hải sản",
+        itemPrice: 350000,
+      },
       itemCount: 4,
       itemTopping: "",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/cupcakeb.png", itemName: "Bánh Cupcake", itemPrice: 25000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/cupcakeb.png",
+        itemName: "Bánh Cupcake",
+        itemPrice: 25000,
+      },
       itemCount: 20,
       itemTopping: "sô cô la",
     },
   ];
   const listOfOrders3: DetailOrder[] = [
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/donutb.png", itemName: "Bánh donut", itemPrice: 12000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/donutb.png",
+        itemName: "Bánh donut",
+        itemPrice: 12000,
+      },
       itemCount: 50,
       itemTopping: "sô cô la",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/donutb.png", itemName: "Bánh donut", itemPrice: 12000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/donutb.png",
+        itemName: "Bánh donut",
+        itemPrice: 12000,
+      },
       itemCount: 50,
       itemTopping: "dâu",
     },
   ];
   const listOfOrders4: DetailOrder[] = [
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/croissantb.png", itemName: "Bánh sừng trâu", itemPrice: 25000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/croissantb.png",
+        itemName: "Bánh sừng trâu",
+        itemPrice: 25000,
+      },
       itemCount: 10,
       itemTopping: "hạnh nhân",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/eggtartb.png", itemName: "Bánh tart trứng", itemPrice: 12000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/eggtartb.png",
+        itemName: "Bánh tart trứng",
+        itemPrice: 12000,
+      },
       itemCount: 20,
       itemTopping: "phô mai",
     },
     {
-      itemInfo: { imagePath: "/imgs/bakery-images/macaronb.png", itemName: "Bánh macaroon", itemPrice: 30000 },
+      itemInfo: {
+        imagePath: "/imgs/bakery-images/macaronb.png",
+        itemName: "Bánh macaroon",
+        itemPrice: 30000,
+      },
       itemCount: 30,
       itemTopping: "",
     },
@@ -91,7 +129,6 @@ const ManageOrder = () => {
       <div className=" ml-[250px] mt-5 pl-[10px]   ">
         <SidebarAdmin></SidebarAdmin>
         <div>
-          <SearchBar isShow={true}></SearchBar>
           <div className=" mt-5 flex items-center ">
             <div className="w-[600px]">
               <MenuTabs

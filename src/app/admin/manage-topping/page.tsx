@@ -4,7 +4,6 @@ import Topping, {
   ToppingDetail,
 } from "@/components/Admin/manage-topping-detail";
 import Button from "@/components/button/button";
-import SearchBar from "@/components/search-bar/search-bar";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const ManageTopping = () => {
@@ -235,196 +234,195 @@ const ManageTopping = () => {
       ingredientName: "Bơ nhạt",
       quantity: "20",
       unit: "kg",
-      ingredientPrice: "1000000"
+      ingredientPrice: "1000000",
     },
     {
       iD: "9",
       ingredientName: "Men",
       quantity: "20",
       unit: "kg",
-      ingredientPrice: "800000"
+      ingredientPrice: "800000",
     },
     {
       iD: "10",
       ingredientName: "Bột bắp",
       quantity: "30",
       unit: "kg",
-      ingredientPrice: "1000000"
+      ingredientPrice: "1000000",
     },
     {
       iD: "11",
       ingredientName: "Socola đen",
       quantity: "100",
       unit: "kg",
-      ingredientPrice: "2000000"
+      ingredientPrice: "2000000",
     },
     {
       iD: "12",
       ingredientName: "Bột cacao",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "1200000"
+      ingredientPrice: "1200000",
     },
     {
       iD: "13",
       ingredientName: "Bơ đậu phộng",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "600000"
+      ingredientPrice: "600000",
     },
     {
       iD: "14",
       ingredientName: "Chuối",
       quantity: "20",
       unit: "kg",
-      ingredientPrice: "300000"
+      ingredientPrice: "300000",
     },
     {
       iD: "15",
       ingredientName: "Nho khô",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "500000"
+      ingredientPrice: "500000",
     },
     {
       iD: "16",
       ingredientName: "Táo tươi",
       quantity: "20",
       unit: "kg",
-      ingredientPrice: "500000"
+      ingredientPrice: "500000",
     },
     {
       iD: "17",
       ingredientName: "Bột baking powder",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "300000"
+      ingredientPrice: "300000",
     },
     {
       iD: "18",
       ingredientName: "Bột mì",
       quantity: "100",
       unit: "kg",
-      ingredientPrice: "1000000"
+      ingredientPrice: "1000000",
     },
     {
       iD: "19",
       ingredientName: "Cà phê",
       quantity: "5",
       unit: "kg",
-      ingredientPrice: "500000"
+      ingredientPrice: "500000",
     },
     {
       iD: "20",
       ingredientName: "Kem tươi",
       quantity: "100",
       unit: "kg",
-      ingredientPrice: "500000"
+      ingredientPrice: "500000",
     },
     {
       iD: "21",
       ingredientName: "Mật ong",
       quantity: "100",
       unit: "kg",
-      ingredientPrice: "1000000"
+      ingredientPrice: "1000000",
     },
     {
       iD: "22",
       ingredientName: "Tinh chất vani",
       quantity: "5",
       unit: "kg",
-      ingredientPrice: "200000"
+      ingredientPrice: "200000",
     },
     {
       iD: "23",
       ingredientName: "Muối",
       quantity: "50",
       unit: "kg",
-      ingredientPrice: "200000"
+      ingredientPrice: "200000",
     },
     {
       iD: "24",
       ingredientName: "Chanh",
       quantity: "1",
       unit: "kg",
-      ingredientPrice: "10000"
+      ingredientPrice: "10000",
     },
     {
       iD: "25",
       ingredientName: "Dầu ăn",
       quantity: "100",
       unit: "l",
-      ingredientPrice: "1200000"
+      ingredientPrice: "1200000",
     },
     {
       iD: "26",
       ingredientName: "Tôm",
       quantity: "20",
       unit: "kg",
-      ingredientPrice: "2000000"
+      ingredientPrice: "2000000",
     },
     {
       iD: "27",
       ingredientName: "Nghêu",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "1000000"
+      ingredientPrice: "1000000",
     },
     {
       iD: "28",
       ingredientName: "Ớt chuông",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "500000"
+      ingredientPrice: "500000",
     },
     {
       iD: "29",
       ingredientName: "Tỏi",
       quantity: "3",
       unit: "kg",
-      ingredientPrice: "12000"
+      ingredientPrice: "12000",
     },
     {
       iD: "30",
       ingredientName: "Hành",
       quantity: "2",
       unit: "kg",
-      ingredientPrice: "12000"
+      ingredientPrice: "12000",
     },
     {
       iD: "31",
       ingredientName: "Cà chua",
       quantity: "10",
       unit: "kg",
-      ingredientPrice: "100000"
+      ingredientPrice: "100000",
     },
     {
       iD: "32",
       ingredientName: "Tương cà",
       quantity: "3",
       unit: "kg",
-      ingredientPrice: "50000"
+      ingredientPrice: "50000",
     },
     {
       iD: "33",
       ingredientName: "Dầu oliu",
       quantity: "3",
       unit: "kg",
-      ingredientPrice: "100000"
+      ingredientPrice: "100000",
     },
     {
       iD: "34",
       ingredientName: "Phô mai",
       quantity: "3",
       unit: "kg",
-      ingredientPrice: "50000"
+      ingredientPrice: "50000",
     },
   ];
   return (
     <div className=" ml-[250px] mt-3 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
       <div>
-        <SearchBar isShow={true}></SearchBar>
         <div className=" mt-2 flex items-center justify-between mr-4">
           <div className="font-bold text-[22px] w-[60%] ">Quản lý Toppings</div>
           <a href="/admin/add-topping">

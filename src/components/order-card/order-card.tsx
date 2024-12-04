@@ -1,13 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FC } from "react";
+import { FC } from "react";
 import ItemOrder, { DetailOrder } from "../item-order/item-order";
 import "./order-card.css";
-import ItemCard from "../item-card/item-card";
 type Status = "Đã hủy" | "Đang tiến hành" | "Hoàn thành" | "Đã giao";
-
-interface StatusLabelProps {
-  status: Status;
-}
 
 const getStatusColor = (status: Status): string => {
   switch (status) {

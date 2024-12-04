@@ -1,6 +1,5 @@
 "use client";
-import OrderDetail from "@/components/admin/manage-order";
-import SearchBar from "@/components/search-bar/search-bar";
+import OrderDetail from "@/components/Admin/manage-order";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const ManageOrderDetail = () => {
