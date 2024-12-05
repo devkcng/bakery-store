@@ -32,14 +32,14 @@ type OvenProps = {
 };
 
 const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
-  const options = [
-    { value: "Bánh Cookie", label: "Bánh Cookie" },
-    { value: "Bánh Tart", label: "Bánh Tart" },
-    { value: "Bánh Sừng trâu", label: "Bánh Sừng trâu" },
-  ];
-  const [selectedOption, setSelectedOption] = useState<string | undefined>(
-    "option2"
-  );
+  // const options = [
+  //   { value: "Bánh Cookie", label: "Bánh Cookie" },
+  //   { value: "Bánh Tart", label: "Bánh Tart" },
+  //   { value: "Bánh Sừng trâu", label: "Bánh Sừng trâu" },
+  // ];
+  // const [selectedOption, setSelectedOption] = useState<string | undefined>(
+  //   "option2"
+  // );
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
   };
@@ -65,9 +65,13 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
           </div>
           <div></div>
           <div className="flex justify-between items-baseline w-[300px] ">
-            <span className="font-semibold text-xl mr-5">Loại bánh </span>
-            <div>
-              <select
+            <span className="font-semibold text-xl mr-5 ">Loại bánh </span>
+
+            <div className="text-right">
+              <span className="text-lg font-normal inline-block ">
+                Bánh Cookie
+              </span>
+              {/* <select
                 className="border-2 border-black rounded-[35px] h-8 text-left pl-3"
                 id="dropdown"
                 value={selectedOption}
@@ -85,7 +89,7 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
                     {option.label}
                   </option>
                 ))}
-              </select>
+              </select> */}
             </div>
           </div>
         </div>

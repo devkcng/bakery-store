@@ -19,14 +19,14 @@ const getStatusColor = (status: Status): string => {
   }
 };
 export interface DetailOrderAdmin {
-  OrderID: string;
+  orderID: string;
   timeOrder: string;
   DetailOrders: DetailOrder[];
   status: Status;
   totalAmount: number;
 }
 const OrderCard: FC<DetailOrderAdmin> = ({
-  OrderID,
+  orderID,
   timeOrder,
   DetailOrders,
   status,
@@ -69,7 +69,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
           <div className="flex flex-row px-3 justify-between">
             <div>
               <span className="block font-display text-[16px] font-semibold mt-1">
-                {OrderID ? `Order #${OrderID}` : "Order #1234"}
+                {orderID ? `Order #${orderID}` : "Order #1234"}
               </span>{" "}
               <span className="block font-display text-[15px] font-semibold text-[#797B7E]">
                 {timeOrder ? `${timeOrder}` : "05 Feb 2023, 08:28 PM"}
@@ -131,8 +131,7 @@ const OrderCard: FC<DetailOrderAdmin> = ({
                 } `}
               </label>
             </div>
-            <a href="/admin/manage-order-detail">
-              {" "}
+            <a href={`/admin/manage-order-detail/${orderID}`}>
               <svg
                 width="30px"
                 height="30px"

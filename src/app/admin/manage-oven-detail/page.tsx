@@ -1,5 +1,6 @@
 "use client";
 import Oven from "@/components/Admin/manage-oven";
+import OvenDetail from "@/components/Admin/manage-oven-detail";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
 
 const ManageOvenDetail = () => {
@@ -41,7 +42,7 @@ const ManageOvenDetail = () => {
         <div className=" mt-2 flex items-center justify-end mr-4"></div>
       </div>
       <div className="overflow-y-auto  scrollbar-hidden max-h-[550px] ">
-        <Oven oven={pseudoOvenData.oven} orders={pseudoOvenData.orders} />
+        <OvenDetail oven={pseudoOvenData.oven} orders={pseudoOvenData.orders} />
       </div>
     </div>
   );

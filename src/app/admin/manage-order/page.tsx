@@ -152,7 +152,7 @@ const ManageOrder = () => {
             orders.map((item, index) => (
               <OrderCard
                 key={index}
-                OrderID={item.orderID}
+                orderID={item.orderID}
                 timeOrder={item.orderDate}
                 DetailOrders={item.orderDetails}
                 status={item.orderStatus}

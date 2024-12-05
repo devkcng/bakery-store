@@ -45,7 +45,7 @@ const ItemCard: FC<ItemProps> = ({ product }) => {
             <Button
               bgColor="primarycolor"
               className="rounded-[50px] w-[165px] h-[58px] border-primarycolor text-white font-display text-center font-semibold"
-              onClick={() => (window.location.href = "/product")}
+              // onClick={() => (window.location.href = "/product")}
             >
               Xem chi tiết
             </Button>
