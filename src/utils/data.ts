@@ -9,7 +9,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 2,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -22,7 +24,9 @@ export const createData = () => {
         },
         {
           productId: 8,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -52,7 +56,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 11,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -65,7 +71,9 @@ export const createData = () => {
         },
         {
           productId: 2,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -78,7 +86,9 @@ export const createData = () => {
         },
         {
           productId: 5,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -108,7 +118,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 10,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -121,7 +133,9 @@ export const createData = () => {
         },
         {
           productId: 13,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -134,7 +148,9 @@ export const createData = () => {
         },
         {
           productId: 12,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -147,7 +163,9 @@ export const createData = () => {
         },
         {
           productId: 2,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -177,7 +195,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 1,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -190,7 +210,9 @@ export const createData = () => {
         },
         {
           productId: 11,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -220,7 +242,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 7,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -250,7 +274,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 15,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -263,7 +289,9 @@ export const createData = () => {
         },
         {
           productId: 15,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -293,7 +321,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 1,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -306,7 +336,9 @@ export const createData = () => {
         },
         {
           productId: 9,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -336,7 +368,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 6,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -349,7 +383,9 @@ export const createData = () => {
         },
         {
           productId: 13,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -362,7 +398,9 @@ export const createData = () => {
         },
         {
           productId: 10,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -392,7 +430,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 13,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -405,7 +445,9 @@ export const createData = () => {
         },
         {
           productId: 7,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -435,7 +477,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 9,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -465,7 +509,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 9,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -478,7 +524,9 @@ export const createData = () => {
         },
         {
           productId: 3,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -491,7 +539,9 @@ export const createData = () => {
         },
         {
           productId: 8,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -504,7 +554,9 @@ export const createData = () => {
         },
         {
           productId: 3,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -534,7 +586,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 15,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -564,7 +618,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 10,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -577,7 +633,9 @@ export const createData = () => {
         },
         {
           productId: 5,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -590,7 +648,9 @@ export const createData = () => {
         },
         {
           productId: 9,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -603,7 +663,9 @@ export const createData = () => {
         },
         {
           productId: 1,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -616,7 +678,9 @@ export const createData = () => {
         },
         {
           productId: 9,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -646,7 +710,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 6,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -659,7 +725,9 @@ export const createData = () => {
         },
         {
           productId: 8,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -689,7 +757,9 @@ export const createData = () => {
       orderDetails: [
         {
           productId: 1,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -702,7 +772,9 @@ export const createData = () => {
         },
         {
           productId: 10,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -715,7 +787,9 @@ export const createData = () => {
         },
         {
           productId: 10,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",
@@ -728,7 +802,9 @@ export const createData = () => {
         },
         {
           productId: 7,
-          processedOrder: 0,
+          processing: 0,
+          processed: 0,
+          ovenID: "Trống",
           startTime: "",
           endTime: "",
           status: "Đang chờ",

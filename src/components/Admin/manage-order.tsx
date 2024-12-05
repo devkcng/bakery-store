@@ -95,17 +95,13 @@ const OrderDetail: FC<OrderProps> = ({ orders = [], orderID = "" }) => {
                 <TableCell className="w-[150px]">
                   {order.productQuantity || " "}
                 </TableCell>
-                <TableCell className="w-[150px]">
-                  {order.processingQuantity || " "}
-                </TableCell>
-                <TableCell className="w-[150px]">
-                  {order.processedQuantity || " "}
-                </TableCell>
+                <TableCell className="w-[150px]">{order.processing}</TableCell>
+                <TableCell className="w-[150px]">{order.processed}</TableCell>
                 <TableCell className="w-[150px] text-green-500 font-semibold">
-                  {order.startTime || " "}
+                  {order.startTime || "Trống"}
                 </TableCell>
                 <TableCell className="w-[150px] text-red-500 font-semibold">
-                  {order.leftTime || " "}
+                  {order.leftTime || "Trống"}
                 </TableCell>
               </TableRow>
             ))}

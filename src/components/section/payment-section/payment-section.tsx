@@ -35,6 +35,11 @@ const Payment = () => {
       toppings: product.toppings.map((topping) => topping.name),
       totalPrice: productTotal,
       status: "Đang chờ",
+      processing: 0,
+      processed: 0,
+      startTime: "",
+      endTime: "",
+      ovenID: "Trống",
     };
   });
 
