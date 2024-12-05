@@ -208,10 +208,10 @@ const DetailProduct: FC<CartItemProps> = ({
                 onDateSelect={(dateInfo) => setSelectedDate(dateInfo)}
               ></DateSelector>
             </div>
-            <span className="mr-[6rem] font-semibold">
+            {/* <span className="mr-[6rem] font-semibold">
               Số lượng còn lại:
               <span className="text-red-500 font-bold"> 1000</span>
-            </span>
+            </span> */}
           </div>
           <button id="btnAddToCart" type="button" onClick={handleAddToCart}>
             Thêm vào giỏ hàng
