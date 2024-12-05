@@ -586,25 +586,25 @@ export const createData = () => {
 
   const ovens = [
     {
-      ovenID: 1,
-      orderID: [],
-      status: "Đang trống",
-      cake_type: "Bánh mì",
-    },
-    {
-      ovenID: 2,
+      ovenID: "1",
       orderID: [],
       status: "Đang trống",
       cake_type: null,
     },
     {
-      ovenID: 3,
+      ovenID: "2",
       orderID: [],
       status: "Đang trống",
       cake_type: null,
     },
     {
-      ovenID: 4,
+      ovenID: "3",
+      orderID: [],
+      status: "Đang trống",
+      cake_type: null,
+    },
+    {
+      ovenID: "4",
       orderID: [],
       status: "Đang trống",
       cake_type: null,

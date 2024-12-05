@@ -74,7 +74,10 @@ const Oven: FC<OvenInfo> = ({ info }) => {
                 </StatusCell>
               </TableCell>
               <TableCell className="w-[150px]">
-                <a href="/admin/manage-oven-detail" className="underline">
+                <a
+                  href={`/admin/manage-oven-detail/${item.ovenID}`}
+                  className="underline"
+                >
                   Xem chi tiết
                 </a>
               </TableCell>

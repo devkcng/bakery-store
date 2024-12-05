@@ -30,9 +30,10 @@ type OrderDetail = {
 type OvenProps = {
   oven: OvenDetailInfo;
   orders: OrderDetail[];
+  id: string;
 };
 
-const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
+const OvenDetail: FC<OvenProps> = ({ oven, orders, id }) => {
   const [selectedOption, setSelectedOption] = useState<string | undefined>(
     undefined
   );
@@ -52,6 +53,18 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
     getFilteredOrders(); // Lấy dữ liệu khi component được render
   }, []);
 
+  const [ovenInfo, setOvenInfo] = useState();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const listOvens = JSON.parse(localStorage.getItem("ovens") || "[]");
+      const oven = listOvens.find((item) => item.ovenID === id);
+      setOvenInfo(oven); // Cập nhật cartItems
+    }
+  }, [id]);
+  console.log(ovenInfo);
+  console.log(id);
+
   const handleSelectOrder = (orderID: string) => {
     setSelectedOption(orderID); // Cập nhật đơn hàng đã chọn
     setIsModalOpen(false); // Đóng modal sau khi chọn
@@ -59,76 +72,78 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders }) => {
 
   return (
     <div className="ovendetail_container">
-      <div className="ovendetail_header mb-3 flex justify-between">
-        <div>
-          <div className="flex justify-between items-baseline w-[300px]">
-            <span className="font-semibold text-xl mr-5">ID Oven: </span>
-            <span className="text-lg font-normal">{oven.ovenID}</span>
+      {ovenInfo && (
+        <div className="ovendetail_header mb-3 flex justify-between">
+          <div>
+            <div className="flex justify-between items-baseline w-[300px]">
+              <span className="font-semibold text-xl mr-5">ID Oven: </span>
+              <span className="text-lg font-normal">{ovenInfo.ovenID}</span>
+            </div>
+            <div className="flex justify-between items-baseline w-[300px]">
+              <span className="font-semibold text-xl mr-5">Trạng thái: </span>
+              <span className="text-lg font-normal">{ovenInfo.status}</span>
+            </div>
+            <div className="flex justify-between items-baseline w-[300px]">
+              <span className="font-semibold text-xl mr-5">Sức chứa: </span>
+              <span className="text-lg font-normal">{`${100} bánh`}</span>
+            </div>
+            {/* <div className="flex justify-between items-baseline w-[300px]">
+      <span className="font-semibold text-xl mr-5">Đang chứa: </span>
+      <span className="text-lg font-normal">{`${oven.usedCapacity} bánh`}</span>
+    </div> */}
           </div>
-          <div className="flex justify-between items-baseline w-[300px]">
-            <span className="font-semibold text-xl mr-5">Trạng thái: </span>
-            <span className="text-lg font-normal">{oven.status}</span>
-          </div>
-          <div className="flex justify-between items-baseline w-[300px]">
-            <span className="font-semibold text-xl mr-5">Sức chứa: </span>
-            <span className="text-lg font-normal">{`${100} bánh`}</span>
-          </div>
-          <div className="flex justify-between items-baseline w-[300px]">
-            <span className="font-semibold text-xl mr-5">Đang chứa: </span>
-            <span className="text-lg font-normal">{`${oven.usedCapacity} bánh`}</span>
-          </div>
+          <Button
+            className="bg-green-400 rounded-[30px] h-10 w-[110px] mr-3 px-2 text-center"
+            type="button"
+            onClick={() => setIsModalOpen(true)} // Mở modal khi nhấn nút
+          >
+            <div className="flex justify-content-center">
+              <svg
+                className="mr-2"
+                width="25px"
+                height="25px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    opacity="0.1"
+                    d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                    fill="#ffffff"
+                  ></path>
+                  <path
+                    d="M9 12H15"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>
+                  <path
+                    d="M12 9L12 15"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>
+                  <path
+                    d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                  ></path>
+                </g>
+              </svg>
+              <span className="ml-1 text-white">Thêm</span>
+            </div>
+          </Button>
         </div>
-        <Button
-          className="bg-green-400 rounded-[30px] h-10 w-[110px] mr-3 px-2 text-center"
-          type="button"
-          onClick={() => setIsModalOpen(true)} // Mở modal khi nhấn nút
-        >
-          <div className="flex justify-content-center">
-            <svg
-              className="mr-2"
-              width="25px"
-              height="25px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  opacity="0.1"
-                  d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                  fill="#ffffff"
-                ></path>
-                <path
-                  d="M9 12H15"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M12 9L12 15"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                ></path>
-              </g>
-            </svg>
-            <span className="ml-1 text-white">Thêm</span>
-          </div>
-        </Button>
-      </div>
+      )}
 
       {/* Modal */}
       {isModalOpen && (
