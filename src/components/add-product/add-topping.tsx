@@ -1,4 +1,5 @@
 "use client";
+import { addTopping } from "@/app/api/toppings/route";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,8 +11,15 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+type Topping = {
+  name: string;
+  price: number;
+};
+
 const formSchema = z.object({
   price: z.number().min(1000, {
     message: "Price must be greater than 1,000 VNĐ.",
@@ -22,8 +30,27 @@ const AddTopping = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const data:Topping = {
+      name: values.toppingName,
+      price: values.price,
+    }
+    console.log(data);
+    try {
+      await addTopping(data);
+      console.log("Topping added successfully");
+
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 3000);
+
+      form.reset();
+    } catch (error) {
+      console.error("Error adding topping:", error);
+    }
   }
   return (
     <div className="flex flex-col items-center mt-16">
@@ -73,7 +100,13 @@ const AddTopping = () => {
             </Button>
           </div>
         </form>
-      </Form>
+      </Form>{showSuccessMessage && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
+            <p className="text-xl font-bold">Thêm thành công</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

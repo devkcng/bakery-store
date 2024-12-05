@@ -17,9 +17,25 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { fetchToppingsFromAPI } from "@/app/api/toppings/route";
+import { fetchIngredientNamesFromAPI } from "@/app/api/warehouses/route";
+import { addProduct } from "@/app/api/products/add-product/route";
+import { addProductTopping } from "@/app/api/product-toppings/route";
+import { getNumberOfProducts } from "@/app/api/products/route";
+import { fetchCategoriesFromAPI } from "@/app/api/categories/route";
+
+type Topping = {
+  id: string;
+  name: string;
+};
+
+type Category = {
+  id: string;
+  name: string;
+};
 
 const formSchema = z.object({
   price: z.number().min(1000, {
@@ -41,6 +57,60 @@ const AddBake = () => {
     { name: string; quantity: number }[]
   >([]);
 
+  const [ingredientNames, setIngredientNames] = useState<string[]>([]);
+
+  const [toppings, setToppings] = useState<Topping[]>([]);
+
+  const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const [selectedCategory, setSelectedCategory] = useState<Category>();
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string>("/imgs/uploadPic.png");
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (file) {
+        const imageUrl = URL.createObjectURL(file); // Tạo URL tạm thời cho file
+        setImageSrc(imageUrl);
+    }
+  };
+  useEffect(() => {
+    const fetchIngredientNames = async () => {
+      try {
+        const data = await fetchIngredientNamesFromAPI();
+        setIngredientNames(data);
+      } catch (error) {
+        console.error("Error fetching ingredient names:", error);
+      }
+    };
+
+    const fetchToppings = async () => {
+      try {
+        const data = await fetchToppingsFromAPI();
+        setToppings(data);
+      } catch (error) {
+        console.error("Error fetching topping names:", error);
+      }
+    };
+
+    const fetchCategories = async () => {
+      try {
+        const data = await fetchCategoriesFromAPI();
+        console.log(data);
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchIngredientNames();
+    fetchToppings();
+    fetchCategories();
+  }, []); 
+
   const handleAddIngredient = (ingredientName: string) => {
     if (!ingredients.find((ing) => ing.name === ingredientName)) {
       setIngredients([...ingredients, { name: ingredientName, quantity: 0 }]);
@@ -53,21 +123,71 @@ const AddBake = () => {
     setIngredients(updatedIngredients);
   };
 
-  const [toppings, setToppings] = useState<{ name: string }[]>([]);
-
-  const handleAddTopping = (toppingName: string) => {
-    if (!toppings.find((topp) => topp.name === toppingName)) {
-      setToppings([...toppings, { name: toppingName }]);
+  const handleAddTopping = (value: string) => {
+    const [toppingName, toppingId] = value.split('|');
+    if (!selectedToppings.find((topp) => topp.name === toppingName)) {
+      setSelectedToppings([...selectedToppings, { name: toppingName, id: toppingId }]);
     }
   };
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+
+  const handleAddCategory = (value: string) => {
+    const [categoryName, categoryId] = value.split('|');
+    setSelectedCategory({ name: categoryName, id: categoryId });
+  };
+
+  const createProductId = async () => {
+    try {
+      const numberOfProducts = await getNumberOfProducts();
+      return numberOfProducts + 1;
+    } catch (error) {
+      console.error('Error creating product ID:', error);
+    }
+  };
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const product_id = await createProductId();
     const bakeData = {
-      ...values,
-      ingredients,
-      toppings,
+      id: product_id,
+      name: values.bakeName,
+      price: values.price,
+      description: "Default description", // Add appropriate description
+      category_id: Number(selectedCategory.id), // Add appropriate category_id
+      img_path: `/imgs/bakery-images/${values.bakeName}b.png`, // Add appropriate img_path
+      max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
+      product_capacity_per_batch: values.maxCapacity,
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
+    
+    try {
+      await addProduct(bakeData);
+      console.log('Product added successfully');
+
+      for (const topping of selectedToppings) {
+        const productTopping = {
+          product_id: Number(product_id),
+          topping_id: Number(topping.id),
+        }
+        await addProductTopping(productTopping);
+      }
+
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 3000);
+      setImageSrc("/imgs/uploadPic.png");
+      form.reset({
+        price: 0,
+        bakeName: "",
+        completeTime: 0,
+        maxCapacity: 0,
+      });
+      setIngredients([]);
+      setSelectedToppings([]);
+      setSelectedCategory(undefined);
+
+
+    } catch (error) {
+      console.error('Error adding product:', error);
+    }
   };
 
   return (
@@ -86,7 +206,7 @@ const AddBake = () => {
             <div className="h-[300px] w-[300px] rounded-lg shadow-[4px_4px_30px_rgba(0,0,0,0.2)] flex flex-col items-center justify-between p-2.5 gap-1.5 ">
               <div className="flex-1 w-full border-2 border-dashed border-royalblue rounded-lg flex flex-col items-center justify-center">
                 <img
-                  src="/imgs/bakery-images/browniesb.png"
+                  src={imageSrc}
                   alt="Hello"
                   className="object-cover w-[135px] h-[135px]"
                 />
@@ -98,7 +218,11 @@ const AddBake = () => {
               >
                 <p className="flex-1 text-center">Chọn ảnh</p>
               </label>
-              <input id="file" type="file" className="hidden" />
+              <input id="file" 
+              type="file" 
+              className="hidden" 
+              onChange={handleImageChange}
+              accept="image/*"/>
             </div>
             {/* Information of bake section */}
 
@@ -201,34 +325,11 @@ const AddBake = () => {
                       <SelectValue placeholder="+ Thêm nguyên liệu" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Bơ">Bơ</SelectItem>
-                      <SelectItem value="Đường">Đường</SelectItem>
-                      <SelectItem value="Sữa">Sữa</SelectItem>
-                      <SelectItem value="Trứng">Trứng</SelectItem>
-                      <SelectItem value="Bột mì">Bột mì</SelectItem>
-                      <SelectItem value="Bột ca cao">Bột ca cao</SelectItem>
-                      <SelectItem value="Muối">Muối</SelectItem>
-                      <SelectItem value="Đường nâu">Đường nâu</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
-                      <SelectItem value="Vani">Vani</SelectItem>
+                      {ingredientNames.map((ingredient) => (
+                        <SelectItem key={ingredient.id} value={ingredient.name}>
+                          {ingredient.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   {/* Render selected ingredients */}
@@ -262,24 +363,53 @@ const AddBake = () => {
                       <SelectValue placeholder="+ Chọn loại Toppings" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Nho khô">Nho khô</SelectItem>
-                      <SelectItem value="Dâu tây">Dâu tây</SelectItem>
-                      <SelectItem value="Hạnh nhân">Hạnh nhân</SelectItem>
+                      {toppings.map((topping) => (
+                        <SelectItem key={topping.id} value={`${topping.name}|${topping.id}`}>
+                          {topping.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   {/* Render selected toppings */}
                   <div className="w-full mt-4 space-y-4 ">
-                    {toppings.map((topping) => (
-                      <div
-                        key={topping.name}
-                        className="flex items-center gap-4"
-                      >
-                        <Input className="w-[100px]" value={topping.name} />
+                    {selectedToppings.map((topping) => (
+                      <div key={topping.name} className="flex items-center gap-4">
+                        <Input className="w-[100px]" value={topping.name} readOnly />
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
+              {/* Category section */}
+              <div className="flex flex-col items-start mt-2">
+                <FormLabel className="mb-5">Danh mục</FormLabel>
+                <Select onValueChange={handleAddCategory} value="">
+                  <SelectTrigger className="w-[250px]">
+                    <SelectValue placeholder="+ Chọn danh mục" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category.id} value={`${category.name}|${category.id}`}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                    
+                  </SelectContent>
+                </Select>
+                {/* Render selected category */}
+                <div className="w-full mt-4 space-y-4 ">
+                  {selectedCategory && (
+                    <div className="flex items-center gap-4">
+                      <Input
+                        className="w-[100px]"
+                        value={selectedCategory.name}
+                        readOnly
+                      />
+                    </div>
+                  )}
+                </div>
+                </div>
+                
             </div>
           </div>
 
@@ -289,7 +419,13 @@ const AddBake = () => {
             </Button>
           </div>
         </form>
-      </Form>
+      </Form>{showSuccessMessage && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
+            <p className="text-xl font-bold">Thêm thành công</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
