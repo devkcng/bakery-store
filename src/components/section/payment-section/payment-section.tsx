@@ -34,6 +34,12 @@ const Payment = () => {
       productImgPath: product.productImgPath,
       toppings: product.toppings.map((topping) => topping.name),
       totalPrice: productTotal,
+      status: "Đang chờ",
+      processing: 0,
+      processed: 0,
+      startTime: "",
+      endTime: "",
+      ovenID: "Trống",
     };
   });
 
@@ -90,7 +96,10 @@ const Payment = () => {
         totalAmount,
         orderStatus: "PENDING",
         orderDate,
+        processedOrder: 0, // Số lượng hàng đã xử lý
         orderDetails: orderData,
+        startTime: "",
+        endTime: "",
         deliveryInfo: deliveryInfo,
       };
 
@@ -137,11 +146,11 @@ const Payment = () => {
                 orderData.map((item, index) => (
                   <div className="" key={index}>
                     <ItemOrder
-                      productID={item.productId}
+                      productId={item.productId.toString()}
                       productImgPath={item.productImgPath}
                       productName={item.productName}
                       productPrice={item.productPrice}
-                      productQuantiy={item.productQuantity}
+                      productQuantity={item.productQuantity}
                       toppings={item.toppings}
                       totalPrice={item.totalPrice}
                     />

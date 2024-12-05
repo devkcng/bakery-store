@@ -1,8 +1,10 @@
 "use client";
 import Oven from "@/components/Admin/manage-oven";
+import OvenDetail from "@/components/Admin/manage-oven-detail";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
+import { useEffect } from "react";
 
-const ManageOvenDetail = () => {
+const ManageOvenDetail = ({ params }: { params: { id: string } }) => {
   const pseudoOvenData = {
     oven: {
       ovenID: "OV001",
@@ -33,6 +35,7 @@ const ManageOvenDetail = () => {
       },
     ],
   };
+  console.log(params.id);
 
   return (
     <div className=" ml-[250px] mt-3 pl-[10px] ">
@@ -41,7 +44,11 @@ const ManageOvenDetail = () => {
         <div className=" mt-2 flex items-center justify-end mr-4"></div>
       </div>
       <div className="overflow-y-auto  scrollbar-hidden max-h-[550px] ">
-        <Oven oven={pseudoOvenData.oven} orders={pseudoOvenData.orders} />
+        <OvenDetail
+          oven={pseudoOvenData.oven}
+          orders={pseudoOvenData.orders}
+          id={params.id}
+        />
       </div>
     </div>
   );

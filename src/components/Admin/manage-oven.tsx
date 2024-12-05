@@ -28,9 +28,9 @@ const StatusCell = styled.div<{ status: string }>`
   font-weight: 700;
   color: white;
   background-color: ${({ status }) =>
-    status === "Đang xử lý"
+    status === "Đang được sử dụng"
       ? "#f6dc49"
-      : status === "Hoàn thành"
+      : status === "Đang trống"
       ? "#5cf061"
       : "#f65c5c"};
 `;
@@ -74,7 +74,10 @@ const Oven: FC<OvenInfo> = ({ info }) => {
                 </StatusCell>
               </TableCell>
               <TableCell className="w-[150px]">
-                <a href="/admin/manage-oven-detail" className="underline">
+                <a
+                  href={`/admin/manage-oven-detail/${item.ovenID}`}
+                  className="underline"
+                >
                   Xem chi tiết
                 </a>
               </TableCell>

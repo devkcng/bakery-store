@@ -2,6 +2,9 @@
 import IngredientDetail from "@/components/Admin/manage-ingredient-detail";
 import Button from "@/components/button/button";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
+import { WareHouse } from "@prisma/client";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ManageIngredient = () => {
   const pseudoIngredientData: IngredientDetail[] = [
@@ -244,6 +247,23 @@ const ManageIngredient = () => {
       ingredientPrice: "50000",
     },
   ];
+  const [warehouses, setWarehouses] = useState<WareHouse[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/warehouses"
+        );
+        setWarehouses(response.data);
+      } catch (error) {
+        console.error("Error fetching warehouses:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Chỉ chạy một lần khi component được render
+  console.log(warehouses);
   return (
     <div className=" ml-[250px] mt-3 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
@@ -307,7 +327,7 @@ const ManageIngredient = () => {
         </div>
       </div>
       <div className="overflow-y-auto max-h-[520px] scrollbar-hidden ">
-        <IngredientDetail detail={pseudoIngredientData}></IngredientDetail>
+        <IngredientDetail detail={warehouses}></IngredientDetail>
       </div>
     </div>
   );

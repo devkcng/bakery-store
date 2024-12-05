@@ -25,12 +25,6 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
         </div>
         <div className=" menu-bar flex justify-start items-center mr-[3%] p-3">
           <a
-            href="/admin/manage-product"
-            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
-          >
-            Admin
-          </a>
-          <a
             href="/home#home"
             className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
           >
@@ -53,6 +47,12 @@ const NavBar: FC<NavBarProps> = ({ className = "", ...restProps }) => {
             className="nav-menu text-[#f5f5f5] font-medium font- text-[18px] ml-[30px]"
           >
             Tra cứu đơn hàng
+          </a>
+          <a
+            href="/login"
+            className="nav-menu text-[#f5f5f5] font-medium   text-[18px] ml-[30px]"
+          >
+            Admin
           </a>
           <svg
             onClick={() => (window.location.href = "/shopping-cart")}

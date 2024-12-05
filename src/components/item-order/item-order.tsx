@@ -7,9 +7,9 @@ export interface DetailOrder {
   // itemCount: number;
   // itemTopping: string;
   className?: string;
-  productID: number;
+  productId: string;
   productName: string;
-  productQuantiy: number;
+  productQuantity: number;
   productImgPath: string;
   productPrice: number;
   toppings: string[];
@@ -17,9 +17,9 @@ export interface DetailOrder {
 }
 
 const ItemOrder: FC<DetailOrder> = ({
-  productID,
+  productId,
   productName,
-  productQuantiy,
+  productQuantity,
   productImgPath,
   productPrice,
   toppings,
@@ -29,10 +29,11 @@ const ItemOrder: FC<DetailOrder> = ({
   const listToppingName = Array.isArray(toppings) ? toppings.join(", ") : "";
   return (
     <div className={`item_order_container ${className}`}>
-      <div className="pl-2.5">
+      <div className="pl-2.5 text-center inline-flex justify-center items-center">
         <img
           src={`${productImgPath || "/imgs/bakery-images/muffinb.png"}`}
           alt=""
+          className="w-1"
         />
       </div>
       <div className="pl-2.5">
@@ -48,14 +49,14 @@ const ItemOrder: FC<DetailOrder> = ({
             : `Đơn giá bánh: ${formatVND(productPrice)}`}
         </span>
         <span className="block font-display text-[16px] font-semibold text-[#F67575] mb-2">
-          {productQuantiy * productPrice < 0
+          {productQuantity * productPrice < 0
             ? `Tổng: ${formatVND(28000)}`
             : `Tổng: ${formatVND(totalPrice)}`}
         </span>
       </div>
       <div className="pl-4">
         <span className="block text-center font-display text-[14px] font-semibold mt-4">
-          {productQuantiy < 0 ? "0" : `SL: ${productQuantiy}`}
+          {productQuantity < 0 ? "0" : `SL: ${productQuantity}`}
         </span>
       </div>
     </div>

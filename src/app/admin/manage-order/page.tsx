@@ -4,7 +4,7 @@ import { DetailOrder } from "@/components/item-order/item-order";
 import MenuTabs from "@/components/menu-tabs/menu-tabs";
 import OrderCard from "@/components/order-card/order-card";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const ManageOrder = () => {
   const options = [
     "Tất cả",
@@ -124,6 +124,14 @@ const ManageOrder = () => {
       itemTopping: "",
     },
   ];
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const list = JSON.parse(localStorage.getItem("order") || "[]");
+      setOrders(list); // Cập nhật deliveryInfo
+    }
+  }, []);
+  console.log(orders);
   return (
     <div>
       <div className=" ml-[250px] mt-5 pl-[10px]   ">
@@ -140,30 +148,16 @@ const ManageOrder = () => {
           </div>
         </div>
         <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 grid grid-cols-3 gap-2 ">
-          <OrderCard
-            OrderID="Dec123"
-            timeOrder="06 Dec 2024"
-            DetailOrders={listOfOrders1}
-            status="Đang tiến hành"
-          ></OrderCard>
-          <OrderCard
-            OrderID="Dec125"
-            timeOrder="05 Dec 2024"
-            DetailOrders={listOfOrders2}
-            status="Hoàn thành"
-          ></OrderCard>
-          <OrderCard
-            OrderID="Dec124"
-            timeOrder="06 Dec 2024"
-            DetailOrders={listOfOrders3}
-            status="Đã giao"
-          ></OrderCard>
-          <OrderCard
-            OrderID="Dec126"
-            timeOrder="06 Dec 2024"
-            DetailOrders={listOfOrders4}
-            status="Đã hủy"
-          ></OrderCard>
+          {orders &&
+            orders.map((item, index) => (
+              <OrderCard
+                key={index}
+                orderID={item.orderID}
+                timeOrder={item.orderDate}
+                DetailOrders={item.orderDetails}
+                status={item.orderStatus}
+              ></OrderCard>
+            ))}
         </div>
       </div>
     </div>
