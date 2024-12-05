@@ -3,11 +3,16 @@ export const createData = () => {
     {
       orderID: "ORDER1",
       totalAmount: 200000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 2,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh tart trứng",
           productQuantity: 4,
           productPrice: 30000,
@@ -17,6 +22,10 @@ export const createData = () => {
         },
         {
           productId: 8,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh cupcake",
           productQuantity: 4,
           productPrice: 20000,
@@ -37,11 +46,16 @@ export const createData = () => {
     {
       orderID: "ORDER2",
       totalAmount: 370000,
+
       orderStatus: "CANCEL",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 11,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh cookies",
           productQuantity: 5,
           productPrice: 20000,
@@ -51,6 +65,10 @@ export const createData = () => {
         },
         {
           productId: 2,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh tart trứng",
           productQuantity: 4,
           productPrice: 30000,
@@ -60,6 +78,10 @@ export const createData = () => {
         },
         {
           productId: 5,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh brownies",
           productQuantity: 3,
           productPrice: 50000,
@@ -80,11 +102,16 @@ export const createData = () => {
     {
       orderID: "ORDER3",
       totalAmount: 350000,
+
       orderStatus: "COMPLETED",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 10,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh macaron",
           productQuantity: 1,
           productPrice: 20000,
@@ -94,6 +121,10 @@ export const createData = () => {
         },
         {
           productId: 13,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh waffle",
           productQuantity: 4,
           productPrice: 50000,
@@ -103,6 +134,10 @@ export const createData = () => {
         },
         {
           productId: 12,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh sừng bò",
           productQuantity: 1,
           productPrice: 40000,
@@ -112,6 +147,10 @@ export const createData = () => {
         },
         {
           productId: 2,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh tart trứng",
           productQuantity: 3,
           productPrice: 30000,
@@ -132,11 +171,16 @@ export const createData = () => {
     {
       orderID: "ORDER4",
       totalAmount: 440000,
+
       orderStatus: "CANCEL",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 1,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Pizza hải sản",
           productQuantity: 2,
           productPrice: 200000,
@@ -146,6 +190,10 @@ export const createData = () => {
         },
         {
           productId: 11,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh cookies",
           productQuantity: 2,
           productPrice: 20000,
@@ -166,11 +214,16 @@ export const createData = () => {
     {
       orderID: "ORDER5",
       totalAmount: 20000,
+
       orderStatus: "COMPLETED",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 7,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh su kem",
           productQuantity: 2,
           productPrice: 10000,
@@ -191,11 +244,16 @@ export const createData = () => {
     {
       orderID: "ORDER6",
       totalAmount: 270000,
+
       orderStatus: "CANCEL",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 15,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh donut",
           productQuantity: 4,
           productPrice: 30000,
@@ -205,6 +263,10 @@ export const createData = () => {
         },
         {
           productId: 15,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh donut",
           productQuantity: 5,
           productPrice: 30000,
@@ -225,11 +287,16 @@ export const createData = () => {
     {
       orderID: "ORDER7",
       totalAmount: 1040000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 1,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Pizza hải sản",
           productQuantity: 4,
           productPrice: 200000,
@@ -239,6 +306,10 @@ export const createData = () => {
         },
         {
           productId: 9,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh táo",
           productQuantity: 3,
           productPrice: 80000,
@@ -259,11 +330,16 @@ export const createData = () => {
     {
       orderID: "ORDER8",
       totalAmount: 490000,
+
       orderStatus: "PROCESSING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 6,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh chuối",
           productQuantity: 5,
           productPrice: 80000,
@@ -273,6 +349,10 @@ export const createData = () => {
         },
         {
           productId: 13,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh waffle",
           productQuantity: 1,
           productPrice: 50000,
@@ -282,6 +362,10 @@ export const createData = () => {
         },
         {
           productId: 10,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh macaron",
           productQuantity: 2,
           productPrice: 20000,
@@ -302,11 +386,16 @@ export const createData = () => {
     {
       orderID: "ORDER9",
       totalAmount: 190000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 13,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh waffle",
           productQuantity: 3,
           productPrice: 50000,
@@ -316,6 +405,10 @@ export const createData = () => {
         },
         {
           productId: 7,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh su kem",
           productQuantity: 4,
           productPrice: 10000,
@@ -336,11 +429,16 @@ export const createData = () => {
     {
       orderID: "ORDER10",
       totalAmount: 160000,
+
       orderStatus: "COMPLETED",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 9,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh táo",
           productQuantity: 2,
           productPrice: 80000,
@@ -361,11 +459,16 @@ export const createData = () => {
     {
       orderID: "ORDER11",
       totalAmount: 320000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 9,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh táo",
           productQuantity: 1,
           productPrice: 80000,
@@ -375,6 +478,10 @@ export const createData = () => {
         },
         {
           productId: 3,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh muffin",
           productQuantity: 3,
           productPrice: 20000,
@@ -384,6 +491,10 @@ export const createData = () => {
         },
         {
           productId: 8,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh cupcake",
           productQuantity: 5,
           productPrice: 20000,
@@ -393,6 +504,10 @@ export const createData = () => {
         },
         {
           productId: 3,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh muffin",
           productQuantity: 4,
           productPrice: 20000,
@@ -413,11 +528,16 @@ export const createData = () => {
     {
       orderID: "ORDER12",
       totalAmount: 60000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 15,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh donut",
           productQuantity: 2,
           productPrice: 30000,
@@ -438,11 +558,16 @@ export const createData = () => {
     {
       orderID: "ORDER13",
       totalAmount: 1360000,
+
       orderStatus: "CANCEL",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 10,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh macaron",
           productQuantity: 4,
           productPrice: 20000,
@@ -452,6 +577,10 @@ export const createData = () => {
         },
         {
           productId: 5,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh brownies",
           productQuantity: 4,
           productPrice: 50000,
@@ -461,6 +590,10 @@ export const createData = () => {
         },
         {
           productId: 9,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh táo",
           productQuantity: 5,
           productPrice: 80000,
@@ -470,6 +603,10 @@ export const createData = () => {
         },
         {
           productId: 1,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Pizza hải sản",
           productQuantity: 3,
           productPrice: 200000,
@@ -479,6 +616,10 @@ export const createData = () => {
         },
         {
           productId: 9,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh táo",
           productQuantity: 1,
           productPrice: 80000,
@@ -499,11 +640,16 @@ export const createData = () => {
     {
       orderID: "ORDER14",
       totalAmount: 200000,
+
       orderStatus: "CANCEL",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 6,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh chuối",
           productQuantity: 2,
           productPrice: 80000,
@@ -513,6 +659,10 @@ export const createData = () => {
         },
         {
           productId: 8,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh cupcake",
           productQuantity: 2,
           productPrice: 20000,
@@ -533,11 +683,16 @@ export const createData = () => {
     {
       orderID: "ORDER15",
       totalAmount: 890000,
+
       orderStatus: "PENDING",
       orderDate: "2024-12-04",
       orderDetails: [
         {
           productId: 1,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Pizza hải sản",
           productQuantity: 4,
           productPrice: 200000,
@@ -547,6 +702,10 @@ export const createData = () => {
         },
         {
           productId: 10,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh macaron",
           productQuantity: 3,
           productPrice: 20000,
@@ -556,6 +715,10 @@ export const createData = () => {
         },
         {
           productId: 10,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh macaron",
           productQuantity: 1,
           productPrice: 20000,
@@ -565,6 +728,10 @@ export const createData = () => {
         },
         {
           productId: 7,
+          processedOrder: 0,
+          startTime: "",
+          endTime: "",
+          status: "Đang chờ",
           productName: "Bánh su kem",
           productQuantity: 1,
           productPrice: 10000,

@@ -1,8 +1,9 @@
 "use client";
 import OrderDetail from "@/components/Admin/manage-order";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
+import { useEffect, useState } from "react";
 
-const ManageOrderDetail = () => {
+const ManageOrderDetail = ({ params }: { params: { id: string } }) => {
   const pseudoData = [
     {
       ovenID: "OV001",
@@ -35,15 +36,27 @@ const ManageOrderDetail = () => {
       leftTime: "00:45",
     },
   ];
-
   // Truyền pseudoData vào component Order
+  const [order, setOrder] = useState({});
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const list = JSON.parse(localStorage.getItem("order") || "[]");
+      const detail = list.find((item) => item.orderID === params.id); // Tìm object đầu tiên phù hợp
+      if (detail) setOrder(detail); // Lưu object vào state
+    }
+  }, [params.id]);
+
+  console.log(order.orderDetails); // Lấy orderDetails nếu order có dữ liệu
 
   return (
     <div className=" ml-[250px] mt-3 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
 
       <div className="max-h-[550px] ">
-        <OrderDetail orderID="Dec123" orders={pseudoData}></OrderDetail>
+        <OrderDetail
+          orderID={order.orderID}
+          orders={order.orderDetails}
+        ></OrderDetail>
       </div>
     </div>
   );

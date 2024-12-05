@@ -34,6 +34,7 @@ const Payment = () => {
       productImgPath: product.productImgPath,
       toppings: product.toppings.map((topping) => topping.name),
       totalPrice: productTotal,
+      status: "Đang chờ",
     };
   });
 
@@ -90,7 +91,10 @@ const Payment = () => {
         totalAmount,
         orderStatus: "PENDING",
         orderDate,
+        processedOrder: 0, // Số lượng hàng đã xử lý
         orderDetails: orderData,
+        startTime: "",
+        endTime: "",
         deliveryInfo: deliveryInfo,
       };
 
