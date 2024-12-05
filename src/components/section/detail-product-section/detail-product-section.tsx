@@ -70,43 +70,43 @@ const DetailProduct: FC<CartItemProps> = ({
     // Lấy giỏ hàng hiện tại từ localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    // Tìm sản phẩm đã tồn tại trong giỏ hàng
-    const existingItemIndex = existingCart.findIndex(
-      (item: any) =>
-        item.productId === cartItem.productId &&
-        item.deliveryDate.day === cartItem.deliveryDate.day &&
-        item.deliveryDate.date === cartItem.deliveryDate.date &&
-        item.deliveryDate.month === cartItem.deliveryDate.month &&
-        item.deliveryDate.year === cartItem.deliveryDate.year
-    );
-    if (existingItemIndex !== -1) {
-      // Nếu sản phẩm đã tồn tại, cộng dồn số lượng và topping
-      const existingItem = existingCart[existingItemIndex];
+    // // Tìm sản phẩm đã tồn tại trong giỏ hàng
+    // const existingItemIndex = existingCart.findIndex(
+    //   (item: any) =>
+    //     item.productId === cartItem.productId &&
+    //     item.deliveryDate.day === cartItem.deliveryDate.day &&
+    //     item.deliveryDate.date === cartItem.deliveryDate.date &&
+    //     item.deliveryDate.month === cartItem.deliveryDate.month &&
+    //     item.deliveryDate.year === cartItem.deliveryDate.year
+    // );
+    // if (existingItemIndex !== -1) {
+    //   // Nếu sản phẩm đã tồn tại, cộng dồn số lượng và topping
+    //   const existingItem = existingCart[existingItemIndex];
 
-      // Cộng dồn số lượng sản phẩm
-      existingItem.productQuantity += cartItem.productQuantity;
+    //   // Cộng dồn số lượng sản phẩm
+    //   existingItem.productQuantity += cartItem.productQuantity;
 
-      // Cộng dồn topping
-      cartItem.toppings.forEach((newTopping: any) => {
-        const existingToppingIndex = existingItem.toppings.findIndex(
-          (t: any) => t.id === newTopping.id
-        );
-        if (existingToppingIndex !== -1) {
-          // Nếu topping đã tồn tại, cộng số lượng
-          existingItem.toppings[existingToppingIndex].quantity +=
-            newTopping.quantity;
-        } else {
-          // Nếu topping chưa tồn tại, thêm vào danh sách
-          existingItem.toppings.push(newTopping);
-        }
-      });
+    //   // Cộng dồn topping
+    //   cartItem.toppings.forEach((newTopping: any) => {
+    //     const existingToppingIndex = existingItem.toppings.findIndex(
+    //       (t: any) => t.id === newTopping.id
+    //     );
+    //     if (existingToppingIndex !== -1) {
+    //       // Nếu topping đã tồn tại, cộng số lượng
+    //       existingItem.toppings[existingToppingIndex].quantity +=
+    //         newTopping.quantity;
+    //     } else {
+    //       // Nếu topping chưa tồn tại, thêm vào danh sách
+    //       existingItem.toppings.push(newTopping);
+    //     }
+    //   });
 
-      // Cập nhật lại giỏ hàng
-      existingCart[existingItemIndex] = existingItem;
-    } else {
-      // Nếu sản phẩm chưa tồn tại, thêm vào giỏ hàng
-      existingCart.push(cartItem);
-    }
+    //   // Cập nhật lại giỏ hàng
+    //   existingCart[existingItemIndex] = existingItem;
+    // } else {
+    // Nếu sản phẩm chưa tồn tại, thêm vào giỏ hàng
+    existingCart.push(cartItem);
+    // }
 
     // Lưu lại giỏ hàng vào localStorage
     localStorage.setItem("cart", JSON.stringify(existingCart));
