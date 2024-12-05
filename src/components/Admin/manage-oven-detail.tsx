@@ -53,7 +53,7 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders, id }) => {
     getFilteredOrders(); // Lấy dữ liệu khi component được render
   }, []);
 
-  const [ovenInfo, setOvenInfo] = useState();
+  const [ovenInfo, setOvenInfo] = useState({});
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -65,11 +65,41 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders, id }) => {
   console.log(ovenInfo);
   console.log(id);
 
-  const handleSelectOrder = (orderID: string) => {
-    setSelectedOption(orderID); // Cập nhật đơn hàng đã chọn
+  const handleSelectOrder = (orderID: string, quantity: number) => {
+    if (!ovenInfo) return;
+
+    // Kiểm tra xem orderID đã tồn tại trong ovenInfo.orderID chưa
+    const updatedOrderIDs = ovenInfo.orderID || [];
+    const isOrderExists = updatedOrderIDs.some(
+      (order: OrderDetail) => order.orderID === orderID
+    );
+
+    if (!isOrderExists) {
+      // Thêm order mới
+      updatedOrderIDs.push({
+        orderID,
+        quantity,
+        completeTime: "90ph", // Bạn có thể thêm giá trị thực tế nếu cần
+        remainingTime: "90ph", // Bạn có thể thêm giá trị thực tế nếu cần
+        status: "IN_PROGRESS", // Hoặc trạng thái phù hợp
+      });
+
+      // Cập nhật ovenInfo
+      const updatedOvenInfo = { ...ovenInfo, orderID: updatedOrderIDs };
+
+      // Cập nhật danh sách ovens trong localStorage
+      const storedOvens = JSON.parse(localStorage.getItem("ovens") || "[]");
+      const updatedOvens = storedOvens.map((oven: any) =>
+        oven.ovenID === id ? updatedOvenInfo : oven
+      );
+      localStorage.setItem("ovens", JSON.stringify(updatedOvens));
+
+      // Cập nhật state ovenInfo
+      setOvenInfo(updatedOvenInfo);
+    }
+
     setIsModalOpen(false); // Đóng modal sau khi chọn
   };
-
   return (
     <div className="ovendetail_container">
       {ovenInfo && (
@@ -170,7 +200,9 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders, id }) => {
                     order.orderDetails.map((item, index2) => (
                       <TableRow
                         key={index2}
-                        onClick={() => handleSelectOrder(order.orderID)} // Xử lý sự kiện chọn đơn hàng
+                        onClick={() =>
+                          handleSelectOrder(order.orderID, item.productQuantity)
+                        } // Truyền thông tin orderID và quantity
                         className="cursor-pointer"
                       >
                         <TableCell>{order.orderID}</TableCell>
@@ -211,22 +243,23 @@ const OvenDetail: FC<OvenProps> = ({ oven, orders, id }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders.map((order, index) => (
-              <TableRow key={index}>
-                <TableCell className="w-[150px]">
-                  {order.orderID || " "}
-                </TableCell>
-                <TableCell className="w-[150px]">
-                  {order.quantity || " "}
-                </TableCell>
-                <TableCell className="w-[150px]">
-                  {order.completeTime || " "}
-                </TableCell>
-                <TableCell className="w-[150px]">
-                  {order.remainingTime || " "}
-                </TableCell>
-              </TableRow>
-            ))}
+            {ovenInfo.orderID &&
+              ovenInfo.orderID.map((order, index) => (
+                <TableRow key={index}>
+                  <TableCell className="w-[150px]">
+                    {order.orderID || " "}
+                  </TableCell>
+                  <TableCell className="w-[150px]">
+                    {order.quantity || " "}
+                  </TableCell>
+                  <TableCell className="w-[150px]">
+                    {order.completeTime || " "}
+                  </TableCell>
+                  <TableCell className="w-[150px]">
+                    {order.remainingTime || " "}
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </div>

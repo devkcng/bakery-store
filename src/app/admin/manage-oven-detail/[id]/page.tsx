@@ -2,6 +2,7 @@
 import Oven from "@/components/Admin/manage-oven";
 import OvenDetail from "@/components/Admin/manage-oven-detail";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
+import { useEffect } from "react";
 
 const ManageOvenDetail = ({ params }: { params: { id: string } }) => {
   const pseudoOvenData = {
