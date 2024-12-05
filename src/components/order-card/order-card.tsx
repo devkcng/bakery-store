@@ -23,7 +23,7 @@ export interface DetailOrderAdmin {
   timeOrder: string;
   DetailOrders: DetailOrder[];
   status: Status;
-  totalAmount: number;
+  totalAmount?: number;
 }
 const OrderCard: FC<DetailOrderAdmin> = ({
   orderID,

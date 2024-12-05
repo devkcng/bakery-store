@@ -583,11 +583,47 @@ export const createData = () => {
       },
     },
   ];
+
+  const ovens = [
+    {
+      ovenID: 1,
+      orderID: [],
+      status: "Đang trống",
+      cake_type: "Bánh mì",
+    },
+    {
+      ovenID: 2,
+      orderID: [],
+      status: "Đang trống",
+      cake_type: null,
+    },
+    {
+      ovenID: 3,
+      orderID: [],
+      status: "Đang trống",
+      cake_type: null,
+    },
+    {
+      ovenID: 4,
+      orderID: [],
+      status: "Đang trống",
+      cake_type: null,
+    },
+  ];
+
+  // Lưu dữ liệu vào LocalStorage
   // // Kiểm tra sự tồn tại của biến "order"
   const existingOrders = localStorage.getItem("order");
 
   if (!existingOrders) {
     localStorage.setItem("order", JSON.stringify(orders));
     console.log("Orders đã được tạo và lưu vào localStorage!", orders);
+  }
+
+  const existingOvens = localStorage.getItem("ovens");
+
+  if (!existingOvens) {
+    localStorage.setItem("ovens", JSON.stringify(ovens));
+    console.log("Orders đã được tạo và lưu vào localStorage!", ovens);
   }
 };

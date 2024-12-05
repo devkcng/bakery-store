@@ -69,14 +69,16 @@ const AddBake = () => {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [imageSrc, setImageSrc] = useState<string>("/imgs/uploadPic.png");
-
+  const [fileName, setFileName] = useState<string>("");
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (file) {
-        const imageUrl = URL.createObjectURL(file); // Tạo URL tạm thời cho file
-        setImageSrc(imageUrl);
+    const file = event.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file); // Tạo URL tạm thời cho file
+      setImageSrc(imageUrl);
+      setFileName(file.name);
     }
   };
+
   useEffect(() => {
     const fetchIngredientNames = async () => {
       try {
@@ -109,7 +111,7 @@ const AddBake = () => {
     fetchIngredientNames();
     fetchToppings();
     fetchCategories();
-  }, []); 
+  }, []);
 
   const handleAddIngredient = (ingredientName: string) => {
     if (!ingredients.find((ing) => ing.name === ingredientName)) {
@@ -124,14 +126,17 @@ const AddBake = () => {
   };
 
   const handleAddTopping = (value: string) => {
-    const [toppingName, toppingId] = value.split('|');
+    const [toppingName, toppingId] = value.split("|");
     if (!selectedToppings.find((topp) => topp.name === toppingName)) {
-      setSelectedToppings([...selectedToppings, { name: toppingName, id: toppingId }]);
+      setSelectedToppings([
+        ...selectedToppings,
+        { name: toppingName, id: toppingId },
+      ]);
     }
   };
 
   const handleAddCategory = (value: string) => {
-    const [categoryName, categoryId] = value.split('|');
+    const [categoryName, categoryId] = value.split("|");
     setSelectedCategory({ name: categoryName, id: categoryId });
   };
 
@@ -140,7 +145,7 @@ const AddBake = () => {
       const numberOfProducts = await getNumberOfProducts();
       return numberOfProducts + 1;
     } catch (error) {
-      console.error('Error creating product ID:', error);
+      console.error("Error creating product ID:", error);
     }
   };
 
@@ -152,22 +157,22 @@ const AddBake = () => {
       price: values.price,
       description: "Default description", // Add appropriate description
       category_id: Number(selectedCategory.id), // Add appropriate category_id
-      img_path: `/imgs/bakery-images/${values.bakeName}b.png`, // Add appropriate img_path
+      img_path: `/imgs/bakery-images/${fileName}`, // Add appropriate img_path
       max_daily_quantity_limit: 100, // Add appropriate max_daily_quantity_limit
       product_capacity_per_batch: values.maxCapacity,
     };
     console.log(bakeData);
     // console.log("Ingredients:", ingredients);
-    
+
     try {
       await addProduct(bakeData);
-      console.log('Product added successfully');
+      console.log("Product added successfully");
 
       for (const topping of selectedToppings) {
         const productTopping = {
           product_id: Number(product_id),
           topping_id: Number(topping.id),
-        }
+        };
         await addProductTopping(productTopping);
       }
 
@@ -183,13 +188,12 @@ const AddBake = () => {
       setIngredients([]);
       setSelectedToppings([]);
       setSelectedCategory(undefined);
-
-
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
-
+  console.log(imageSrc.toString());
+  console.log(fileName);
   return (
     <div className="flex flex-col items-center mt-5 ">
       <span className="text-3xl font-bold tracking-[0.2rem] text-center mb-5">
@@ -218,11 +222,13 @@ const AddBake = () => {
               >
                 <p className="flex-1 text-center">Chọn ảnh</p>
               </label>
-              <input id="file" 
-              type="file" 
-              className="hidden" 
-              onChange={handleImageChange}
-              accept="image/*"/>
+              <input
+                id="file"
+                type="file"
+                className="hidden"
+                onChange={handleImageChange}
+                accept="image/*"
+              />
             </div>
             {/* Information of bake section */}
 
@@ -364,7 +370,10 @@ const AddBake = () => {
                     </SelectTrigger>
                     <SelectContent>
                       {toppings.map((topping) => (
-                        <SelectItem key={topping.id} value={`${topping.name}|${topping.id}`}>
+                        <SelectItem
+                          key={topping.id}
+                          value={`${topping.name}|${topping.id}`}
+                        >
                           {topping.name}
                         </SelectItem>
                       ))}
@@ -373,8 +382,15 @@ const AddBake = () => {
                   {/* Render selected toppings */}
                   <div className="w-full mt-4 space-y-4 ">
                     {selectedToppings.map((topping) => (
-                      <div key={topping.name} className="flex items-center gap-4">
-                        <Input className="w-[100px]" value={topping.name} readOnly />
+                      <div
+                        key={topping.name}
+                        className="flex items-center gap-4"
+                      >
+                        <Input
+                          className="w-[100px]"
+                          value={topping.name}
+                          readOnly
+                        />
                       </div>
                     ))}
                   </div>
@@ -389,11 +405,13 @@ const AddBake = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((category) => (
-                      <SelectItem key={category.id} value={`${category.name}|${category.id}`}>
+                      <SelectItem
+                        key={category.id}
+                        value={`${category.name}|${category.id}`}
+                      >
                         {category.name}
                       </SelectItem>
                     ))}
-                    
                   </SelectContent>
                 </Select>
                 {/* Render selected category */}
@@ -408,8 +426,7 @@ const AddBake = () => {
                     </div>
                   )}
                 </div>
-                </div>
-                
+              </div>
             </div>
           </div>
 
@@ -419,7 +436,8 @@ const AddBake = () => {
             </Button>
           </div>
         </form>
-      </Form>{showSuccessMessage && (
+      </Form>
+      {showSuccessMessage && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-5 rounded-lg shadow-lg">
             <p className="text-xl font-bold">Thêm thành công</p>

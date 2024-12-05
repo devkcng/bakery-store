@@ -1,6 +1,7 @@
 "use client";
 import Oven from "@/components/Admin/manage-oven";
 import SidebarAdmin from "@/components/sidebar-admin/sidebarAdmin";
+import { useEffect, useState } from "react";
 const ManageOvenDetail = () => {
   const pseudoData = [
     {
@@ -79,6 +80,14 @@ const ManageOvenDetail = () => {
       status: "Đang trống",
     },
   ];
+  const [ovens, setOVens] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const list = JSON.parse(localStorage.getItem("ovens") || "[]");
+      setOVens(list); // Cập nhật deliveryInfo
+    }
+  }, []);
+  console.log(ovens);
   return (
     <div className=" ml-[250px] mt-3 pl-[10px] ">
       <SidebarAdmin></SidebarAdmin>
@@ -87,7 +96,7 @@ const ManageOvenDetail = () => {
       </div>
       <div className="font-bold text-[22px] w-[60%] ">Quản lý lò nướng</div>
       <div className="overflow-y-auto max-h-[550px] scrollbar-hidden mt-4 ">
-        <Oven info={pseudoData}></Oven>
+        <Oven info={ovens}></Oven>
       </div>
     </div>
   );
